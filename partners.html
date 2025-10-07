@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Partners - Leve</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .partners-hero {
+            background: linear-gradient(135deg, var(--secondary-orange), var(--light-orange));
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .partners-intro {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .partner-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .partner-logo {
+            width: 150px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: var(--light-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        
+        .collaboration-section {
+            background: var(--light-bg);
+            padding: 80px 0;
+        }
+        
+        .collaboration-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .collaboration-text {
+            flex: 1;
+        }
+        
+        .collaboration-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .collaboration-image img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .collaboration-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pt">PT</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Leve</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="founder.html" class="nav-link">Founder</a>
+                <a href="learnings.html" class="nav-link">Learnings</a>
+                <a href="partners.html" class="nav-link active">Partners</a>
+                <a href="contact.html" class="nav-link">Join Us</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Partners Hero -->
+    <section class="partners-hero">
+        <div class="container">
+            <h1>Our Partners</h1>
+            <p class="en-text">Collaborating for sustainable community impact</p>
+            <p class="pt-text" style="display: none;">Colaborando para um impacto comunitário sustentável</p>
+        </div>
+    </section>
+
+    <!-- Partners Intro -->
+    <section class="partners-intro">
+        <div class="container">
+            <h2 class="section-title">Working Together for Change</h2>
+            <p class="en-text">Leve's success is built on strong partnerships with organizations that share our vision for resilient, sustainable communities. Together, we're creating meaningful impact through collaborative projects and shared resources.</p>
+            <p class="pt-text" style="display: none;">O sucesso da Leve é construído sobre parcerias sólidas com organizações que partilham a nossa visão de comunidades resilientes e sustentáveis. Juntos, estamos a criar um impacto significativo através de projetos colaborativos e recursos partilhados.</p>
+        </div>
+    </section>
+
+    <!-- Partners Grid -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <span>Partner 1</span>
+                    </div>
+                    <h3>Municipality of Caldas da Rainha</h3>
+                    <p class="en-text">Official municipal partner supporting BioRainha and other community initiatives</p>
+                    <p class="pt-text" style="display: none;">Parceiro municipal oficial que apoia o BioRainha e outras iniciativas comunitárias</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <span>Partner 2</span>
+                    </div>
+                    <h3>Local Schools Network</h3>
+                    <p class="en-text">8 primary and secondary schools collaborating on educational programs</p>
+                    <p class="pt-text" style="display: none;">8 escolas básicas e secundárias a colaborar em programas educativos</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <span>Partner 3</span>
+                    </div>
+                    <h3>Community Organizations</h3>
+                    <p class="en-text">Local associations supporting intergenerational and sustainability projects</p>
+                    <p class="pt-text" style="display: none;">Associações locais que apoiam projetos intergeracionais e de sustentabilidade</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <span>Partner 4</span>
+                    </div>
+                    <h3>Business Partners</h3>
+                    <p class="en-text">Local businesses supporting community transport and sustainability initiatives</p>
+                    <p class="pt-text" style="display: none;">Negócios locais que apoiam o transporte comunitário e iniciativas de sustentabilidade</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Section -->
+    <section class="collaboration-section">
+        <div class="container">
+            <h2 class="section-title">The Power of Collaboration</h2>
+            <div class="collaboration-content">
+                <div class="collaboration-text">
+                    <p class="en-text">Our partnership with the Municipality of Caldas da Rainha demonstrates how youth-led initiatives can influence municipal policy and drive sustainable change. Through this collaboration, BioRainha evolved from a student campaign into a city-wide sustainability program.</p>
+                    <p class="pt-text" style="display: none;">A nossa parceria com a Câmara Municipal das Caldas da Rainha demonstra como iniciativas lideradas por jovens podem influenciar políticas municipais e promover mudanças sustentáveis. Através desta colaboração, o BioRainha evoluiu de uma campanha estudantil para um programa municipal de sustentabilidade.</p>
+                    
+                    <p class="en-text">By working with local schools, we've reached hundreds of families, embedding composting practices at the household level and ensuring intergenerational knowledge transfer.</p>
+                    <p class="pt-text" style="display: none;">Ao trabalhar com escolas locais, alcançámos centenas de famílias, enraizando práticas de compostagem ao nível doméstico e garantindo a transferência intergeracional de conhecimento.</p>
+                </div>
+                <div class="collaboration-image">
+                    <img src="https://placehold.co/500x400/4a6fa5/FFFFFF?text=Collaboration+in+Action" alt="Leve collaboration with partners">
+                </div>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="en-text">Shared Resources</h3>
+                    <h3 class="pt-text" style="display: none;">Recursos Partilhados</h3>
+                    <p class="en-text">Leveraging combined assets for greater community impact</p>
+                    <p class="pt-text" style="display: none;">Aproveitar ativos combinados para maior impacto comunitário</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3 class="en-text">Increased Reach</h3>
+                    <h3 class="pt-text" style="display: none;">Maior Alcance</h3>
+                    <p class="en-text">Extending our programs to more communities through partnerships</p>
+                    <p class="pt-text" style="display: none;">Estender os nossos programas a mais comunidades através de parcerias</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="en-text">Innovative Solutions</h3>
+                    <h3 class="pt-text" style="display: none;">Soluções Inovadoras</h3>
+                    <p class="en-text">Combining diverse perspectives for creative problem-solving</p>
+                    <p class="pt-text" style="display: none;">Combinar perspetivas diversas para resolução criativa de problemas</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="en-text">Sustainable Impact</h3>
+                    <h3 class="pt-text" style="display: none;">Impacto Sustentável</h3>
+                    <p class="en-text">Creating lasting change through collaborative efforts</p>
+                    <p class="pt-text" style="display: none;">Criar mudanças duradouras através de esforços colaborativos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Interested in partnering with us?</h2>
+            <p class="en-text">Join our network of organizations creating positive change in communities</p>
+            <p class="pt-text" style="display: none;">Junte-se à nossa rede de organizações que criam mudanças positivas nas comunidades</p>
+            <a href="contact.html" class="btn primary">Become a Partner</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Leve</h3>
+                    <p>Building Generations, Building Resilience</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="founder.html">Founder</a></li>
+                        <li><a href="learnings.html">Learnings</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="contact.html">Join Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get In Touch</h4>
+                    <a href="mailto:keanekomp@gmail.com" class="email-link">keanekomp@gmail.com</a>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023, Aditya Banerjee, All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

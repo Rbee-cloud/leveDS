@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Story - Leve</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .founder-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .founder-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin: 60px 0;
+        }
+        
+        .founder-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .founder-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .founder-bio {
+            flex: 1;
+        }
+        
+        .founder-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            border-left: 4px solid var(--secondary-orange);
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+        
+        .mission-values {
+            background: var(--light-bg);
+            padding: 80px 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+        
+        .gallery-section {
+            padding: 80px 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .founder-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pt">PT</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Leve</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="founder.html" class="nav-link active">Founder</a>
+                <a href="learnings.html" class="nav-link">Learnings</a>
+                <a href="partners.html" class="nav-link">Partners</a>
+                <a href="contact.html" class="nav-link">Join Us</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Founder Hero -->
+    <section class="founder-hero">
+        <div class="container">
+            <h1>Meet Our Founder</h1>
+            <p class="en-text">The vision behind Leve's mission to build resilient communities</p>
+            <p class="pt-text" style="display: none;">A visão por trás da missão da Leve de construir comunidades resilientes</p>
+        </div>
+    </section>
+
+    <!-- Founder Story -->
+    <section class="founder-story">
+        <div class="container">
+            <div class="founder-content">
+                <div class="founder-image">
+                    <img src="https://placehold.co/500x600/4a6fa5/FFFFFF?text=Aditya+Banerjee+Founder" alt="Aditya Banerjee, Founder of Leve">
+                </div>
+                <div class="founder-bio">
+                    <h2>Aditya Banerjee</h2>
+                    <p class="en-text">Hi! I'm Aditya, the founder of Leve. Our mission is simple: to help young people, like you and me, build resilience and learn how to deal with life's ups and downs.</p>
+                    <p class="pt-text" style="display: none;">Olá! Eu sou o Aditya, o fundador da Leve. A nossa missão é simples mas muito importante: ajudar jovens como eu e tu a ganhar mais resiliência e aprender a lidar com os altos e baixos da vida.</p>
+                    
+                    <p class="en-text">It all started in a small town in Portugal, where I realized that many of us need a safe space to talk, share, and grow together. At Leve, we believe you don't have to carry the weight of the world on your own, it's so much easier when you've got a community by your side.</p>
+                    <p class="pt-text" style="display: none;">Tudo começou numa pequena cidade em Portugal, onde percebi que muitos de nós precisamos de um espaço seguro para falar, partilhar e crescer juntos. Na Leve, acreditamos que não precisamos carregar o mundo sozinhos, é muito mais fácil quando temos uma comunidade ao nosso lado.</p>
+                    
+                    <div class="founder-quote">
+                        <p class="en-text">"Being strong doesn't mean having no problems, it means having the courage to face them, step by step."</p>
+                        <p class="pt-text" style="display: none;">"Ser forte não é não ter problemas, é ter coragem de os enfrentar, passo a passo."</p>
+                    </div>
+                    
+                    <p class="en-text">We want to create moments to connect, activities that make us feel good, and, above all, show that it's totally okay to ask for help. Through our projects like BioRainha, Art Caldas, and Me Leve, we're building bridges between generations and creating sustainable practices that benefit our entire community.</p>
+                    <p class="pt-text" style="display: none;">Queremos criar momentos de partilha, atividades que nos façam sentir bem e, acima de tudo, mostrar que está tudo bem pedir ajuda. Através dos nossos projetos como BioRainha, Art Caldas e Me Leve, estamos a construir pontes entre gerações e a criar práticas sustentáveis que beneficiam toda a nossa comunidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="mission-values">
+        <div class="container">
+            <h2 class="section-title">Our Mission & Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Compassion</h3>
+                    <p class="en-text">We approach every challenge with empathy and understanding</p>
+                    <p class="pt-text" style="display: none;">Abordamos cada desafio com empatia e compreensão</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p class="en-text">We believe in the power of collective action and support</p>
+                    <p class="pt-text" style="display: none;">Acreditamos no poder da ação e apoio coletivos</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p class="en-text">We create solutions that are environmentally and socially sustainable</p>
+                    <p class="pt-text" style="display: none;">Criamos soluções ambiental e socialmente sustentáveis</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p class="en-text">We embrace creative approaches to solve community challenges</p>
+                    <p class="pt-text" style="display: none;">Adotamos abordagens criativas para resolver desafios comunitários</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Leve in Action</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/4a6fa5/FFFFFF?text=Community+Workshop" alt="Leve community workshop">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/ff7b54/FFFFFF?text=Youth+Engagement" alt="Youth engagement activity">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/6b5ce7/FFFFFF?text=Intergenerational+Connection" alt="Intergenerational connection">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/4a9fa5/FFFFFF?text=Sustainable+Practices" alt="Sustainable practices in action">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/ffb854/FFFFFF?text=Community+Event" alt="Leve community event">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x300/4a6fa5/FFFFFF?text=Team+Celebration" alt="Leve team celebration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Inspired by our story?</h2>
+            <p class="en-text">Join our movement and help create positive change in your community</p>
+            <p class="pt-text" style="display: none;">Junte-se ao nosso movimento e ajude a criar mudanças positivas na sua comunidade</p>
+            <a href="contact.html" class="btn primary">Get Involved</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Leve</h3>
+                    <p>Building Generations, Building Resilience</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="founder.html">Founder</a></li>
+                        <li><a href="learnings.html">Learnings</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="contact.html">Join Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get In Touch</h4>
+                    <a href="mailto:keanekomp@gmail.com" class="email-link">keanekomp@gmail.com</a>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023, Aditya Banerjee, All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

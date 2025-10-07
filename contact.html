@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us - Leve</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, var(--accent-purple), var(--light-blue));
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .contact-content {
+            padding: 80px 0;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+        
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .ways-to-join {
+            background: var(--light-bg);
+            padding: 80px 0;
+        }
+        
+        .ways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .way-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .way-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .way-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--secondary-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pt">PT</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Leve</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="founder.html" class="nav-link">Founder</a>
+                <a href="learnings.html" class="nav-link">Learnings</a>
+                <a href="partners.html" class="nav-link">Partners</a>
+                <a href="contact.html" class="nav-link active">Join Us</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Join Our Community</h1>
+            <p class="en-text">Be part of the movement building resilient, sustainable communities</p>
+            <p class="pt-text" style="display: none;">Faça parte do movimento que constrói comunidades resilientes e sustentáveis</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h2>Get In Touch</h2>
+                    <p class="en-text">Ready to make a difference? Send us a message and we'll get back to you soon.</p>
+                    <p class="pt-text" style="display: none;">Pronto para fazer a diferença? Envie-nos uma mensagem e responderemos em breve.</p>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label en-text">Full Name</label>
+                            <label for="name" class="form-label pt-text" style="display: none;">Nome Completo</label>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest" class="form-label en-text">Area of Interest</label>
+                            <label for="interest" class="form-label pt-text" style="display: none;">Área de Interesse</label>
+                            <select id="interest" class="form-select">
+                                <option value="" class="en-text">Select an option</option>
+                                <option value="" class="pt-text" style="display: none;">Selecione uma opção</option>
+                                <option value="volunteer" class="en-text">Volunteering</option>
+                                <option value="volunteer" class="pt-text" style="display: none;">Voluntariado</option>
+                                <option value="partner" class="en-text">Partnership</option>
+                                <option value="partner" class="pt-text" style="display: none;">Parceria</option>
+                                <option value="donation" class="en-text">Donation/Support</option>
+                                <option value="donation" class="pt-text" style="display: none;">Doação/Apoio</option>
+                                <option value="info" class="en-text">General Information</option>
+                                <option value="info" class="pt-text" style="display: none;">Informação Geral</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label en-text">Your Message</label>
+                            <label for="message" class="form-label pt-text" style="display: none;">A Sua Mensagem</label>
+                            <textarea id="message" class="form-textarea"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn primary en-text">Send Message</button>
+                        <button type="submit" class="btn primary pt-text" style="display: none;">Enviar Mensagem</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <a href="mailto:keanekomp@gmail.com" class="email-link">keanekomp@gmail.com</a>
+                        <p class="en-text">We typically respond within 24 hours</p>
+                        <p class="pt-text" style="display: none;">Normalmente respondemos dentro de 24 horas</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="en-text">Our Location</h3>
+                        <h3 class="pt-text" style="display: none;">A Nossa Localização</h3>
+                        <p>Caldas da Rainha, Portugal</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ways to Join -->
+    <section class="ways-to-join">
+        <div class="container">
+            <h2 class="section-title">Ways to Get Involved</h2>
+            <div class="ways-grid">
+                <div class="way-card">
+                    <div class="way-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="en-text">Volunteer</h3>
+                    <h3 class="pt-text" style="display: none;">Voluntarie-se</h3>
+                    <p class="en-text">Join our team of dedicated volunteers working on community projects</p>
+                    <p class="pt-text" style="display: none;">Junte-se à nossa equipa de voluntários dedicados que trabalham em projetos comunitários</p>
+                </div>
+                
+                <div class="way-card">
+                    <div class="way-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="en-text">Partner</h3>
+                    <h3 class="pt-text" style="display: none;">Parceria</h3>
+                    <p class="en-text">Collaborate with us as an organization or business partner</p>
+                    <p class="pt-text" style="display: none;">Colabore connosco como organização ou parceiro comercial</p>
+                </div>
+                
+                <div class="way-card">
+                    <div class="way-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="en-text">Support</h3>
+                    <h3 class="pt-text" style="display: none;">Apoie</h3>
+                    <p class="en-text">Help fund our initiatives and make sustainable impact possible</p>
+                    <p class="pt-text" style="display: none;">Ajude a financiar as nossas iniciativas e torne o impacto sustentável possível</p>
+                </div>
+                
+                <div class="way-card">
+                    <div class="way-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="en-text">Spread the Word</h3>
+                    <h3 class="pt-text" style="display: none;">Divulgue</h3>
+                    <p class="en-text">Share our mission with your network and help grow our community</p>
+                    <p class="pt-text" style="display: none;">Partilhe a nossa missão com a sua rede e ajude a crescer a nossa comunidade</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to make a difference?</h2>
+            <p class="en-text">Join Leve today and be part of building resilient, sustainable communities</p>
+            <p class="pt-text" style="display: none;">Junte-se à Leve hoje e faça parte da construção de comunidades resilientes e sustentáveis</p>
+            <a href="mailto:keanekomp@gmail.com" class="btn primary">Email Us Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Leve</h3>
+                    <p>Building Generations, Building Resilience</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="founder.html">Founder</a></li>
+                        <li><a href="learnings.html">Learnings</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="contact.html">Join Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get In Touch</h4>
+                    <a href="mailto:keanekomp@gmail.com" class="email-link">keanekomp@gmail.com</a>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023, Aditya Banerjee, All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Simple form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const interest = document.getElementById('interest').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link
+            const subject = `Leve Contact: ${interest}`;
+            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AInterest: ${interest}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
+            // Open email client
+            window.location.href = `mailto:keanekomp@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message (you could add a proper notification here)
+            alert('Thank you for your message! Your email client will open to send the message.');
+        });
+    </script>
+</body>
+</html>
