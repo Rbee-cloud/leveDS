@@ -872,3 +872,7 @@ section {
     max-height: 80px;
     object-fit: contain;
 }
+.logo img {
+    height: 40px;
+    width: auto;
+}
