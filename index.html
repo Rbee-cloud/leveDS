@@ -63,6 +63,7 @@
             height: 100%;
             position: relative;
             flex-shrink: 0;
+            cursor: pointer;
         }
         
         .carousel-slide img {
@@ -70,6 +71,11 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide:hover img {
+            transform: scale(1.05);
         }
         
         .slide-content {
@@ -148,7 +154,114 @@
             background: #4a6fa5;
             transform: scale(1.2);
         }
-        
+
+        /* Gallery Modal Styles */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-prev {
+            left: 20px;
+        }
+
+        .modal-next {
+            right: 20px;
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .carousel {
@@ -168,6 +281,28 @@
                 height: 40px;
                 font-size: 1rem;
             }
+
+            .modal-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .modal-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .modal-prev {
+                left: 10px;
+            }
+
+            .modal-next {
+                right: 10px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -185,6 +320,16 @@
             
             .carousel-title {
                 font-size: 2rem;
+            }
+
+            .modal-content {
+                max-width: 95%;
+            }
+
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -330,7 +475,7 @@
                 
                 <div class="carousel-track">
                     <!-- Slide 1 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="0">
                         <img src="https://i.ibb.co/dJj8BpxT/00063-File.jpg" alt="BioRainha composting initiative">
                         <div class="slide-content">
                             <h3>BioRainha Composting</h3>
@@ -340,7 +485,7 @@
                     </div>
                     
                     <!-- Slide 2 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="1">
                         <img src="https://i.ibb.co/XZ4LRYHy/00058-File.jpg" alt="BioRainha composting initiative">
                         <div class="slide-content">
                             <h3>Community Engagement</h3>
@@ -350,7 +495,7 @@
                     </div>
                     
                     <!-- Slide 3 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="2">
                         <img src="https://i.ibb.co/fd1CmMZb/00046-File.jpg" alt="Me Leve community transport service">
                         <div class="slide-content">
                             <h3>Me Leve Transport</h3>
@@ -360,7 +505,7 @@
                     </div>
                     
                     <!-- Slide 4 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="3">
                         <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Community gathering">
                         <div class="slide-content">
                             <h3>Community Engagement</h3>
@@ -370,7 +515,7 @@
                     </div>
                     
                     <!-- Slide 5 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="4">
                         <img src="https://i.ibb.co/nqj8HBGF/00062-File.jpg" alt="Educational workshop">
                         <div class="slide-content">
                             <h3>Educational Workshops</h3>
@@ -380,7 +525,7 @@
                     </div>
                     
                     <!-- Slide 6 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="5">
                         <img src="https://i.ibb.co/DgPQPf6v/00052-File.jpg" alt="Beach Cleaning">
                         <div class="slide-content">
                             <h3>Environmental Awareness</h3>
@@ -390,7 +535,7 @@
                     </div>
                     
                     <!-- Slide 7 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="6">
                         <img src="https://i.ibb.co/GQPz9b02/00061-File.jpg" alt="Community Activity">
                         <div class="slide-content">
                             <h3>Community Activities</h3>
@@ -400,7 +545,7 @@
                     </div>
                     
                     <!-- Slide 8 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="7">
                         <img src="https://i.ibb.co/7xwW41CF/00066-File.jpg" alt="Community Workshop">
                         <div class="slide-content">
                             <h3>Interactive Workshops</h3>
@@ -410,7 +555,7 @@
                     </div>
                     
                     <!-- Slide 9 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="8">
                         <img src="https://i.ibb.co/39G8Dfh0/00070-File.jpg" alt="Youth Leadership">
                         <div class="slide-content">
                             <h3>Youth Leadership</h3>
@@ -420,7 +565,7 @@
                     </div>
                     
                     <!-- Slide 10 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="9">
                         <img src="https://i.ibb.co/21zYb3Yg/00068-File.jpg" alt="Community Collaboration">
                         <div class="slide-content">
                             <h3>Community Collaboration</h3>
@@ -430,7 +575,7 @@
                     </div>
                     
                     <!-- Slide 11 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="10">
                         <img src="https://i.ibb.co/Wpk4BmgP/00050-File.jpg" alt="Composting">
                         <div class="slide-content">
                             <h3>Sustainable Practices</h3>
@@ -440,7 +585,7 @@
                     </div>
                     
                     <!-- Slide 12 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="11">
                         <img src="https://i.ibb.co/99FBcJMR/00051-File.jpg" alt="Composting">
                         <div class="slide-content">
                             <h3>Waste Management</h3>
@@ -450,7 +595,7 @@
                     </div>
                     
                     <!-- Slide 13 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="12">
                         <img src="https://i.ibb.co/kgvJrTsF/00054-File.jpg" alt="Composting">
                         <div class="slide-content">
                             <h3>Environmental Education</h3>
@@ -460,7 +605,7 @@
                     </div>
                     
                     <!-- Slide 14 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="13">
                         <img src="https://i.ibb.co/39Fpgc5N/00055-File.jpg" alt="Composting">
                         <div class="slide-content">
                             <h3>Community Gardens</h3>
@@ -470,7 +615,7 @@
                     </div>
 
                     <!-- Slide 15 -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" data-index="14">
                         <img src="https://i.ibb.co/Tqnxb7XB/00048-File.jpg" alt="ArtCaldas">
                         <div class="slide-content">
                             <h3>Art Caldas Program</h3>
@@ -500,6 +645,23 @@
             </div>
         </div>
     </section>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="modal-nav modal-prev" id="modalPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="modal-nav modal-next" id="modalNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="image-counter" id="imageCounter"></div>
+        </div>
+    </div>
 
     <!-- Quote Section -->
     <section class="quote-section">
@@ -621,6 +783,90 @@
             
             carousel.addEventListener('mouseleave', () => {
                 startAutoSlide();
+            });
+
+            // Gallery Modal functionality
+            const modal = document.getElementById('galleryModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalClose = document.getElementById('modalClose');
+            const modalPrev = document.getElementById('modalPrev');
+            const modalNext = document.getElementById('modalNext');
+            const imageCounter = document.getElementById('imageCounter');
+            let currentImageIndex = 0;
+
+            // Open modal when carousel image is clicked
+            slides.forEach((slide, index) => {
+                slide.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    openModal();
+                });
+            });
+
+            function openModal() {
+                const currentSlide = slides[currentImageIndex];
+                const imgSrc = currentSlide.querySelector('img').src;
+                const imgAlt = currentSlide.querySelector('img').alt;
+                
+                modalImage.src = imgSrc;
+                modalImage.alt = imgAlt;
+                updateCounter();
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % totalSlides;
+                const currentSlide = slides[currentImageIndex];
+                modalImage.src = currentSlide.querySelector('img').src;
+                modalImage.alt = currentSlide.querySelector('img').alt;
+                updateCounter();
+            }
+
+            function prevImage() {
+                currentImageIndex = (currentImageIndex - 1 + totalSlides) % totalSlides;
+                const currentSlide = slides[currentImageIndex];
+                modalImage.src = currentSlide.querySelector('img').src;
+                modalImage.alt = currentSlide.querySelector('img').alt;
+                updateCounter();
+            }
+
+            function updateCounter() {
+                imageCounter.textContent = `${currentImageIndex + 1} / ${totalSlides}`;
+            }
+
+            // Event listeners for modal
+            modalClose.addEventListener('click', closeModal);
+            modalNext.addEventListener('click', nextImage);
+            modalPrev.addEventListener('click', prevImage);
+
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('active')) return;
+                
+                switch(e.key) {
+                    case 'Escape':
+                        closeModal();
+                        break;
+                    case 'ArrowLeft':
+                        prevImage();
+                        break;
+                    case 'ArrowRight':
+                        nextImage();
+                        break;
+                }
             });
         });
     </script>
