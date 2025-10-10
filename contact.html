@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Us - Leve</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .contact-hero {
@@ -51,7 +51,7 @@
             padding: 12px 15px;
             border: 1px solid #ddd;
             border-radius: var(--border-radius);
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Exo', sans-serif;
             font-size: 1rem;
             transition: var(--transition);
         }
@@ -149,12 +149,18 @@
                 </a>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="founder.html" class="nav-link">Founder</a>
-                <a href="learnings.html" class="nav-link">Learnings</a>
-                <a href="partners.html" class="nav-link">Partners</a>
-                <a href="contact.html" class="nav-link active">Join Us</a>
+                <a href="index.html" class="nav-link en-text">Home</a>
+                <a href="index.html" class="nav-link pt-text" style="display: none;">Início</a>
+                <a href="projects.html" class="nav-link en-text">Projects</a>
+                <a href="projects.html" class="nav-link pt-text" style="display: none;">Projetos</a>
+                <a href="founder.html" class="nav-link en-text">Founder</a>
+                <a href="founder.html" class="nav-link pt-text" style="display: none;">Fundador</a>
+                <a href="learnings.html" class="nav-link en-text">Learnings</a>
+                <a href="learnings.html" class="nav-link pt-text" style="display: none;">Aprendizados</a>
+                <a href="partners.html" class="nav-link en-text">Partners</a>
+                <a href="partners.html" class="nav-link pt-text" style="display: none;">Parceiros</a>
+                <a href="contact.html" class="nav-link active en-text">Join Us</a>
+                <a href="contact.html" class="nav-link active pt-text" style="display: none;">Junte-se a Nós</a>
             </div>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -167,7 +173,8 @@
     <!-- Contact Hero -->
     <section class="contact-hero">
         <div class="container">
-            <h1>Join Our Community</h1>
+            <h1 class="en-text">Join Our Community</h1>
+            <h1 class="pt-text" style="display: none;">Junte-se à Nossa Comunidade</h1>
             <p class="en-text">Be part of the movement building resilient, sustainable communities</p>
             <p class="pt-text" style="display: none;">Faça parte do movimento que constrói comunidades resilientes e sustentáveis</p>
         </div>
@@ -178,7 +185,8 @@
         <div class="container">
             <div class="contact-container">
                 <div class="contact-form">
-                    <h2>Get In Touch</h2>
+                    <h2 class="en-text">Get In Touch</h2>
+                    <h2 class="pt-text" style="display: none;">Entre em Contato</h2>
                     <p class="en-text">Ready to make a difference? Send us a message and we'll get back to you soon.</p>
                     <p class="pt-text" style="display: none;">Pronto para fazer a diferença? Envie-nos uma mensagem e responderemos em breve.</p>
                     
@@ -190,7 +198,8 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="email" class="form-label">Email Address</label>
+                            <label for="email" class="form-label en-text">Email Address</label>
+                            <label for="email" class="form-label pt-text" style="display: none;">Endereço de Email</label>
                             <input type="email" id="email" class="form-input" required>
                         </div>
                         
@@ -227,7 +236,8 @@
                         <div class="info-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <h3>Email Us</h3>
+                        <h3 class="en-text">Email Us</h3>
+                        <h3 class="pt-text" style="display: none;">Envie-nos um Email</h3>
                         <a href="mailto:keanekomp@gmail.com" class="email-link">keanekomp@gmail.com</a>
                         <p class="en-text">We typically respond within 24 hours</p>
                         <p class="pt-text" style="display: none;">Normalmente respondemos dentro de 24 horas</p>
@@ -246,7 +256,8 @@
                         <div class="info-icon">
                             <i class="fas fa-share-alt"></i>
                         </div>
-                        <h3>Follow Us</h3>
+                        <h3 class="en-text">Follow Us</h3>
+                        <h3 class="pt-text" style="display: none;">Siga-nos</h3>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-facebook"></i></a>
                             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -261,7 +272,8 @@
     <!-- Ways to Join -->
     <section class="ways-to-join">
         <div class="container">
-            <h2 class="section-title">Ways to Get Involved</h2>
+            <h2 class="section-title en-text">Ways to Get Involved</h2>
+            <h2 class="section-title pt-text" style="display: none;">Formas de Participar</h2>
             <div class="ways-grid">
                 <div class="way-card">
                     <div class="way-icon">
@@ -309,10 +321,12 @@
     <!-- Final CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to make a difference?</h2>
+            <h2 class="en-text">Ready to make a difference?</h2>
+            <h2 class="pt-text" style="display: none;">Pronto para fazer a diferença?</h2>
             <p class="en-text">Join Leve today and be part of building resilient, sustainable communities</p>
             <p class="pt-text" style="display: none;">Junte-se à Leve hoje e faça parte da construção de comunidades resilientes e sustentáveis</p>
-            <a href="mailto:keanekomp@gmail.com" class="btn primary">Email Us Now</a>
+            <a href="mailto:keanekomp@gmail.com" class="btn primary en-text">Email Us Now</a>
+            <a href="mailto:keanekomp@gmail.com" class="btn primary pt-text" style="display: none;">Envie-nos um Email</a>
         </div>
     </section>
 
@@ -322,21 +336,42 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <h3>Leve</h3>
-                    <p>Building Generations, Building Resilience</p>
+                    <p class="en-text">Building Generations, Building Resilience</p>
+                    <p class="pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4 class="en-text">Quick Links</h4>
+                    <h4 class="pt-text" style="display: none;">Links Rápidos</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="founder.html">Founder</a></li>
-                        <li><a href="learnings.html">Learnings</a></li>
-                        <li><a href="partners.html">Partners</a></li>
-                        <li><a href="contact.html">Join Us</a></li>
+                        <li>
+                            <a href="index.html" class="en-text">Home</a>
+                            <a href="index.html" class="pt-text" style="display: none;">Início</a>
+                        </li>
+                        <li>
+                            <a href="projects.html" class="en-text">Projects</a>
+                            <a href="projects.html" class="pt-text" style="display: none;">Projetos</a>
+                        </li>
+                        <li>
+                            <a href="founder.html" class="en-text">Founder</a>
+                            <a href="founder.html" class="pt-text" style="display: none;">Fundador</a>
+                        </li>
+                        <li>
+                            <a href="learnings.html" class="en-text">Learnings</a>
+                            <a href="learnings.html" class="pt-text" style="display: none;">Aprendizados</a>
+                        </li>
+                        <li>
+                            <a href="partners.html" class="en-text">Partners</a>
+                            <a href="partners.html" class="pt-text" style="display: none;">Parceiros</a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="en-text">Join Us</a>
+                            <a href="contact.html" class="pt-text" style="display: none;">Junte-se a Nós</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>Get In Touch</h4>
+                    <h4 class="en-text">Get In Touch</h4>
+                    <h4 class="pt-text" style="display: none;">Entre em Contato</h4>
                     <a href="mailto:keanekomp@gmail.com" class="email-link">keanekomp@gmail.com</a>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -346,7 +381,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023, Aditya Banerjee, All rights reserved</p>
+                <p class="en-text">&copy; 2023, Aditya Banerjee, All rights reserved</p>
+                <p class="pt-text" style="display: none;">&copy; 2023, Aditya Banerjee, Todos os direitos reservados</p>
             </div>
         </div>
     </footer>
@@ -373,8 +409,13 @@
             // Reset form
             this.reset();
             
-            // Show success message (you could add a proper notification here)
-            alert('Thank you for your message! Your email client will open to send the message.');
+            // Show success message
+            const currentLang = document.documentElement.lang;
+            if (currentLang === 'pt') {
+                alert('Obrigado pela sua mensagem! O seu cliente de email irá abrir para enviar a mensagem.');
+            } else {
+                alert('Thank you for your message! Your email client will open to send the message.');
+            }
         });
     </script>
 </body>
