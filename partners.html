@@ -54,6 +54,12 @@
             font-weight: 700;
         }
         
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+        }
+        
         .collaboration-section {
             background: var(--light-bg);
             padding: 80px 0;
@@ -127,15 +133,21 @@
             <div class="logo">
                 <a href="index.html">
                     <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo">
-                    </a>
+                </a>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="founder.html" class="nav-link">Founder</a>
-                <a href="learnings.html" class="nav-link">Learnings</a>
-                <a href="partners.html" class="nav-link active">Partners</a>
-                <a href="contact.html" class="nav-link">Join Us</a>
+                <a href="index.html" class="nav-link en-text">Home</a>
+                <a href="index.html" class="nav-link pt-text" style="display: none;">Início</a>
+                <a href="projects.html" class="nav-link en-text">Projects</a>
+                <a href="projects.html" class="nav-link pt-text" style="display: none;">Projetos</a>
+                <a href="founder.html" class="nav-link en-text">Founder</a>
+                <a href="founder.html" class="nav-link pt-text" style="display: none;">Fundador</a>
+                <a href="learnings.html" class="nav-link en-text">Learnings</a>
+                <a href="learnings.html" class="nav-link pt-text" style="display: none;">Aprendizados</a>
+                <a href="partners.html" class="nav-link active en-text">Partners</a>
+                <a href="partners.html" class="nav-link active pt-text" style="display: none;">Parceiros</a>
+                <a href="contact.html" class="nav-link en-text">Join Us</a>
+                <a href="contact.html" class="nav-link pt-text" style="display: none;">Junte-se a Nós</a>
             </div>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -148,7 +160,8 @@
     <!-- Partners Hero -->
     <section class="partners-hero">
         <div class="container">
-            <h1>Our Partners</h1>
+            <h1 class="en-text">Our Partners</h1>
+            <h1 class="pt-text" style="display: none;">Nossos Parceiros</h1>
             <p class="en-text">Collaborating for sustainable community impact</p>
             <p class="pt-text" style="display: none;">Colaborando para um impacto comunitário sustentável</p>
         </div>
@@ -157,7 +170,8 @@
     <!-- Partners Intro -->
     <section class="partners-intro">
         <div class="container">
-            <h2 class="section-title">Working Together for Change</h2>
+            <h2 class="section-title en-text">Working Together for Change</h2>
+            <h2 class="section-title pt-text" style="display: none;">Trabalhando Juntos pela Mudança</h2>
             <p class="en-text">Leve's success is built on strong partnerships with organizations that share our vision for resilient, sustainable communities. Together, we're creating meaningful impact through collaborative projects and shared resources.</p>
             <p class="pt-text" style="display: none;">O sucesso da Leve é construído sobre parcerias sólidas com organizações que partilham a nossa visão de comunidades resilientes e sustentáveis. Juntos, estamos a criar um impacto significativo através de projetos colaborativos e recursos partilhados.</p>
         </div>
@@ -169,36 +183,40 @@
             <div class="partners-grid">
                 <div class="partner-card">
                     <div class="partner-logo">
-                        <img src="https://i.ibb.co/ZzrzVbqN/00027-File.jpg" alt="Partner 1 Company Name">
+                        <img src="https://i.ibb.co/ZzrzVbqN/00027-File.jpg" alt="Municipality of Caldas da Rainha">
                     </div>
-                    <h3>Municipality of Caldas da Rainha</h3>
+                    <h3 class="en-text">Municipality of Caldas da Rainha</h3>
+                    <h3 class="pt-text" style="display: none;">Câmara Municipal das Caldas da Rainha</h3>
                     <p class="en-text">Official municipal partner supporting BioRainha and other community initiatives</p>
                     <p class="pt-text" style="display: none;">Parceiro municipal oficial que apoia o BioRainha e outras iniciativas comunitárias</p>
                 </div>
                 
                 <div class="partner-card">
                     <div class="partner-logo">
-                        <<img src="https://i.ibb.co/4nffbcw9/00026-File.jpg" alt="Partner 1 Company Name">>
+                        <img src="https://i.ibb.co/4nffbcw9/00026-File.jpg" alt="Local Schools Network">
                     </div>
-                    <h3>Local Schools Network</h3>
+                    <h3 class="en-text">Local Schools Network</h3>
+                    <h3 class="pt-text" style="display: none;">Rede de Escolas Locais</h3>
                     <p class="en-text">8 primary and secondary schools collaborating on educational programs</p>
                     <p class="pt-text" style="display: none;">8 escolas básicas e secundárias a colaborar em programas educativos</p>
                 </div>
                 
                 <div class="partner-card">
                     <div class="partner-logo">
-                        <<img src="https://i.ibb.co/cXyvYfCJ/00025-File.jpg" alt="Partner 1 Company Name">>
+                        <img src="https://i.ibb.co/cXyvYfCJ/00025-File.jpg" alt="Community Organizations">
                     </div>
-                    <h3>Community Organizations</h3>
+                    <h3 class="en-text">Community Organizations</h3>
+                    <h3 class="pt-text" style="display: none;">Organizações Comunitárias</h3>
                     <p class="en-text">Local associations supporting intergenerational and sustainability projects</p>
                     <p class="pt-text" style="display: none;">Associações locais que apoiam projetos intergeracionais e de sustentabilidade</p>
                 </div>
                 
                 <div class="partner-card">
                     <div class="partner-logo">
-                        <<img src="https://i.ibb.co/60b9pN5F/00023-File.jpg" alt="Partner 1 Company Name">>
+                        <img src="https://i.ibb.co/60b9pN5F/00023-File.jpg" alt="Business Partners">
                     </div>
-                    <h3>Business Partners</h3>
+                    <h3 class="en-text">Business Partners</h3>
+                    <h3 class="pt-text" style="display: none;">Parceiros Empresariais</h3>
                     <p class="en-text">Local businesses supporting community transport and sustainability initiatives</p>
                     <p class="pt-text" style="display: none;">Negócios locais que apoiam o transporte comunitário e iniciativas de sustentabilidade</p>
                 </div>
@@ -209,7 +227,8 @@
     <!-- Collaboration Section -->
     <section class="collaboration-section">
         <div class="container">
-            <h2 class="section-title">The Power of Collaboration</h2>
+            <h2 class="section-title en-text">The Power of Collaboration</h2>
+            <h2 class="section-title pt-text" style="display: none;">O Poder da Colaboração</h2>
             <div class="collaboration-content">
                 <div class="collaboration-text">
                     <p class="en-text">Our partnership with the Municipality of Caldas da Rainha demonstrates how youth-led initiatives can influence municipal policy and drive sustainable change. Through this collaboration, BioRainha evolved from a student campaign into a city-wide sustainability program.</p>
@@ -270,10 +289,12 @@
     <!-- Partnership Call to Action -->
     <section class="cta-section">
         <div class="container">
-            <h2>Interested in partnering with us?</h2>
+            <h2 class="en-text">Interested in partnering with us?</h2>
+            <h2 class="pt-text" style="display: none;">Interessado em ser nosso parceiro?</h2>
             <p class="en-text">Join our network of organizations creating positive change in communities</p>
             <p class="pt-text" style="display: none;">Junte-se à nossa rede de organizações que criam mudanças positivas nas comunidades</p>
-            <a href="contact.html" class="btn primary">Become a Partner</a>
+            <a href="contact.html" class="btn primary en-text">Become a Partner</a>
+            <a href="contact.html" class="btn primary pt-text" style="display: none;">Torne-se um Parceiro</a>
         </div>
     </section>
 
@@ -283,21 +304,42 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <h3>Leve</h3>
-                    <p>Building Generations, Building Resilience</p>
+                    <p class="en-text">Building Generations, Building Resilience</p>
+                    <p class="pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4 class="en-text">Quick Links</h4>
+                    <h4 class="pt-text" style="display: none;">Links Rápidos</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="founder.html">Founder</a></li>
-                        <li><a href="learnings.html">Learnings</a></li>
-                        <li><a href="partners.html">Partners</a></li>
-                        <li><a href="contact.html">Join Us</a></li>
+                        <li>
+                            <a href="index.html" class="en-text">Home</a>
+                            <a href="index.html" class="pt-text" style="display: none;">Início</a>
+                        </li>
+                        <li>
+                            <a href="projects.html" class="en-text">Projects</a>
+                            <a href="projects.html" class="pt-text" style="display: none;">Projetos</a>
+                        </li>
+                        <li>
+                            <a href="founder.html" class="en-text">Founder</a>
+                            <a href="founder.html" class="pt-text" style="display: none;">Fundador</a>
+                        </li>
+                        <li>
+                            <a href="learnings.html" class="en-text">Learnings</a>
+                            <a href="learnings.html" class="pt-text" style="display: none;">Aprendizados</a>
+                        </li>
+                        <li>
+                            <a href="partners.html" class="en-text">Partners</a>
+                            <a href="partners.html" class="pt-text" style="display: none;">Parceiros</a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="en-text">Join Us</a>
+                            <a href="contact.html" class="pt-text" style="display: none;">Junte-se a Nós</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>Get In Touch</h4>
+                    <h4 class="en-text">Get In Touch</h4>
+                    <h4 class="pt-text" style="display: none;">Entre em Contato</h4>
                     <a href="mailto:keanekomp@gmail.com" class="email-link">keanekomp@gmail.com</a>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -307,7 +349,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023, Aditya Banerjee, All rights reserved</p>
+                <p class="en-text">&copy; 2023, Aditya Banerjee, All rights reserved</p>
+                <p class="pt-text" style="display: none;">&copy; 2023, Aditya Banerjee, Todos os direitos reservados</p>
             </div>
         </div>
     </footer>
