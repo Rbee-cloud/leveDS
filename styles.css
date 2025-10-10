@@ -996,3 +996,16 @@ section {
 }
 /* Ensure Exo font is used everywhere */
 * { font-family: 'Exo', sans-serif; }
+/* Fix Learn More button alignment */
+.project-card .btn {
+    display: block;
+    width: fit-content;
+    margin-top: 15px;
+    margin-left: 0;
+}
+
+.project-content .btn {
+    display: block;
+    width: fit-content;
+    margin-top: 15px;
+}
