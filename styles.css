@@ -328,6 +328,22 @@ section {
 }
 
 /* Projects Preview */
+.projects-preview {
+    background: var(--bg-soft-blue);
+    position: relative;
+}
+
+.projects-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-success);
+    opacity: 0.03;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
