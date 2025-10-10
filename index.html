@@ -7,6 +7,198 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Carousel Styles */
+        .carousel-section {
+            padding: 80px 0;
+            background: var(--bg-soft-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .carousel-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--dark-text);
+            position: relative;
+        }
+        
+        .carousel-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-orange);
+            border-radius: 2px;
+        }
+        
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 30px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-slide:hover .slide-content {
+            transform: translateY(-5px);
+        }
+        
+        .slide-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .slide-content p {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn.prev {
+            left: 20px;
+        }
+        
+        .carousel-btn.next {
+            right: 20px;
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .indicator.active {
+            background: var(--primary-blue);
+            transform: scale(1.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .carousel {
+                height: 400px;
+            }
+            
+            .slide-content {
+                padding: 20px;
+            }
+            
+            .slide-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .carousel-btn.prev {
+                left: 10px;
+            }
+            
+            .carousel-btn.next {
+                right: 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .carousel {
+                height: 300px;
+            }
+            
+            .slide-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .slide-content p {
+                font-size: 0.9rem;
+            }
+            
+            .carousel-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Language Toggle -->
@@ -20,8 +212,8 @@
         <div class="nav-container">
             <div class="logo">
                 <a href="index.html">
-                            <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo">
-                    </a>
+                    <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo">
+                </a>
             </div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
@@ -64,7 +256,7 @@
                     <p class="pt-text" style="display: none;">Leve é uma iniciativa liderada por jovens que combate o desperdício de alimentos e apoia o envelhecimento da população, promovendo conexões intergeracionais e práticas comunitárias sustentáveis.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Leve community members working together" alt="Leve community activities">
+                    <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Leve community activities">
                 </div>
             </div>
         </div>
@@ -115,6 +307,81 @@
         </div>
     </section>
 
+    <!-- Image Carousel Section -->
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <h2 class="carousel-title">Our Impact in Action</h2>
+            <div class="carousel">
+                <button class="carousel-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="carousel-track">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide">
+                        <img src="https://i.ibb.co/dJj8BpxT/00063-File.jpg" alt="BioRainha composting initiative">
+                        <div class="slide-content">
+                            <h3>BioRainha Composting</h3>
+                            <p class="en-text">Youth leaders educating the community about sustainable food waste management and composting practices.</p>
+                            <p class="pt-text" style="display: none;">Líderes jovens educando a comunidade sobre gestão sustentável de resíduos alimentares e práticas de compostagem.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="https://i.ibb.co/BKLks1Y5/00029-File.jpg" alt="Art Caldas intergenerational activities">
+                        <div class="slide-content">
+                            <h3>Art Caldas Connections</h3>
+                            <p class="en-text">Bridging generations through art, mentorship, and shared experiences in our community.</p>
+                            <p class="pt-text" style="display: none;">Conectando gerações através da arte, mentoria e experiências compartilhadas em nossa comunidade.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <img src="https://i.ibb.co/fd1CmMZb/00046-File.jpg" alt="Me Leve community transport service">
+                        <div class="slide-content">
+                            <h3>Me Leve Transport</h3>
+                            <p class="en-text">Providing mobility solutions for seniors to access essential services and maintain community connections.</p>
+                            <p class="pt-text" style="display: none;">Fornecendo soluções de mobilidade para idosos acessarem serviços essenciais e manterem conexões comunitárias.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide">
+                        <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Community gathering">
+                        <div class="slide-content">
+                            <h3>Community Engagement</h3>
+                            <p class="en-text">Bringing together people of all ages to build stronger, more resilient communities.</p>
+                            <p class="pt-text" style="display: none;">Reunindo pessoas de todas as idades para construir comunidades mais fortes e resilientes.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 5 -->
+                    <div class="carousel-slide">
+                        <img src="https://i.ibb.co/nqj8HBGF/00062-File.jpg" alt="Educational workshop">
+                        <div class="slide-content">
+                            <h3>Educational Workshops</h3>
+                            <p class="en-text">Empowering community members with knowledge and skills for sustainable living.</p>
+                            <p class="pt-text" style="display: none;">Capacitando membros da comunidade com conhecimento e habilidades para uma vida sustentável.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+                <span class="indicator" data-slide="3"></span>
+                <span class="indicator" data-slide="4"></span>
+            </div>
+        </div>
+    </section>
+
     <!-- Quote Section -->
     <section class="quote-section">
         <div class="container">
@@ -160,6 +427,113 @@
         </div>
     </footer>
 
+    <script>
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const nextButton = document.querySelector('.carousel-btn.next');
+            const prevButton = document.querySelector('.carousel-btn.prev');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            let currentSlide = 0;
+            let autoSlideInterval;
+            
+            // Arrange slides next to one another
+            slides.forEach((slide, index) => {
+                slide.style.left = slideWidth * index + 'px';
+            });
+            
+            // Move to slide function
+            const moveToSlide = (track, currentSlide, targetSlide) => {
+                track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+                currentSlide = targetSlide.dataset.index;
+                
+                // Update indicators
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                indicators[targetSlide.dataset.index].classList.add('active');
+            };
+            
+            // Next slide
+            nextButton.addEventListener('click', e => {
+                const currentSlideElement = slides[currentSlide];
+                let nextSlide = currentSlideElement.nextElementSibling;
+                
+                if (!nextSlide) {
+                    nextSlide = slides[0];
+                }
+                
+                moveToSlide(track, currentSlide, nextSlide);
+                currentSlide = parseInt(nextSlide.dataset.index);
+                resetAutoSlide();
+            });
+            
+            // Previous slide
+            prevButton.addEventListener('click', e => {
+                const currentSlideElement = slides[currentSlide];
+                let prevSlide = currentSlideElement.previousElementSibling;
+                
+                if (!prevSlide) {
+                    prevSlide = slides[slides.length - 1];
+                }
+                
+                moveToSlide(track, currentSlide, prevSlide);
+                currentSlide = parseInt(prevSlide.dataset.index);
+                resetAutoSlide();
+            });
+            
+            // Indicator clicks
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', e => {
+                    const targetIndex = e.target.dataset.slide;
+                    const targetSlide = slides[targetIndex];
+                    
+                    moveToSlide(track, currentSlide, targetSlide);
+                    currentSlide = parseInt(targetIndex);
+                    resetAutoSlide();
+                });
+            });
+            
+            // Auto slide functionality
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
+                    const currentSlideElement = slides[currentSlide];
+                    let nextSlide = currentSlideElement.nextElementSibling;
+                    
+                    if (!nextSlide) {
+                        nextSlide = slides[0];
+                    }
+                    
+                    moveToSlide(track, currentSlide, nextSlide);
+                    currentSlide = parseInt(nextSlide.dataset.index);
+                }, 5000); // Change slide every 5 seconds
+            }
+            
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+            
+            // Initialize data-index for slides
+            slides.forEach((slide, index) => {
+                slide.dataset.index = index;
+            });
+            
+            // Start auto sliding
+            startAutoSlide();
+            
+            // Pause auto slide on hover
+            const carousel = document.querySelector('.carousel');
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                startAutoSlide();
+            });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
