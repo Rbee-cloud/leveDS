@@ -905,10 +905,27 @@ section {
     margin-bottom: 40px;
 }
 
+/* Footer Logo Styles - CORRECTED */
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo-link {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.footer-logo-img {
+    height: 40px; /* Match the header logo height */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Remove the text logo styles */
 .footer-logo h3 {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: white;
+    display: none; /* Hide the text "Leve" */
 }
 
 .footer-links h4,
@@ -1128,6 +1145,12 @@ section {
     .projects-grid {
         grid-template-columns: 1fr;
     }
+    
+    /* Footer logo adjustment for mobile */
+    .footer-logo {
+        align-items: center;
+        text-align: center;
+    }
 }
 
 .partner-logo img {
@@ -1144,22 +1167,4 @@ section {
 /* Ensure Exo font is used everywhere */
 * { 
     font-family: 'Exo', sans-serif; 
-}
-/* Footer Logo Styles */
-.footer-logo-link {
-    display: inline-block;
-    margin-bottom: 15px;
-}
-
-.footer-logo-img {
-    height: 50px; /* Adjust based on your preference */
-    width: auto;
-    max-width: 150px; /* Adjust based on your logo's aspect ratio */
-    object-fit: contain;
-}
-
-/* If you want the footer logo to match the header logo size, you can use: */
-.footer-logo-img {
-    height: 40px; /* Match the header logo height */
-    width: auto;
 }
