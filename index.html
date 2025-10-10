@@ -11,7 +11,7 @@
         /* Carousel Styles */
         .carousel-section {
             padding: 80px 0;
-            background: var(--bg-soft-blue);
+            background: #f8fafc;
             position: relative;
             overflow: hidden;
         }
@@ -27,7 +27,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 50px;
-            color: var(--dark-text);
+            color: #333;
             position: relative;
         }
         
@@ -39,7 +39,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--secondary-orange);
+            background: #ff7b54;
             border-radius: 2px;
         }
         
@@ -62,12 +62,14 @@
             min-width: 100%;
             height: 100%;
             position: relative;
+            flex-shrink: 0;
         }
         
         .carousel-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
         
         .slide-content {
@@ -78,12 +80,6 @@
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
             color: white;
             padding: 30px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .carousel-slide:hover .slide-content {
-            transform: translateY(-5px);
         }
         
         .slide-content h3 {
@@ -96,13 +92,14 @@
             font-size: 1rem;
             opacity: 0.9;
             max-width: 600px;
+            margin: 0;
         }
         
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             border: none;
             width: 50px;
             height: 50px;
@@ -112,10 +109,10 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            color: var(--primary-blue);
+            color: #4a6fa5;
             transition: all 0.3s ease;
             z-index: 10;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
         .carousel-btn:hover {
@@ -148,7 +145,7 @@
         }
         
         .indicator.active {
-            background: var(--primary-blue);
+            background: #4a6fa5;
             transform: scale(1.2);
         }
         
@@ -170,14 +167,6 @@
                 width: 40px;
                 height: 40px;
                 font-size: 1rem;
-            }
-            
-            .carousel-btn.prev {
-                left: 10px;
-            }
-            
-            .carousel-btn.next {
-                right: 10px;
             }
         }
         
@@ -428,86 +417,54 @@
     </footer>
 
     <script>
-        // Carousel functionality
+        // Simple Carousel functionality
         document.addEventListener('DOMContentLoaded', function() {
             const track = document.querySelector('.carousel-track');
-            const slides = Array.from(track.children);
+            const slides = document.querySelectorAll('.carousel-slide');
             const nextButton = document.querySelector('.carousel-btn.next');
             const prevButton = document.querySelector('.carousel-btn.prev');
             const indicators = document.querySelectorAll('.indicator');
             
-            const slideWidth = slides[0].getBoundingClientRect().width;
-            let currentSlide = 0;
+            let currentIndex = 0;
+            const totalSlides = slides.length;
             let autoSlideInterval;
             
-            // Arrange slides next to one another
-            slides.forEach((slide, index) => {
-                slide.style.left = slideWidth * index + 'px';
-            });
-            
-            // Move to slide function
-            const moveToSlide = (track, currentSlide, targetSlide) => {
-                track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
-                currentSlide = targetSlide.dataset.index;
+            function updateCarousel() {
+                // Move track
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
                 
                 // Update indicators
-                indicators.forEach(indicator => indicator.classList.remove('active'));
-                indicators[targetSlide.dataset.index].classList.add('active');
-            };
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+            }
             
-            // Next slide
-            nextButton.addEventListener('click', e => {
-                const currentSlideElement = slides[currentSlide];
-                let nextSlide = currentSlideElement.nextElementSibling;
-                
-                if (!nextSlide) {
-                    nextSlide = slides[0];
-                }
-                
-                moveToSlide(track, currentSlide, nextSlide);
-                currentSlide = parseInt(nextSlide.dataset.index);
-                resetAutoSlide();
-            });
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+            }
             
-            // Previous slide
-            prevButton.addEventListener('click', e => {
-                const currentSlideElement = slides[currentSlide];
-                let prevSlide = currentSlideElement.previousElementSibling;
-                
-                if (!prevSlide) {
-                    prevSlide = slides[slides.length - 1];
-                }
-                
-                moveToSlide(track, currentSlide, prevSlide);
-                currentSlide = parseInt(prevSlide.dataset.index);
-                resetAutoSlide();
-            });
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+            
+            // Event listeners
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
             
             // Indicator clicks
-            indicators.forEach(indicator => {
-                indicator.addEventListener('click', e => {
-                    const targetIndex = e.target.dataset.slide;
-                    const targetSlide = slides[targetIndex];
-                    
-                    moveToSlide(track, currentSlide, targetSlide);
-                    currentSlide = parseInt(targetIndex);
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
                     resetAutoSlide();
                 });
             });
             
-            // Auto slide functionality
+            // Auto slide
             function startAutoSlide() {
-                autoSlideInterval = setInterval(() => {
-                    const currentSlideElement = slides[currentSlide];
-                    let nextSlide = currentSlideElement.nextElementSibling;
-                    
-                    if (!nextSlide) {
-                        nextSlide = slides[0];
-                    }
-                    
-                    moveToSlide(track, currentSlide, nextSlide);
-                    currentSlide = parseInt(nextSlide.dataset.index);
-                }, 5000); // Change slide every 5 seconds
+                autoSlideInterval = setInterval(nextSlide, 5000);
             }
             
             function resetAutoSlide() {
@@ -515,15 +472,10 @@
                 startAutoSlide();
             }
             
-            // Initialize data-index for slides
-            slides.forEach((slide, index) => {
-                slide.dataset.index = index;
-            });
-            
             // Start auto sliding
             startAutoSlide();
             
-            // Pause auto slide on hover
+            // Pause on hover
             const carousel = document.querySelector('.carousel');
             carousel.addEventListener('mouseenter', () => {
                 clearInterval(autoSlideInterval);
