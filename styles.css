@@ -994,3 +994,5 @@ section {
     height: 40px;
     width: auto;
 }
+/* Ensure Exo font is used everywhere */
+* { font-family: 'Exo', sans-serif; }
