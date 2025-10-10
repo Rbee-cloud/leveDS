@@ -893,8 +893,8 @@ section {
 
 /* Footer */
 .footer {
-    background: var(--dark-text);
-    color: white;
+    background: var(--bg-soft-blue); /* Light background */
+    color: var(--dark-text); /* Dark text for contrast */
     padding: 60px 0 20px;
 }
 
@@ -905,7 +905,7 @@ section {
     margin-bottom: 40px;
 }
 
-/* Footer Logo Styles - CORRECTED */
+/* Footer Logo Styles */
 .footer-logo {
     display: flex;
     flex-direction: column;
@@ -918,14 +918,14 @@ section {
 }
 
 .footer-logo-img {
-    height: 40px; /* Match the header logo height */
+    height: 40px;
     width: auto;
     object-fit: contain;
 }
 
 /* Remove the text logo styles */
 .footer-logo h3 {
-    display: none; /* Hide the text "Leve" */
+    display: none;
 }
 
 .footer-links h4,
@@ -934,6 +934,7 @@ section {
     margin-bottom: 20px;
     position: relative;
     padding-bottom: 10px;
+    color: var(--dark-text); /* Dark color for headings */
 }
 
 .footer-links h4::after,
@@ -944,7 +945,7 @@ section {
     left: 0;
     width: 40px;
     height: 2px;
-    background: var(--secondary-orange);
+    background: var(--secondary-orange); /* Keep the orange accent */
 }
 
 .footer-links ul {
@@ -956,18 +957,20 @@ section {
 }
 
 .footer-links a {
-    color: #ccc;
+    color: var(--dark-text); /* Dark color for links */
     text-decoration: none;
     transition: var(--transition);
+    opacity: 0.8;
 }
 
 .footer-links a:hover {
-    color: white;
+    color: var(--primary-blue);
     padding-left: 5px;
+    opacity: 1;
 }
 
 .email-link {
-    color: white;
+    color: var(--primary-blue); /* Use primary blue for email */
     text-decoration: none;
     font-weight: 500;
     margin-bottom: 15px;
@@ -986,24 +989,37 @@ section {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(74, 111, 165, 0.1); /* Light blue background */
     border-radius: 50%;
-    color: white;
+    color: var(--primary-blue); /* Blue icons */
     transition: var(--transition);
 }
 
 .social-links a:hover {
-    background: var(--secondary-orange);
+    background: var(--primary-blue);
+    color: white;
     transform: translateY(-3px);
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #aaa;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+    color: #666; /* Gray color for copyright */
 }
 
+/* Mobile responsiveness for footer */
+@media (max-width: 576px) {
+    .footer-logo {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-links,
+    .footer-contact {
+        text-align: center;
+    }
+    
 /* Responsive Design */
 @media (max-width: 992px) {
     .hero {
