@@ -1,7 +1,7 @@
 // images.js - Central Image Management
 const imageUrls = {
     // Logos
-    "main-logo": https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png",
+    "main-logo": "https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png",
     
     // Hero Images
     hero: "https://i.ibb.co/fYN0kq55/Old-Tree.jpg",
@@ -42,6 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set logo
     const logoImg = document.querySelector('.logo img');
     if (logoImg) {
-        logoImg.src = imageUrls.logo;
+        logoImg.src = imageUrls["main-logo"];
     }
 });
