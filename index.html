@@ -332,6 +332,16 @@
                 font-size: 1rem;
             }
         }
+        /* CRITICAL FIX for clickable links */
+        .projects-preview .btn {
+            pointer-events: auto !important;
+            position: relative;
+            z-index: 10;
+        }
+
+        .project-content {
+            pointer-events: auto !important;
+        }
     </style>
 </head>
 <body>
