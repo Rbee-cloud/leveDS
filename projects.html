@@ -7,6 +7,174 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern Project Container Styles */
+        .project-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-purple));
+        }
+
+        /* Different accent colors for each project */
+        #biorainha .project-container::before {
+            background: linear-gradient(90deg, #4ade80, #22c55e);
+        }
+
+        #artcaldas .project-container::before {
+            background: linear-gradient(90deg, #a78bfa, #8b5cf6);
+        }
+
+        #meleve .project-container::before {
+            background: linear-gradient(90deg, #fb923c, #f97316);
+        }
+
+        /* Project Carousel Styles */
+        .project-carousel-wrapper {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .project-carousel {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .project-carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .project-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #4a6fa5;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-nav-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav-btn.prev {
+            left: 20px;
+        }
+
+        .carousel-nav-btn.next {
+            right: 20px;
+        }
+
+        .project-carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicator.active {
+            background: #4a6fa5;
+            transform: scale(1.3);
+        }
+
+        /* Enhanced project content layout */
+        .project-content {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .project-content.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Fix for CTA button */
+        .cta-section .btn {
+            pointer-events: auto !important;
+            z-index: 10;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-container {
+                padding: 30px 20px;
+            }
+
+            .project-carousel {
+                height: 350px;
+            }
+
+            .project-content {
+                flex-direction: column !important;
+            }
+
+            .carousel-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Language Toggle -->
@@ -72,29 +240,62 @@
     <!-- BioRainha Project -->
     <section id="biorainha" class="project-detail">
         <div class="container">
-            <div class="project-header">
-                <h2>BioRainha</h2>
-                <div class="project-tags">
-                    <span class="tag sustainability">
-                        <span class="en-text">Sustainability</span>
-                        <span class="pt-text" style="display: none;">Sustentabilidade</span>
-                    </span>
-                    <span class="tag composting">
-                        <span class="en-text">Composting</span>
-                        <span class="pt-text" style="display: none;">Compostagem</span>
-                    </span>
-                    <span class="tag education">
-                        <span class="en-text">Education</span>
-                        <span class="pt-text" style="display: none;">Educação</span>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="project-content">
-                <div class="project-image-large">
-                    <img src="https://i.ibb.co/dJj8BpxT/00063-File.jpg" alt="BioRainha composting initiative">
+            <div class="project-container">
+                <div class="project-header">
+                    <h2>BioRainha</h2>
+                    <div class="project-tags">
+                        <span class="tag sustainability">
+                            <span class="en-text">Sustainability</span>
+                            <span class="pt-text" style="display: none;">Sustentabilidade</span>
+                        </span>
+                        <span class="tag composting">
+                            <span class="en-text">Composting</span>
+                            <span class="pt-text" style="display: none;">Compostagem</span>
+                        </span>
+                        <span class="tag education">
+                            <span class="en-text">Education</span>
+                            <span class="pt-text" style="display: none;">Educação</span>
+                        </span>
+                    </div>
                 </div>
                 
+                <div class="project-carousel-wrapper">
+                    <div class="project-carousel" data-carousel="biorainha">
+                        <button class="carousel-nav-btn prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-nav-btn next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        
+                        <div class="project-carousel-track">
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/dJj8BpxT/00063-File.jpg" alt="BioRainha composting initiative">
+                            </div>
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/nqj8HBGF/00062-File.jpg" alt="BioRainha workshop">
+                            </div>
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/XZ4LRYHy/00058-File.jpg" alt="BioRainha community engagement">
+                            </div>
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/Wpk4BmgP/00050-File.jpg" alt="BioRainha composting">
+                            </div>
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/99FBcJMR/00051-File.jpg" alt="BioRainha waste management">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-carousel-indicators">
+                        <span class="carousel-indicator active" data-slide="0"></span>
+                        <span class="carousel-indicator" data-slide="1"></span>
+                        <span class="carousel-indicator" data-slide="2"></span>
+                        <span class="carousel-indicator" data-slide="3"></span>
+                        <span class="carousel-indicator" data-slide="4"></span>
+                    </div>
+                </div>
+
                 <div class="project-description">
                     <h3>
                         <span class="en-text">About BioRainha</span>
@@ -121,57 +322,57 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Project Timeline -->
-            <div class="project-timeline">
-                <h3>
-                    <span class="en-text">Project Timeline</span>
-                    <span class="pt-text" style="display: none;">Cronograma do Projeto</span>
-                </h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023</div>
-                        <div class="timeline-content">
-                            <h4>
-                                <span class="en-text">Project Conception</span>
-                                <span class="pt-text" style="display: none;">Conceção do Projeto</span>
-                            </h4>
-                            <p class="en-text">Identified local gaps in food waste management and composting awareness</p>
-                            <p class="pt-text" style="display: none;">Identificadas lacunas locais na gestão de resíduos alimentares e sensibilização para compostagem</p>
+                <!-- Project Timeline -->
+                <div class="project-timeline">
+                    <h3>
+                        <span class="en-text">Project Timeline</span>
+                        <span class="pt-text" style="display: none;">Cronograma do Projeto</span>
+                    </h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2023</div>
+                            <div class="timeline-content">
+                                <h4>
+                                    <span class="en-text">Project Conception</span>
+                                    <span class="pt-text" style="display: none;">Conceção do Projeto</span>
+                                </h4>
+                                <p class="en-text">Identified local gaps in food waste management and composting awareness</p>
+                                <p class="pt-text" style="display: none;">Identificadas lacunas locais na gestão de resíduos alimentares e sensibilização para compostagem</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023-2024</div>
-                        <div class="timeline-content">
-                            <h4>
-                                <span class="en-text">Grassroots Campaigning</span>
-                                <span class="pt-text" style="display: none;">Campanha de Base</span>
-                            </h4>
-                            <p class="en-text">Conducted awareness sessions in schools and neighborhoods across 8 schools</p>
-                            <p class="pt-text" style="display: none;">Realizadas sessões de sensibilização em escolas e bairros em 8 escolas</p>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2023-2024</div>
+                            <div class="timeline-content">
+                                <h4>
+                                    <span class="en-text">Grassroots Campaigning</span>
+                                    <span class="pt-text" style="display: none;">Campanha de Base</span>
+                                </h4>
+                                <p class="en-text">Conducted awareness sessions in schools and neighborhoods across 8 schools</p>
+                                <p class="pt-text" style="display: none;">Realizadas sessões de sensibilização em escolas e bairros em 8 escolas</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024</div>
-                        <div class="timeline-content">
-                            <h4>
-                                <span class="en-text">Municipal Adoption</span>
-                                <span class="pt-text" style="display: none;">Adoção Municipal</span>
-                            </h4>
-                            <p class="en-text">Formally adopted by City Council with dedicated land and technical resources</p>
-                            <p class="pt-text" style="display: none;">Adotado formalmente pela Câmara Municipal com terrenos e recursos técnicos dedicados</p>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2024</div>
+                            <div class="timeline-content">
+                                <h4>
+                                    <span class="en-text">Municipal Adoption</span>
+                                    <span class="pt-text" style="display: none;">Adoção Municipal</span>
+                                </h4>
+                                <p class="en-text">Formally adopted by City Council with dedicated land and technical resources</p>
+                                <p class="pt-text" style="display: none;">Adotado formalmente pela Câmara Municipal com terrenos e recursos técnicos dedicados</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2025</div>
-                        <div class="timeline-content">
-                            <h4>
-                                <span class="en-text">Expansion & Institutionalization</span>
-                                <span class="pt-text" style="display: none;">Expansão & Institucionalização</span>
-                            </h4>
-                            <p class="en-text">Evolved into large-scale composting initiatives with municipal support</p>
-                            <p class="pt-text" style="display: none;">Evoluiu para iniciativas de compostagem em grande escala com apoio municipal</p>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2025</div>
+                            <div class="timeline-content">
+                                <h4>
+                                    <span class="en-text">Expansion & Institutionalization</span>
+                                    <span class="pt-text" style="display: none;">Expansão & Institucionalização</span>
+                                </h4>
+                                <p class="en-text">Evolved into large-scale composting initiatives with municipal support</p>
+                                <p class="pt-text" style="display: none;">Evoluiu para iniciativas de compostagem em grande escala com apoio municipal</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -182,25 +383,58 @@
     <!-- Art Caldas Project -->
     <section id="artcaldas" class="project-detail alt-bg">
         <div class="container">
-            <div class="project-header">
-                <h2>Art Caldas</h2>
-                <div class="project-tags">
-                    <span class="tag intergenerational">
-                        <span class="en-text">Intergenerational</span>
-                        <span class="pt-text" style="display: none;">Intergeracional</span>
-                    </span>
-                    <span class="tag arts">
-                        <span class="en-text">Arts</span>
-                        <span class="pt-text" style="display: none;">Artes</span>
-                    </span>
-                    <span class="tag mentorship">
-                        <span class="en-text">Mentorship</span>
-                        <span class="pt-text" style="display: none;">Mentoria</span>
-                    </span>
+            <div class="project-container">
+                <div class="project-header">
+                    <h2>Art Caldas</h2>
+                    <div class="project-tags">
+                        <span class="tag intergenerational">
+                            <span class="en-text">Intergenerational</span>
+                            <span class="pt-text" style="display: none;">Intergeracional</span>
+                        </span>
+                        <span class="tag arts">
+                            <span class="en-text">Arts</span>
+                            <span class="pt-text" style="display: none;">Artes</span>
+                        </span>
+                        <span class="tag mentorship">
+                            <span class="en-text">Mentorship</span>
+                            <span class="pt-text" style="display: none;">Mentoria</span>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="project-content">
+                
+                <div class="project-carousel-wrapper">
+                    <div class="project-carousel" data-carousel="artcaldas">
+                        <button class="carousel-nav-btn prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-nav-btn next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        
+                        <div class="project-carousel-track">
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/BKLks1Y5/00029-File.jpg" alt="Art Caldas intergenerational activities">
+                            </div>
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/bMhhzF0p/00019-File.jpg" alt="Art Caldas program">
+                            </div>
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/Tqnxb7XB/00048-File.jpg" alt="Art Caldas creative expression">
+                            </div>
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Art Caldas community">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-carousel-indicators">
+                        <span class="carousel-indicator active" data-slide="0"></span>
+                        <span class="carousel-indicator" data-slide="1"></span>
+                        <span class="carousel-indicator" data-slide="2"></span>
+                        <span class="carousel-indicator" data-slide="3"></span>
+                    </div>
+                </div>
+
                 <div class="project-description">
                     <h3>
                         <span class="en-text">About Art Caldas</span>
@@ -239,10 +473,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="project-image-large">
-                    <img src="https://i.ibb.co/BKLks1Y5/00029-File.jpg" alt="Art Caldas intergenerational activities">
-                </div>
             </div>
         </div>
     </section>
@@ -250,29 +480,58 @@
     <!-- Me Leve Project -->
     <section id="meleve" class="project-detail">
         <div class="container">
-            <div class="project-header">
-                <h2>Me Leve</h2>
-                <div class="project-tags">
-                    <span class="tag mobility">
-                        <span class="en-text">Mobility</span>
-                        <span class="pt-text" style="display: none;">Mobilidade</span>
-                    </span>
-                    <span class="tag seniors">
-                        <span class="en-text">Seniors</span>
-                        <span class="pt-text" style="display: none;">Idosos</span>
-                    </span>
-                    <span class="tag transport">
-                        <span class="en-text">Transport</span>
-                        <span class="pt-text" style="display: none;">Transporte</span>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="project-content">
-                <div class="project-image-large">
-                    <img src="https://i.ibb.co/fd1CmMZb/00046-File.jpg" alt="Me Leve community transport service">
+            <div class="project-container">
+                <div class="project-header">
+                    <h2>Me Leve</h2>
+                    <div class="project-tags">
+                        <span class="tag mobility">
+                            <span class="en-text">Mobility</span>
+                            <span class="pt-text" style="display: none;">Mobilidade</span>
+                        </span>
+                        <span class="tag seniors">
+                            <span class="en-text">Seniors</span>
+                            <span class="pt-text" style="display: none;">Idosos</span>
+                        </span>
+                        <span class="tag transport">
+                            <span class="en-text">Transport</span>
+                            <span class="pt-text" style="display: none;">Transporte</span>
+                        </span>
+                    </div>
                 </div>
                 
+                <div class="project-carousel-wrapper">
+                    <div class="project-carousel" data-carousel="meleve">
+                        <button class="carousel-nav-btn prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-nav-btn next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        
+                        <div class="project-carousel-track">
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/fd1CmMZb/00046-File.jpg" alt="Me Leve community transport service">
+                            </div>
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/RkqPsSwP/00040-File.jpg" alt="Me Leve transport">
+                            </div>
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Me Leve community support">
+                            </div>
+                            <div class="project-carousel-slide">
+                                <img src="https://i.ibb.co/39G8Dfh0/00070-File.jpg" alt="Me Leve seniors">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-carousel-indicators">
+                        <span class="carousel-indicator active" data-slide="0"></span>
+                        <span class="carousel-indicator" data-slide="1"></span>
+                        <span class="carousel-indicator" data-slide="2"></span>
+                        <span class="carousel-indicator" data-slide="3"></span>
+                    </div>
+                </div>
+
                 <div class="project-description">
                     <h3>
                         <span class="en-text">About Me Leve</span>
@@ -319,67 +578,69 @@
     <!-- ArtCaldas App Section -->
     <section id="artcaldasapp" class="project-detail alt-bg">
         <div class="container">
-            <div class="project-header">
-                <h2>ArtCaldas App</h2>
-                <div class="project-tags">
-                    <span class="tag technology">
-                        <span class="en-text">Technology</span>
-                        <span class="pt-text" style="display: none;">Tecnologia</span>
-                    </span>
-                    <span class="tag app">
-                        <span class="en-text">App</span>
-                        <span class="pt-text" style="display: none;">Aplicação</span>
-                    </span>
-                    <span class="tag connectivity">
-                        <span class="en-text">Connectivity</span>
-                        <span class="pt-text" style="display: none;">Conectividade</span>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="project-content">
-                <div class="project-description">
-                    <h3>
-                        <span class="en-text">Digital Connection Platform</span>
-                        <span class="pt-text" style="display: none;">Plataforma de Conexão Digital</span>
-                    </h3>
-                    <p class="en-text">The ArtCaldas app makes it easy for seniors to schedule the help they need and for volunteers to choose the mentorship programs they're most passionate about. From running errands to sharing skills and experiences, the app connects people in a simple, flexible way.</p>
-                    <p class="pt-text" style="display: none;">A aplicação ArtCaldas torna mais fácil para os seniores agendarem a ajuda de que necessitam e para os voluntários escolherem os programas de mentoria que mais lhes despertam paixão. Desde a realização de pequenas tarefas à partilha de competências e experiências, a app irá ligar as pessoas de uma forma simples e flexível.</p>
-                    
-                    <div class="app-features">
-                        <div class="app-feature">
-                            <i class="fas fa-calendar-check"></i>
-                            <h4 class="en-text">Easy Scheduling</h4>
-                            <h4 class="pt-text" style="display: none;">Agendamento Fácil</h4>
-                        </div>
-                        <div class="app-feature">
-                            <i class="fas fa-tasks"></i>
-                            <h4 class="en-text">Task Management</h4>
-                            <h4 class="pt-text" style="display: none;">Gestão de Tarefas</h4>
-                        </div>
-                        <div class="app-feature">
-                            <i class="fas fa-share-alt"></i>
-                            <h4 class="en-text">Skill Sharing</h4>
-                            <h4 class="pt-text" style="display: none;">Partilha de Competências</h4>
-                        </div>
-                        <div class="app-feature">
-                            <i class="fas fa-comments"></i>
-                            <h4 class="en-text">Direct Communication</h4>
-                            <h4 class="pt-text" style="display: none;">Comunicação Direta</h4>
-                        </div>
-                    </div>
-                    
-                    <div class="launch-info">
-                        <div class="launch-badge">
-                            <i class="fas fa-rocket"></i>
-                            <span class="en-text">Launching End of Next Year</span>
-                            <span class="pt-text" style="display: none;">Lançamento no Final do Próximo Ano</span>
-                        </div>
+            <div class="project-container">
+                <div class="project-header">
+                    <h2>ArtCaldas App</h2>
+                    <div class="project-tags">
+                        <span class="tag technology">
+                            <span class="en-text">Technology</span>
+                            <span class="pt-text" style="display: none;">Tecnologia</span>
+                        </span>
+                        <span class="tag app">
+                            <span class="en-text">App</span>
+                            <span class="pt-text" style="display: none;">Aplicação</span>
+                        </span>
+                        <span class="tag connectivity">
+                            <span class="en-text">Connectivity</span>
+                            <span class="pt-text" style="display: none;">Conectividade</span>
+                        </span>
                     </div>
                 </div>
                 
-                <div class="project-image-large">
-                    <img src="https://i.ibb.co/fd1CmMZb/00046-File.jpg" alt="ArtCaldas app interface mockup">
+                <div class="project-content">
+                    <div class="project-description">
+                        <h3>
+                            <span class="en-text">Digital Connection Platform</span>
+                            <span class="pt-text" style="display: none;">Plataforma de Conexão Digital</span>
+                        </h3>
+                        <p class="en-text">The ArtCaldas app makes it easy for seniors to schedule the help they need and for volunteers to choose the mentorship programs they're most passionate about. From running errands to sharing skills and experiences, the app connects people in a simple, flexible way.</p>
+                        <p class="pt-text" style="display: none;">A aplicação ArtCaldas torna mais fácil para os seniores agendarem a ajuda de que necessitam e para os voluntários escolherem os programas de mentoria que mais lhes despertam paixão. Desde a realização de pequenas tarefas à partilha de competências e experiências, a app irá ligar as pessoas de uma forma simples e flexível.</p>
+                        
+                        <div class="app-features">
+                            <div class="app-feature">
+                                <i class="fas fa-calendar-check"></i>
+                                <h4 class="en-text">Easy Scheduling</h4>
+                                <h4 class="pt-text" style="display: none;">Agendamento Fácil</h4>
+                            </div>
+                            <div class="app-feature">
+                                <i class="fas fa-tasks"></i>
+                                <h4 class="en-text">Task Management</h4>
+                                <h4 class="pt-text" style="display: none;">Gestão de Tarefas</h4>
+                            </div>
+                            <div class="app-feature">
+                                <i class="fas fa-share-alt"></i>
+                                <h4 class="en-text">Skill Sharing</h4>
+                                <h4 class="pt-text" style="display: none;">Partilha de Competências</h4>
+                            </div>
+                            <div class="app-feature">
+                                <i class="fas fa-comments"></i>
+                                <h4 class="en-text">Direct Communication</h4>
+                                <h4 class="pt-text" style="display: none;">Comunicação Direta</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="launch-info">
+                            <div class="launch-badge">
+                                <i class="fas fa-rocket"></i>
+                                <span class="en-text">Launching End of Next Year</span>
+                                <span class="pt-text" style="display: none;">Lançamento no Final do Próximo Ano</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-image-large">
+                        <img src="https://i.ibb.co/bMhhzF0p/00019-File.jpg" alt="ArtCaldas app interface mockup">
+                    </div>
                 </div>
             </div>
         </div>
@@ -406,7 +667,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h3>Leve</h3>
+                    <a href="/index.html" class="footer-logo-link">
+                        <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo" class="footer-logo-img">
+                    </a>
                     <p>
                         <span class="en-text">Building Generations, Building Resilience</span>
                         <span class="pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência</span>
@@ -466,6 +729,52 @@
         </div>
     </footer>
 
+    <script>
+        // Project Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all project carousels
+            const carousels = document.querySelectorAll('.project-carousel');
+            
+            carousels.forEach(carousel => {
+                const track = carousel.querySelector('.project-carousel-track');
+                const slides = carousel.querySelectorAll('.project-carousel-slide');
+                const prevBtn = carousel.querySelector('.carousel-nav-btn.prev');
+                const nextBtn = carousel.querySelector('.carousel-nav-btn.next');
+                const indicators = carousel.parentElement.querySelectorAll('.carousel-indicator');
+                
+                let currentIndex = 0;
+                const totalSlides = slides.length;
+                
+                function updateCarousel() {
+                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    
+                    indicators.forEach((indicator, index) => {
+                        indicator.classList.toggle('active', index === currentIndex);
+                    });
+                }
+                
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateCarousel();
+                }
+                
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                    updateCarousel();
+                }
+                
+                prevBtn.addEventListener('click', prevSlide);
+                nextBtn.addEventListener('click', nextSlide);
+                
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateCarousel();
+                    });
+                });
+            });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
