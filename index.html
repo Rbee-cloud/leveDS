@@ -86,6 +86,7 @@
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
             color: white;
             padding: 30px;
+            pointer-events: none;
         }
         
         .slide-content h3 {
@@ -332,14 +333,19 @@
                 font-size: 1rem;
             }
         }
-        /* CRITICAL FIX for clickable links */
+
+        /* CRITICAL FIX for clickable project links */
         .projects-preview .btn {
             pointer-events: auto !important;
             position: relative;
-            z-index: 10;
+            z-index: 100;
         }
 
         .project-content {
+            pointer-events: auto !important;
+        }
+
+        .project-card {
             pointer-events: auto !important;
         }
     </style>
@@ -688,46 +694,45 @@
     </section>
 
     <!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <!-- Replace text with logo image -->
-                <a href="/index.html" class="footer-logo-link">
-                    <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo" class="footer-logo-img">
-                </a>
-                <p class="en-text">Building Generations, Building Resilience</p>
-                <p class="pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência</p>
-            </div>
-            <div class="footer-links">
-                <h4 class="en-text">Quick Links</h4>
-                <h4 class="pt-text" style="display: none;">Links Rápidos</h4>
-                <ul>
-                    <li><a href="/index.html" class="en-text">Home</a><a href="/index.html" class="pt-text" style="display: none;">Início</a></li>
-                    <li><a href="/projects.html" class="en-text">Projects</a><a href="/projects.html" class="pt-text" style="display: none;">Projetos</a></li>
-                    <li><a href="/founder.html" class="en-text">Founder</a><a href="/founder.html" class="pt-text" style="display: none;">Fundador</a></li>
-                    <li><a href="/learnings.html" class="en-text">Learnings</a><a href="/learnings.html" class="pt-text" style="display: none;">Aprendizados</a></li>
-                    <li><a href="/partners.html" class="en-text">Partners</a><a href="/partners.html" class="pt-text" style="display: none;">Parceiros</a></li>
-                    <li><a href="/contact.html" class="en-text">Join Us</a><a href="/contact.html" class="pt-text" style="display: none;">Junte-se a Nós</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h4 class="en-text">Get In Touch</h4>
-                <h4 class="pt-text" style="display: none;">Entre em Contato</h4>
-                <a href="mailto:de.leve@zohomail.eu" class="email-link">de.leve@zohomail.eu</a>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="/index.html" class="footer-logo-link">
+                        <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo" class="footer-logo-img">
+                    </a>
+                    <p class="en-text">Building Generations, Building Resilience</p>
+                    <p class="pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência</p>
+                </div>
+                <div class="footer-links">
+                    <h4 class="en-text">Quick Links</h4>
+                    <h4 class="pt-text" style="display: none;">Links Rápidos</h4>
+                    <ul>
+                        <li><a href="/index.html" class="en-text">Home</a><a href="/index.html" class="pt-text" style="display: none;">Início</a></li>
+                        <li><a href="/projects.html" class="en-text">Projects</a><a href="/projects.html" class="pt-text" style="display: none;">Projetos</a></li>
+                        <li><a href="/founder.html" class="en-text">Founder</a><a href="/founder.html" class="pt-text" style="display: none;">Fundador</a></li>
+                        <li><a href="/learnings.html" class="en-text">Learnings</a><a href="/learnings.html" class="pt-text" style="display: none;">Aprendizados</a></li>
+                        <li><a href="/partners.html" class="en-text">Partners</a><a href="/partners.html" class="pt-text" style="display: none;">Parceiros</a></li>
+                        <li><a href="/contact.html" class="en-text">Join Us</a><a href="/contact.html" class="pt-text" style="display: none;">Junte-se a Nós</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="en-text">Get In Touch</h4>
+                    <h4 class="pt-text" style="display: none;">Entre em Contato</h4>
+                    <a href="mailto:de.leve@zohomail.eu" class="email-link">de.leve@zohomail.eu</a>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
+            <div class="footer-bottom">
+                <p class="en-text">&copy; 2023, Aditya Banerjee, All rights reserved</p>
+                <p class="pt-text" style="display: none;">&copy; 2023, Aditya Banerjee, Todos os direitos reservados</p>
+            </div>
         </div>
-        <div class="footer-bottom">
-            <p class="en-text">&copy; 2023, Aditya Banerjee, All rights reserved</p>
-            <p class="pt-text" style="display: none;">&copy; 2023, Aditya Banerjee, Todos os direitos reservados</p>
-        </div>
-    </div>
-</footer>
+    </footer>
     
     <script>
         // Simple Carousel functionality
@@ -743,10 +748,7 @@
             let autoSlideInterval;
             
             function updateCarousel() {
-                // Move track
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                
-                // Update indicators
                 indicators.forEach((indicator, index) => {
                     indicator.classList.toggle('active', index === currentIndex);
                 });
@@ -762,11 +764,9 @@
                 updateCarousel();
             }
             
-            // Event listeners
             nextButton.addEventListener('click', nextSlide);
             prevButton.addEventListener('click', prevSlide);
             
-            // Indicator clicks
             indicators.forEach((indicator, index) => {
                 indicator.addEventListener('click', () => {
                     currentIndex = index;
@@ -775,7 +775,6 @@
                 });
             });
             
-            // Auto slide
             function startAutoSlide() {
                 autoSlideInterval = setInterval(nextSlide, 5000);
             }
@@ -785,10 +784,8 @@
                 startAutoSlide();
             }
             
-            // Start auto sliding
             startAutoSlide();
             
-            // Pause on hover
             const carousel = document.querySelector('.carousel');
             carousel.addEventListener('mouseenter', () => {
                 clearInterval(autoSlideInterval);
@@ -807,7 +804,6 @@
             const imageCounter = document.getElementById('imageCounter');
             let currentImageIndex = 0;
 
-            // Open modal when carousel image is clicked
             slides.forEach((slide, index) => {
                 slide.addEventListener('click', () => {
                     currentImageIndex = index;
@@ -825,12 +821,12 @@
                 updateCounter();
                 
                 modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                document.body.style.overflow = 'hidden';
             }
 
             function closeModal() {
                 modal.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable scrolling
+                document.body.style.overflow = '';
             }
 
             function nextImage() {
@@ -853,19 +849,16 @@
                 imageCounter.textContent = `${currentImageIndex + 1} / ${totalSlides}`;
             }
 
-            // Event listeners for modal
             modalClose.addEventListener('click', closeModal);
             modalNext.addEventListener('click', nextImage);
             modalPrev.addEventListener('click', prevImage);
 
-            // Close modal when clicking outside the image
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     closeModal();
                 }
             });
 
-            // Keyboard navigation
             document.addEventListener('keydown', (e) => {
                 if (!modal.classList.contains('active')) return;
                 
