@@ -4,19 +4,221 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Us - Leve</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .contact-hero {
-            background: linear-gradient(135deg, var(--accent-purple), var(--light-blue));
-            color: white;
-            padding: 120px 0 80px;
-            text-align: center;
+        :root {
+            --primary-blue: #2563eb;
+            --secondary-blue: #3b82f6;
+            --light-blue: #dbeafe;
+            --dark-blue: #1e40af;
+            --primary-orange: #f97316;
+            --light-orange: #fed7aa;
+            --accent-purple: #8b5cf6;
+            --light-purple: #c4b5fd;
+            --light-bg: #f8fafc;
+            --border-radius: 16px;
+            --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-blue), var(--accent-purple));
+            border-radius: 2px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn.primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+        }
+        
+        .btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+        }
+        
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-blue);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-blue);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #334155;
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+        
+        /* Contact Hero */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0 Q500,80 1000,0 L1000,100 L0,100 Z" fill="white" opacity="0.1"/></svg>');
+            background-size: cover;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .contact-hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        /* Contact Content */
         .contact-content {
-            padding: 80px 0;
+            padding: 100px 0;
+            background-color: var(--light-bg);
         }
         
         .contact-container {
@@ -24,111 +226,442 @@
             gap: 50px;
         }
         
+        /* Floating Form Container */
         .contact-form {
             flex: 1;
             background: white;
             padding: 40px;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
         
-        .contact-info {
-            flex: 1;
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-blue), var(--accent-purple));
+        }
+        
+        .contact-form:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .form-label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
+            color: #374151;
         }
         
         .form-input, .form-textarea, .form-select {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-family: 'Exo', sans-serif;
+            padding: 14px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
             font-size: 1rem;
             transition: var(--transition);
+            background-color: #f9fafb;
         }
         
         .form-input:focus, .form-textarea:focus, .form-select:focus {
             outline: none;
             border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background-color: white;
         }
         
         .form-textarea {
-            min-height: 120px;
+            min-height: 140px;
             resize: vertical;
+        }
+        
+        /* Floating Info Cards */
+        .contact-info {
+            flex: 1;
         }
         
         .info-card {
             background: white;
-            padding: 30px;
+            padding: 35px 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             margin-bottom: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-orange), #fb923c);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .info-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-blue);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+            transition: var(--transition);
         }
         
-        .ways-to-join {
+        .info-card:hover .info-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+        
+        .email-link {
+            display: inline-block;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            margin: 10px 0;
+            transition: var(--transition);
+        }
+        
+        .email-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
             background: var(--light-bg);
-            padding: 80px 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Ways to Join Section */
+        .ways-to-join {
+            background: white;
+            padding: 100px 0;
         }
         
         .ways-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
         
+        /* Floating Way Cards */
         .way-card {
             background: white;
-            padding: 30px;
+            padding: 40px 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             text-align: center;
             transition: var(--transition);
+            border: 1px solid #f1f5f9;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .way-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-orange), #fb923c);
         }
         
         .way-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .way-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--secondary-orange);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-orange), #fb923c);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.25);
+            transition: var(--transition);
+        }
+        
+        .way-card:hover .way-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .way-card h3 {
             font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+        
+        .way-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .contact-form, .info-card, .way-card {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .info-card:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+        
+        .info-card:nth-child(3) {
+            animation-delay: 3s;
+        }
+        
+        .way-card:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+        
+        .way-card:nth-child(3) {
+            animation-delay: 3s;
+        }
+        
+        .way-card:nth-child(4) {
+            animation-delay: 4.5s;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--light-bg), #f1f5f9);
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #64748b;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .footer-logo p {
+            color: #cbd5e1;
+        }
+        
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-contact .email-link {
+            color: #cbd5e1;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .footer-contact .email-link:hover {
+            color: white;
+        }
+        
+        .footer-contact .social-links a {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .footer-contact .social-links a:hover {
+            background: var(--primary-blue);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.8rem;
+            }
         }
         
         @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .contact-hero {
+                padding: 150px 0 80px;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
             .contact-container {
                 flex-direction: column;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .ways-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .contact-hero {
+                padding: 130px 0 60px;
+            }
+            
+            .contact-hero h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -154,7 +687,7 @@
                 <a href="/projects.html" class="nav-link en-text">Projects</a>
                 <a href="/projects.html" class="nav-link pt-text" style="display: none;">Projetos</a>
                 <a href="/founder.html" class="nav-link en-text">Founder</a>
-                <a href="founder.html" class="nav-link pt-text" style="display: none;">Fundador</a>
+                <a href="/founder.html" class="nav-link pt-text" style="display: none;">Fundador</a>
                 <a href="/learnings.html" class="nav-link en-text">Learnings</a>
                 <a href="/learnings.html" class="nav-link pt-text" style="display: none;">Aprendizados</a>
                 <a href="/partners.html" class="nav-link en-text">Partners</a>
@@ -387,35 +920,83 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
-        // Simple form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Language Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const interest = document.getElementById('interest').value;
-            const message = document.getElementById('message').value;
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide language content
+                    if (lang === 'en') {
+                        document.querySelectorAll('.en-text').forEach(el => {
+                            el.style.display = 'block';
+                        });
+                        document.querySelectorAll('.pt-text').forEach(el => {
+                            el.style.display = 'none';
+                        });
+                    } else {
+                        document.querySelectorAll('.en-text').forEach(el => {
+                            el.style.display = 'none';
+                        });
+                        document.querySelectorAll('.pt-text').forEach(el => {
+                            el.style.display = 'block';
+                        });
+                    }
+                });
+            });
             
-            // Create mailto link
-            const subject = `Leve Contact: ${interest}`;
-            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AInterest: ${interest}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            // Mobile Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
             
-            // Open email client
-            window.location.href = `mailto:de.leve@zohomail.eu?subject=${subject}&body=${body}`;
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
             
-            // Reset form
-            this.reset();
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
             
-            // Show success message
-            const currentLang = document.documentElement.lang;
-            if (currentLang === 'pt') {
-                alert('Obrigado pela sua mensagem! O seu cliente de email irá abrir para enviar a mensagem.');
-            } else {
-                alert('Thank you for your message! Your email client will open to send the message.');
-            }
+            // Form handling
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const interest = document.getElementById('interest').value;
+                const message = document.getElementById('message').value;
+                
+                // Create mailto link
+                const subject = `Leve Contact: ${interest}`;
+                const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AInterest: ${interest}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+                
+                // Open email client
+                window.location.href = `mailto:de.leve@zohomail.eu?subject=${subject}&body=${body}`;
+                
+                // Reset form
+                this.reset();
+                
+                // Show success message
+                const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                if (currentLang === 'pt') {
+                    alert('Obrigado pela sua mensagem! O seu cliente de email irá abrir para enviar a mensagem.');
+                } else {
+                    alert('Thank you for your message! Your email client will open to send the message.');
+                }
+            });
         });
     </script>
 </body>
