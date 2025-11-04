@@ -236,7 +236,7 @@
         
         .partners-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin: 60px 0;
         }
@@ -255,6 +255,7 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            height: 100%;
         }
         
         .partner-card::before {
@@ -309,20 +310,20 @@
             100% { transform: translateY(0px); }
         }
         
-        .partner-card:nth-child(1) {
+        .partner-card {
             animation: float 6s ease-in-out infinite;
         }
         
         .partner-card:nth-child(2) {
-            animation: float 6s ease-in-out infinite 1s;
+            animation-delay: 1.5s;
         }
         
         .partner-card:nth-child(3) {
-            animation: float 6s ease-in-out infinite 2s;
+            animation-delay: 3s;
         }
         
         .partner-card:nth-child(4) {
-            animation: float 6s ease-in-out infinite 3s;
+            animation-delay: 4.5s;
         }
         
         /* Collaboration Section */
@@ -358,10 +359,10 @@
             box-shadow: var(--box-shadow);
         }
         
-        /* Benefits Grid */
+        /* Benefits Grid - Floating Containers */
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 60px;
         }
@@ -373,15 +374,33 @@
             box-shadow: var(--box-shadow);
             border: 1px solid #f1f5f9;
             transition: var(--transition);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-orange), #fb923c);
         }
         
         .benefit-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .benefit-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary-orange), #fb923c);
             color: white;
             border-radius: 50%;
@@ -389,12 +408,17 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 25px;
-            font-size: 1.8rem;
-            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.2);
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.25);
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1) rotate(5deg);
         }
         
         .benefit-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
             color: #1e293b;
         }
@@ -402,6 +426,23 @@
         .benefit-card p {
             color: #64748b;
             line-height: 1.6;
+        }
+        
+        /* Floating Animation for Benefit Cards */
+        .benefit-card {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .benefit-card:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+        
+        .benefit-card:nth-child(3) {
+            animation-delay: 3s;
+        }
+        
+        .benefit-card:nth-child(4) {
+            animation-delay: 4.5s;
         }
         
         /* CTA Section */
@@ -587,6 +628,10 @@
             .partners-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 576px) {
@@ -596,10 +641,6 @@
             
             .partners-hero h1 {
                 font-size: 1.8rem;
-            }
-            
-            .benefits-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
