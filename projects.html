@@ -4,25 +4,264 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Projects - Leve</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Modern Project Container Styles */
+        /* Modern CSS Variables */
+        :root {
+            --primary-green: #10b981;
+            --secondary-green: #34d399;
+            --accent-orange: #f59e0b;
+            --light-orange: #fbbf24;
+            --accent-purple: #8b5cf6;
+            --light-purple: #c4b5fd;
+            --light-bg: #f8fafc;
+            --dark-bg: #1e293b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.15);
+            --radius: 20px;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-green), var(--accent-orange));
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn.primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-green);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-green);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-dark);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0 Q500,80 1000,0 L1000,100 L0,100 Z" fill="white" opacity="0.1"/></svg>');
+            background-size: cover;
+        }
+
+        .page-header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        /* Floating Project Containers */
+        .project-detail {
+            padding: 80px 0;
+        }
+
+        .alt-bg {
+            background: var(--light-bg);
+        }
+
         .project-container {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
             padding: 50px;
             margin-bottom: 60px;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: var(--transition);
+            transform: translateY(0);
+            animation: floatContainer 8s ease-in-out infinite;
+        }
+
+        @keyframes floatContainer {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
         }
 
         .project-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+            transform: translateY(-20px);
+            animation: none;
+            box-shadow: var(--shadow-hover);
         }
 
         .project-container::before {
@@ -31,27 +270,120 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-purple));
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-orange));
         }
 
         /* Different accent colors for each project */
         #biorainha .project-container::before {
-            background: linear-gradient(90deg, #4ade80, #22c55e);
+            background: linear-gradient(90deg, #10b981, #34d399);
         }
 
         #artcaldas .project-container::before {
-            background: linear-gradient(90deg, #a78bfa, #8b5cf6);
+            background: linear-gradient(90deg, #8b5cf6, #a78bfa);
         }
 
         #meleve .project-container::before {
-            background: linear-gradient(90deg, #fb923c, #f97316);
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
         }
 
-        /* Project Carousel Styles */
+        #artcaldasapp .project-container::before {
+            background: linear-gradient(90deg, #8b5cf6, #c4b5fd);
+        }
+
+        /* Project Header */
+        .project-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .project-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .project-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .tag.sustainability {
+            background: var(--primary-green);
+        }
+
+        .tag.composting {
+            background: var(--secondary-green);
+        }
+
+        .tag.education {
+            background: var(--accent-orange);
+        }
+
+        .tag.intergenerational {
+            background: var(--accent-purple);
+        }
+
+        .tag.arts {
+            background: #a78bfa;
+        }
+
+        .tag.mentorship {
+            background: #c4b5fd;
+        }
+
+        .tag.mobility {
+            background: #f59e0b;
+        }
+
+        .tag.seniors {
+            background: #fbbf24;
+        }
+
+        .tag.transport {
+            background: #f59e0b;
+        }
+
+        .tag.technology {
+            background: var(--accent-purple);
+        }
+
+        .tag.app {
+            background: #a78bfa;
+        }
+
+        .tag.connectivity {
+            background: #c4b5fd;
+        }
+
+        /* Floating Project Carousel */
         .project-carousel-wrapper {
             position: relative;
             margin-bottom: 40px;
+            transform: translateY(0);
+            animation: floatCarousel 9s ease-in-out infinite;
+        }
+
+        @keyframes floatCarousel {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .project-carousel-wrapper:hover {
+            transform: translateY(-15px);
+            animation: none;
         }
 
         .project-carousel {
@@ -59,8 +391,13 @@
             width: 100%;
             height: 500px;
             overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-carousel:hover {
+            box-shadow: var(--shadow-hover);
         }
 
         .project-carousel-track {
@@ -86,7 +423,7 @@
         }
 
         .project-carousel-slide img:hover {
-            transform: scale(1.02);
+            transform: scale(1.05);
         }
 
         .carousel-nav-btn {
@@ -95,23 +432,24 @@
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.95);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            color: #4a6fa5;
-            transition: all 0.3s ease;
+            color: var(--primary-green);
+            transition: var(--transition);
             z-index: 10;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .carousel-nav-btn:hover {
             background: white;
             transform: translateY(-50%) scale(1.1);
+            color: var(--accent-orange);
         }
 
         .carousel-nav-btn.prev {
@@ -135,93 +473,401 @@
             border-radius: 50%;
             background: #ccc;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .carousel-indicator.active {
-            background: #4a6fa5;
+            background: var(--primary-green);
             transform: scale(1.3);
         }
 
-        /* Enhanced project content layout */
-        .project-content {
+        /* Project Description */
+        .project-description {
+            margin-bottom: 40px;
+        }
+
+        .project-description h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .project-description h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-green);
+            border-radius: 2px;
+        }
+
+        .project-description h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .project-description h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .project-description p {
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        /* Project Stats */
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+        }
+
+        .stat {
+            text-align: center;
+            transform: translateY(0);
+            animation: floatStat 7s ease-in-out infinite;
+        }
+
+        @keyframes floatStat {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+
+        .stat:hover {
+            transform: translateY(-10px);
+            animation: none;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Project Timeline */
+        .project-timeline {
+            margin-top: 50px;
+            padding: 40px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary-green);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 80px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--primary-green);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover .timeline-date {
+            transform: translateY(-5px);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover .timeline-content {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        /* Features List */
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature {
             display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            transform: translateY(0);
+            animation: floatFeature 8s ease-in-out infinite;
+        }
+
+        @keyframes floatFeature {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            animation: none;
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-top: 5px;
+        }
+
+        .feature h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        /* Implementation Phases */
+        .implementation-phases {
+            margin-top: 30px;
+        }
+
+        .phase {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            transform: translateY(0);
+            animation: floatPhase 9s ease-in-out infinite;
+        }
+
+        @keyframes floatPhase {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        .phase:hover {
+            transform: translateY(-8px);
+            animation: none;
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .phase h5 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        /* App Features */
+        .app-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .app-feature {
+            text-align: center;
+            padding: 25px 15px;
+            background: var(--light-bg);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            transform: translateY(0);
+            animation: floatAppFeature 7s ease-in-out infinite;
+        }
+
+        @keyframes floatAppFeature {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+
+        .app-feature:hover {
+            transform: translateY(-12px);
+            animation: none;
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .app-feature i {
+            font-size: 2.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 15px;
+        }
+
+        .app-feature h4 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        /* Launch Badge */
+        .launch-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 20px;
+            transform: translateY(0);
+            animation: floatBadge 6s ease-in-out infinite;
+        }
+
+        @keyframes floatBadge {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        .launch-badge:hover {
+            transform: translateY(-8px);
+            animation: none;
+        }
+
+        /* Project Content Layout */
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: flex-start;
         }
 
-        .project-content.reverse {
-            flex-direction: row-reverse;
+        .project-image-large {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transform: translateY(0);
+            animation: floatImage 8s ease-in-out infinite;
         }
 
-        /* Fix for CTA button */
-        .cta-section .btn {
-            pointer-events: auto !important;
-            z-index: 10;
+        @keyframes floatImage {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
         }
 
-        /* Text formatting improvements */
-        .project-description p {
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            text-align: justify;
+        .project-image-large:hover {
+            transform: translateY(-20px);
+            animation: none;
+            box-shadow: var(--shadow-hover);
         }
 
-        .project-description h3 {
-            margin-bottom: 1.5rem;
-            color: #2c3e50;
+        .project-image-large img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
         }
 
-        .project-description h4 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #34495e;
+        .project-image-large:hover img {
+            transform: scale(1.05);
         }
 
         /* Gallery Modal */
         .gallery-modal {
             display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            overflow: auto;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .gallery-modal-content {
-            position: relative;
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90%;
-            top: 50%;
-            transform: translateY(-50%);
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .gallery-modal-close {
             position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .gallery-modal-close:hover {
-            color: #bbb;
-        }
-
-        .gallery-modal-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.2);
+            top: -40px;
+            right: -40px;
+            background: rgba(255, 255, 255, 0.1);
             border: none;
+            color: white;
+            font-size: 2rem;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -229,14 +875,37 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .gallery-modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .gallery-modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
             color: white;
-            transition: all 0.3s ease;
-            z-index: 1001;
+            font-size: 1.5rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
 
         .gallery-modal-nav:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
         }
 
         .gallery-modal-nav.prev {
@@ -248,17 +917,230 @@
         }
 
         .gallery-caption {
-            text-align: center;
-            color: #ccc;
-            padding: 10px 0;
             position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
         }
 
-        /* Responsive */
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--light-bg), #f1f5f9);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 80px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo-img {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .email-link {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .email-link:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Animation for elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .page-header h1 {
+                font-size: 3rem;
+            }
+
+            .project-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .page-header {
+                padding: 150px 0 80px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
             .project-container {
                 padding: 30px 20px;
             }
@@ -266,25 +1148,84 @@
             .project-carousel {
                 height: 350px;
             }
-
-            .project-content {
-                flex-direction: column !important;
-            }
-
+            
             .carousel-nav-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 1rem;
             }
             
-            .gallery-modal-content {
-                max-width: 95%;
+            .footer-content {
+                grid-template-columns: 1fr;
             }
-            
-            .gallery-modal-nav {
+
+            .gallery-modal-close {
+                top: 10px;
+                right: 10px;
                 width: 40px;
                 height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .gallery-modal-nav {
+                width: 50px;
+                height: 50px;
                 font-size: 1.2rem;
+            }
+
+            .gallery-modal-nav.prev {
+                left: 10px;
+            }
+
+            .gallery-modal-nav.next {
+                right: 10px;
+            }
+
+            .project-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+
+            .app-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 130px 0 60px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .project-header h2 {
+                font-size: 2rem;
+            }
+
+            .project-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .app-features {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 60px;
+            }
+
+            .timeline-date {
+                padding: 6px 12px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -341,19 +1282,19 @@
     <!-- Projects Header -->
     <section class="page-header">
         <div class="container">
-            <h1>
+            <h1 class="fade-in-up">
                 <span class="en-text">Our Projects</span>
                 <span class="pt-text" style="display: none;">Nossos Projetos</span>
             </h1>
-            <p class="en-text">Creating sustainable impact through youth-led initiatives</p>
-            <p class="pt-text" style="display: none;">Criando impacto sustentável através de iniciativas lideradas por jovens</p>
+            <p class="fade-in-up delay-1 en-text">Creating sustainable impact through youth-led initiatives</p>
+            <p class="fade-in-up delay-1 pt-text" style="display: none;">Criando impacto sustentável através de iniciativas lideradas por jovens</p>
         </div>
     </section>
 
     <!-- BioRainha Project -->
     <section id="biorainha" class="project-detail">
         <div class="container">
-            <div class="project-container">
+            <div class="project-container fade-in-up">
                 <div class="project-header">
                     <h2>BioRainha</h2>
                     <div class="project-tags">
@@ -391,12 +1332,6 @@
                             <div class="project-carousel-slide">
                                 <img src="https://i.ibb.co/XZ4LRYHy/00058-File.jpg" alt="BioRainha community engagement" data-gallery="biorainha">
                             </div>
-                            <div class="project-carousel-slide">
-                                <img src="https://i.ibb.co/Wpk4BmgP/00050-File.jpg" alt="BioRainha composting" data-gallery="biorainha">
-                            </div>
-                            <div class="project-carousel-slide">
-                                <img src="https://i.ibb.co/99FBcJMR/00051-File.jpg" alt="BioRainha waste management" data-gallery="biorainha">
-                            </div>
                         </div>
                     </div>
                     
@@ -404,8 +1339,6 @@
                         <span class="carousel-indicator active" data-slide="0"></span>
                         <span class="carousel-indicator" data-slide="1"></span>
                         <span class="carousel-indicator" data-slide="2"></span>
-                        <span class="carousel-indicator" data-slide="3"></span>
-                        <span class="carousel-indicator" data-slide="4"></span>
                     </div>
                 </div>
 
@@ -415,117 +1348,7 @@
                         <span class="pt-text" style="display: none;">Sobre a BioRainha</span>
                     </h3>
                     <p class="en-text">A youth-led campaign that promotes composting, reducing food waste, and building community-wide sustainability. The initiative was conceived in 2023 to address the lack of awareness around food waste management and the untapped potential of composting as a sustainable practice.</p>
-                    
-                    <h4 class="en-text">Analysis of the BioRαinhα Program</h4>
-                    <h4 class="pt-text" style="display: none;">Análise do Programa BioRαinhα</h4>
-                    
-                    <h5 class="en-text">1. Project Conception</h5>
-                    <h5 class="pt-text" style="display: none;">1. Concepção do Projeto</h5>
-                    
-                    <p class="en-text">The BioRαinhα initiative was conceived in 2023 by Leve, a youth-led environmental organization. The project stemmed from the recognition of a pressing local issue in Caldas da Rainha: the lack of awareness around food waste management and the untapped potential of composting as a sustainable practice.</p>
-                    <p class="pt-text" style="display: none;">A iniciativa BioRαinhα foi concebida em 2023 pela Leve, uma organização ambiental liderada por jovens. O projeto surgiu do reconhecimento de um problema local premente em Caldas da Rainha: a falta de sensibilização sobre a gestão de resíduos alimentares e o potencial inexplorado da compostagem como prática sustentável.</p>
-                    
-                    <p class="en-text">Aditya Banerjee, the founder of Leve, identified two major gaps in the community:</p>
-                    <p class="pt-text" style="display: none;">Aditya Banerjee, fundador da Leve, identificou duas lacunas principais na comunidade:</p>
-                    
-                    <p class="en-text">a) Families and schools were not adequately informed about proper food waste storage and its environmental consequences.</p>
-                    <p class="pt-text" style="display: none;">a) As famílias e as escolas não estavam devidamente informadas sobre o armazenamento adequado de resíduos alimentares nem sobre as suas consequências ambientais.</p>
-                    
-                    <p class="en-text">b) The municipality lacked a structured composting framework that could reduce landfill waste, improve soil health, and engage young people in sustainability practices.</p>
-                    <p class="pt-text" style="display: none;">b) O município carecia de uma estrutura organizada de compostagem que pudesse reduzir os resíduos em aterro, melhorar a saúde dos solos e envolver os jovens em práticas de sustentabilidade.</p>
-                    
-                    <p class="en-text">BioRαinhα was thus envisioned as both an educational campaign and a community-wide sustainability movement, aimed at reducing waste, promoting composting, and strengthening local environmental responsibility.</p>
-                    <p class="pt-text" style="display: none;">Assim, o BioRαinhα foi idealizado como uma campanha educativa e, simultaneamente, um movimento de sustentabilidade à escala comunitária, com o objetivo de reduzir o desperdício, promover a compostagem e reforçar a responsabilidade ambiental local.</p>
-                    
-                    <h5 class="en-text">2. Project Planning</h5>
-                    <h5 class="pt-text" style="display: none;">2. Planeamento do Projeto</h5>
-                    
-                    <p class="en-text">The program's planning was multifaceted and youth-driven, combining grassroots awareness campaigns with advocacy for institutional adoption:</p>
-                    <p class="pt-text" style="display: none;">O planeamento do programa foi multifacetado e liderado por jovens, combinando campanhas de sensibilização de base comunitária com a defesa da adoção institucional:</p>
-                    
-                    <p class="en-text">Educational Outreach: Aditya and Leve developed workshops, presentations, and visually compelling brochures. With his art and design skills, Aditya personally designed promotional materials for more than 14 campaigns.</p>
-                    <p class="pt-text" style="display: none;">Ações Educativas: Aditya e a Leve desenvolveram oficinas, apresentações e brochuras visualmente apelativas. Com as suas competências em arte e design, Aditya concebeu pessoalmente o material promocional de mais de 14 campanhas.</p>
-                    
-                    <p class="en-text">School Engagement: The campaign strategically targeted the 8 primary and secondary schools of Caldas da Rainha. Meetings with school principals helped secure bulletin board space, while sign-up forms mobilized volunteers among 14–18-year-olds.</p>
-                    <p class="pt-text" style="display: none;">Envolvimento Escolar: A campanha direcionou-se estrategicamente para as 8 escolas básicas e secundárias de Caldas da Rainha. Reuniões com os diretores das escolas permitiram garantir espaço nos painéis informativos, enquanto formulários de inscrição mobilizaram voluntários entre os 14 e os 18 anos.</p>
-                    
-                    <p class="en-text">Community and Family Awareness: By addressing families directly through schoolchildren, the program ensured intergenerational knowledge transfer, embedding composting practices at the household level.</p>
-                    <p class="pt-text" style="display: none;">Sensibilização Comunitária e Familiar: Ao abordar as famílias através dos estudantes, o programa assegurou uma transferência de conhecimento intergeracional, incorporando práticas de compostagem ao nível doméstico.</p>
-                    
-                    <p class="en-text">Institutional Partnerships: Leve planned from the outset to link the campaign with the municipality of Caldas da Rainha, aiming for scalability and official backing.</p>
-                    <p class="pt-text" style="display: none;">Parcerias Institucionais: Desde o início, a Leve planeou ligar a campanha à Câmara Municipal de Caldas da Rainha, com vista à sua expansão e ao apoio oficial.</p>
-                    
-                    <h5 class="en-text">3. Implementation</h5>
-                    <h5 class="pt-text" style="display: none;">3. Implementação</h5>
-                    
-                    <p class="en-text">The BioRαinhα campaign was rolled out in three phases:</p>
-                    <p class="pt-text" style="display: none;">A campanha BioRαinhα foi implementada em três fases:</p>
-                    
-                    <p class="en-text">a) Grassroots Campaigning (2023–2024)</p>
-                    <p class="pt-text" style="display: none;">a) Campanha de Base Comunitária (2023–2024)</p>
-                    
-                    <p class="en-text">Conducted awareness sessions in schools and neighborhoods.</p>
-                    <p class="pt-text" style="display: none;">Realização de sessões de sensibilização em escolas e bairros.</p>
-                    
-                    <p class="en-text">Distributed brochures and held discussions on the benefits of composting.</p>
-                    <p class="pt-text" style="display: none;">Distribuição de brochuras e debates sobre os benefícios da compostagem.</p>
-                    
-                    <p class="en-text">Directly reached 134 students across Caldas da Rainha.</p>
-                    <p class="pt-text" style="display: none;">Envolvimento direto de 134 estudantes em Caldas da Rainha.</p>
-                    
-                    <p class="en-text">b) Municipal Adoption (2024)</p>
-                    <p class="pt-text" style="display: none;">b) Adoção Municipal (2024)</p>
-                    
-                    <p class="en-text">The City Council formally adopted BioRαinhα in 2024.</p>
-                    <p class="pt-text" style="display: none;">A Câmara Municipal adotou formalmente o BioRαinhα em 2024.</p>
-                    
-                    <p class="en-text">The municipality dedicated land and technicians to institutionalize composting on a larger scale.</p>
-                    <p class="pt-text" style="display: none;">O município disponibilizou terrenos e técnicos para institucionalizar a compostagem em maior escala.</p>
-                    
-                    <p class="en-text">The program was expanded to include local producers, further embedding sustainability in the regional food cycle.</p>
-                    <p class="pt-text" style="display: none;">O programa foi alargado para incluir produtores locais, reforçando a sustentabilidade no ciclo alimentar regional.</p>
-                    
-                    <p class="en-text">c) Expansion and Institutionalization (2025)</p>
-                    <p class="pt-text" style="display: none;">c) Expansão e Institucionalização (2025)</p>
-                    
-                    <p class="en-text">The program evolved from small-scale community education to large-scale composting initiatives backed by the city.</p>
-                    <p class="pt-text" style="display: none;">O programa evoluiu de ações educativas locais para iniciativas de compostagem em grande escala com apoio municipal.</p>
-                    
-                    <p class="en-text">Youth volunteers remained central, ensuring long-term civic engagement.</p>
-                    <p class="pt-text" style="display: none;">Os jovens voluntários mantiveram um papel central, garantindo um envolvimento cívico duradouro.</p>
-                    
-                    <h5 class="en-text">4. Outcomes and Impact</h5>
-                    <h5 class="pt-text" style="display: none;">4. Resultados e Impacto</h5>
-                    
-                    <p class="en-text">The BioRαinhα program has delivered tangible, multi-level outcomes:</p>
-                    <p class="pt-text" style="display: none;">O programa BioRαinhα produziu resultados concretos e de múltiplos níveis:</p>
-                    
-                    <p class="en-text">a) Youth Engagement: Mobilized dozens of student volunteers, instilling environmental responsibility in future generations.</p>
-                    <p class="pt-text" style="display: none;">a) Envolvimento Juvenil: Mobilizou dezenas de estudantes voluntários, promovendo a responsabilidade ambiental nas novas gerações.</p>
-                    
-                    <p class="en-text">b) Community Reach: Extended knowledge on composting to hundreds of families through schools.</p>
-                    <p class="pt-text" style="display: none;">b) Alcance Comunitário: Transmitiu conhecimento sobre compostagem a centenas de famílias através das escolas.</p>
-                    
-                    <p class="en-text">c) Municipal Integration: Secured official recognition and structural support from the city council, including land allocation and technical resources.</p>
-                    <p class="pt-text" style="display: none;">c) Integração Municipal: Obteve reconhecimento oficial e apoio estrutural da Câmara Municipal, incluindo a cedência de terrenos e recursos técnicos.</p>
-                    
-                    <p class="en-text">d) Sustainability Impact: Created a systemic framework for composting organic waste, reducing landfill dependence, and contributing to soil regeneration.</p>
-                    <p class="pt-text" style="display: none;">d) Impacto em Sustentabilidade: Criou uma estrutura sistémica de compostagem de resíduos orgânicos, reduzindo a dependência dos aterros e contribuindo para a regeneração do solo.</p>
-                    
-                    <p class="en-text">e) Scalability: The municipal backing provides a foundation for BioRαinhα to become a model project for other Portuguese cities.</p>
-                    <p class="pt-text" style="display: none;">e) Escalabilidade: O apoio municipal oferece uma base sólida para que o BioRαinhα se torne um projeto-modelo replicável noutros municípios portugueses.</p>
-                    
-                    <h5 class="en-text">5. Broader Significance</h5>
-                    <h5 class="pt-text" style="display: none;">5. Significado Mais Amplo</h5>
-                    
-                    <p class="en-text">The success of BioRαinhα demonstrates how youth-led initiatives can influence municipal policy and drive sustainable change. Aditya and Leve not only engaged peers but also persuaded policymakers and local producers to adopt eco-friendly practices. By merging education, community mobilization, and institutional collaboration, BioRαinhα has transitioned from a student-led campaign into a city-wide sustainability program.</p>
-                    <p class="pt-text" style="display: none;">O sucesso do BioRαinhα demonstra como iniciativas lideradas por jovens podem influenciar políticas municipais e impulsionar mudanças sustentáveis. Aditya e a equipa da Leve não só envolveram os seus pares, como também persuadiram decisores políticos e produtores locais a adotar práticas ecológicas. Ao combinar educação, mobilização comunitária e colaboração institucional, o BioRαinhα transformou-se de uma campanha estudantil num programa de sustentabilidade à escala municipal.</p>
-                    
-                    <p class="en-text">It also stands as an example of circular economy practices, where waste is reframed as a resource, closing the loop between households, schools, producers, and municipal systems.</p>
-                    <p class="pt-text" style="display: none;">O projeto é também um exemplo prático de economia circular, onde os resíduos são reinterpretados como recursos, fechando o ciclo entre famílias, escolas, produtores e sistemas municipais.</p>
-                    
-                    <p class="en-text">The BioRαinhα program exemplifies how persistence and creative leadership can grow into a transformative, city-backed sustainability movement. Its trajectory, from conception to municipal adoption, illustrates the power of youth leadership in tackling global challenges like food waste and climate change at the local level.</p>
-                    <p class="pt-text" style="display: none;">O programa BioRαinhα exemplifica como a persistência e a liderança criativa podem evoluir para um movimento transformador apoiado pela cidade. O seu percurso — desde a conceção até à adoção municipal — ilustra o poder da juventude em enfrentar desafios globais, como o desperdício alimentar e as alterações climáticas, a partir do contexto local.</p>
+                    <p class="pt-text" style="display: none;">Uma campanha liderada por jovens que promove a compostagem, reduz o desperdício de alimentos e constrói a sustentabilidade em toda a comunidade. A iniciativa foi concebida em 2023 para abordar a falta de sensibilização sobre a gestão de resíduos alimentares e o potencial inexplorado da compostagem como prática sustentável.</p>
                     
                     <div class="project-stats">
                         <div class="stat">
@@ -606,7 +1429,7 @@
     <!-- Art Caldas Project -->
     <section id="artcaldas" class="project-detail alt-bg">
         <div class="container">
-            <div class="project-container">
+            <div class="project-container fade-in-up delay-1">
                 <div class="project-header">
                     <h2>Art Caldas</h2>
                     <div class="project-tags">
@@ -644,9 +1467,6 @@
                             <div class="project-carousel-slide">
                                 <img src="https://i.ibb.co/Tqnxb7XB/00048-File.jpg" alt="Art Caldas creative expression" data-gallery="artcaldas">
                             </div>
-                            <div class="project-carousel-slide">
-                                <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Art Caldas community" data-gallery="artcaldas">
-                            </div>
                         </div>
                     </div>
                     
@@ -654,7 +1474,6 @@
                         <span class="carousel-indicator active" data-slide="0"></span>
                         <span class="carousel-indicator" data-slide="1"></span>
                         <span class="carousel-indicator" data-slide="2"></span>
-                        <span class="carousel-indicator" data-slide="3"></span>
                     </div>
                 </div>
 
@@ -703,7 +1522,7 @@
     <!-- Me Leve Project -->
     <section id="meleve" class="project-detail">
         <div class="container">
-            <div class="project-container">
+            <div class="project-container fade-in-up delay-2">
                 <div class="project-header">
                     <h2>Me Leve</h2>
                     <div class="project-tags">
@@ -741,9 +1560,6 @@
                             <div class="project-carousel-slide">
                                 <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Me Leve community support" data-gallery="meleve">
                             </div>
-                            <div class="project-carousel-slide">
-                                <img src="https://i.ibb.co/39G8Dfh0/00070-File.jpg" alt="Me Leve seniors" data-gallery="meleve">
-                            </div>
                         </div>
                     </div>
                     
@@ -751,7 +1567,6 @@
                         <span class="carousel-indicator active" data-slide="0"></span>
                         <span class="carousel-indicator" data-slide="1"></span>
                         <span class="carousel-indicator" data-slide="2"></span>
-                        <span class="carousel-indicator" data-slide="3"></span>
                     </div>
                 </div>
 
@@ -801,7 +1616,7 @@
     <!-- ArtCaldas App Section -->
     <section id="artcaldasapp" class="project-detail alt-bg">
         <div class="container">
-            <div class="project-container">
+            <div class="project-container fade-in-up delay-3">
                 <div class="project-header">
                     <h2>ArtCaldas App</h2>
                     <div class="project-tags">
@@ -828,108 +1643,6 @@
                         </h3>
                         <p class="en-text">The ArtCaldas app makes it easy for seniors to schedule the help they need and for volunteers to choose the mentorship programs they're most passionate about. From running errands to sharing skills and experiences, the app connects people in a simple, flexible way.</p>
                         <p class="pt-text" style="display: none;">A aplicação ArtCaldas torna mais fácil para os seniores agendarem a ajuda de que necessitam e para os voluntários escolherem os programas de mentoria que mais lhes despertam paixão. Desde a realização de pequenas tarefas à partilha de competências e experiências, a app irá ligar as pessoas de uma forma simples e flexível.</p>
-                        
-                        <h4 class="en-text">ArtCαldαs App – Rollout Brief</h4>
-                        <h4 class="pt-text" style="display: none;">ArtCαldαs App – Plano de Implementação</h4>
-                        
-                        <h5 class="en-text">Purpose</h5>
-                        <h5 class="pt-text" style="display: none;">Objetivo</h5>
-                        
-                        <p class="en-text">The ArtCαldαs app is designed to support seniors by making it easy to schedule assistance for daily tasks and access community support programs. It also empowers volunteers to offer mentorship in areas where they have passion, knowledge, or skills to share. By strengthening intergenerational connection and community participation, ArtCαldαs aims to foster independence, dignity, and social inclusion for older residents.</p>
-                        <p class="pt-text" style="display: none;">A aplicação ArtCαldαs foi criada para apoiar seniores, facilitando o agendamento de assistência para tarefas do dia a dia e o acesso a programas de apoio comunitário. Também permite que voluntários ofereçam mentoria em áreas onde têm paixão, conhecimento ou competências para partilhar. Ao reforçar a ligação intergeracional e a participação comunitária, o ArtCαldαs pretende promover a independência, a dignidade e a inclusão social dos residentes mais idosos.</p>
-                        
-                        <h5 class="en-text">Key Features</h5>
-                        <h5 class="pt-text" style="display: none;">Principais Funcionalidades</h5>
-                        
-                        <p class="en-text">a) Simple, user-friendly interface</p>
-                        <p class="pt-text" style="display: none;">a) Interface simples e intuitiva</p>
-                        
-                        <p class="en-text">b) Help scheduling (errands, companionship, everyday tasks)</p>
-                        <p class="pt-text" style="display: none;">b) Agendamento de ajuda (tarefas, companhia, atividades diárias)</p>
-                        
-                        <p class="en-text">c) Mentorship matching (languages, arts, crafts, gardening, technology & more)</p>
-                        <p class="pt-text" style="display: none;">c) Correspondência de mentoria (línguas, artes, artesanato, jardinagem, tecnologia e muito mais)</p>
-                        
-                        <p class="en-text">d) Flexible volunteer participation</p>
-                        <p class="pt-text" style="display: none;">d) Participação voluntária flexível</p>
-                        
-                        <p class="en-text">e) Local community focus</p>
-                        <p class="pt-text" style="display: none;">e) Foco na comunidade local</p>
-                        
-                        <p class="en-text">f) Accessible design for seniors</p>
-                        <p class="pt-text" style="display: none;">f) Design acessível para seniores</p>
-                        
-                        <h5 class="en-text">Rollout Plan</h5>
-                        <h5 class="pt-text" style="display: none;">Plano de Implementação</h5>
-                        
-                        <p class="en-text">Phase 1: Pilot & Training (Months 1–3)</p>
-                        <p class="pt-text" style="display: none;">Fase 1: Projeto-Piloto e Formação (Meses 1–3)</p>
-                        
-                        <p class="en-text">a) Launch with a small group of seniors and volunteers</p>
-                        <p class="pt-text" style="display: none;">a) Lançamento com um pequeno grupo de seniores e voluntários</p>
-                        
-                        <p class="en-text">b) Test core features and onboarding flow</p>
-                        <p class="pt-text" style="display: none;">b) Teste das funcionalidades principais e do processo de integração</p>
-                        
-                        <p class="en-text">c) Digital literacy workshops for seniors</p>
-                        <p class="pt-text" style="display: none;">c) Oficinas de literacia digital para seniores</p>
-                        
-                        <p class="en-text">d) Collect feedback and optimize the user experience</p>
-                        <p class="pt-text" style="display: none;">d) Recolha de feedback e otimização da experiência do utilizador</p>
-                        
-                        <p class="en-text">Phase 2: Community Expansion (Months 4–6)</p>
-                        <p class="pt-text" style="display: none;">Fase 2: Expansão Comunitária (Meses 4–6)</p>
-                        
-                        <p class="en-text">a) Expand access to more seniors and volunteers</p>
-                        <p class="pt-text" style="display: none;">a) Alargar o acesso a mais seniores e voluntários</p>
-                        
-                        <p class="en-text">b) Collaborate with local cultural centers and health services</p>
-                        <p class="pt-text" style="display: none;">b) Colaborar com centros culturais locais e serviços de saúde</p>
-                        
-                        <p class="en-text">c) Community awareness campaign and enrollment sessions</p>
-                        <p class="pt-text" style="display: none;">c) Campanha de sensibilização comunitária e sessões de inscrição</p>
-                        
-                        <p class="en-text">d) Introduce structured mentorship activities and support circles</p>
-                        <p class="pt-text" style="display: none;">d) Introduzir atividades de mentoria estruturadas e círculos de apoio</p>
-                        
-                        <p class="en-text">Phase 3: Full Launch (End of Year)</p>
-                        <p class="pt-text" style="display: none;">Fase 3: Lançamento Completo (Final do Ano)</p>
-                        
-                        <p class="en-text">a) Official public release across Caldas da Rainha region</p>
-                        <p class="pt-text" style="display: none;">a) Lançamento público oficial na região de Caldas da Rainha</p>
-                        
-                        <p class="en-text">b) Continuous improvement based on user feedback</p>
-                        <p class="pt-text" style="display: none;">b) Melhoria contínua com base no feedback dos utilizadores</p>
-                        
-                        <p class="en-text">c) Establish long-term support and volunteer coordination teams</p>
-                        <p class="pt-text" style="display: none;">c) Criação de equipas de apoio e coordenação de voluntários a longo prazo</p>
-                        
-                        <p class="en-text">d) Track impact metrics (engagement, senior independence)</p>
-                        <p class="pt-text" style="display: none;">d) Monitorização de indicadores de impacto (envolvimento, independência dos seniores)</p>
-                        
-                        <h5 class="en-text">Expected Impact</h5>
-                        <h5 class="pt-text" style="display: none;">Impacto Esperado</h5>
-                        
-                        <p class="en-text">a) Strengthened social support network for seniors</p>
-                        <p class="pt-text" style="display: none;">a) Reforço da rede de apoio social para seniores</p>
-                        
-                        <p class="en-text">b) Increased community participation and well-being</p>
-                        <p class="pt-text" style="display: none;">b) Aumento da participação e bem-estar comunitário</p>
-                        
-                        <p class="en-text">c) Expanded opportunities for intergenerational learning</p>
-                        <p class="pt-text" style="display: none;">c) Expansão das oportunidades de aprendizagem intergeracional</p>
-                        
-                        <p class="en-text">d) A scalable model for other towns and cultural communities</p>
-                        <p class="pt-text" style="display: none;">d) Criação de um modelo escalável para outras localidades e comunidades culturais</p>
-                        
-                        <h5 class="en-text">Call for Partnership</h5>
-                        <h5 class="pt-text" style="display: none;">Convite à Parceria</h5>
-                        
-                        <p class="en-text">We invite local institutions, cultural groups, social services, and community leaders to partner with us in building a connected and creative support system for our seniors.</p>
-                        <p class="pt-text" style="display: none;">Convidamos instituições locais, grupos culturais, serviços sociais e líderes comunitários a juntarem-se a nós na construção de um sistema de apoio conectado e criativo para os nossos seniores.</p>
-                        
-                        <p class="en-text">Together, we can celebrate knowledge, culture, and community and ensure older adults thrive.</p>
-                        <p class="pt-text" style="display: none;">Juntos, podemos celebrar o conhecimento, a cultura e a comunidade, garantindo que os mais velhos prosperem.</p>
                         
                         <div class="app-features">
                             <div class="app-feature">
@@ -1110,6 +1823,17 @@
                         updateCarousel();
                     });
                 });
+                
+                // Auto-advance carousel
+                let autoSlideInterval = setInterval(nextSlide, 5000);
+                
+                carousel.addEventListener('mouseenter', () => {
+                    clearInterval(autoSlideInterval);
+                });
+                
+                carousel.addEventListener('mouseleave', () => {
+                    autoSlideInterval = setInterval(nextSlide, 5000);
+                });
             });
 
             // Gallery Modal functionality
@@ -1137,12 +1861,14 @@
             });
             
             function openModal() {
-                modal.style.display = "block";
+                modal.classList.add("active");
+                document.body.style.overflow = "hidden";
                 updateModalImage();
             }
             
             function closeModal() {
-                modal.style.display = "none";
+                modal.classList.remove("active");
+                document.body.style.overflow = "";
             }
             
             function updateModalImage() {
@@ -1174,7 +1900,7 @@
             
             // Keyboard navigation
             document.addEventListener('keydown', function(e) {
-                if (modal.style.display === "block") {
+                if (modal.classList.contains("active")) {
                     if (e.key === "Escape") {
                         closeModal();
                     } else if (e.key === "ArrowRight") {
@@ -1184,8 +1910,54 @@
                     }
                 }
             });
+
+            // Language Toggle
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide language content
+                    if (lang === 'en') {
+                        document.querySelectorAll('.en-text').forEach(el => {
+                            el.style.display = 'block';
+                        });
+                        document.querySelectorAll('.pt-text').forEach(el => {
+                            el.style.display = 'none';
+                        });
+                    } else {
+                        document.querySelectorAll('.en-text').forEach(el => {
+                            el.style.display = 'none';
+                        });
+                        document.querySelectorAll('.pt-text').forEach(el => {
+                            el.style.display = 'block';
+                        });
+                    }
+                });
+            });
+            
+            // Mobile Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
         });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
