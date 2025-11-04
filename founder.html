@@ -3,1015 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Founder Story - Leve</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Our Mission & Values</title>
     <style>
-        /* Modern CSS Variables */
-        :root {
-            --primary-color: #2c5530;
-            --secondary-color: #4a6fa5;
-            --accent-color: #ff7b54;
-            --light-color: #f8fafc;
-            --dark-color: #2c3e50;
-            --text-color: #333;
-            --text-light: #6c757d;
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --radius: 16px;
-            --transition: all 0.3s ease;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        /* Founder Hero Section */
-        .founder-hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 140px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .founder-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
-            background-size: cover;
-        }
-
-        .founder-hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .founder-hero p {
-            font-size: 1.3rem;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.9;
-            position: relative;
-        }
-
-        /* Founder Story Section */
-        .founder-story {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .founder-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
             align-items: center;
+            padding: 20px;
         }
-
-        .founder-image {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transform: perspective(1000px) rotateY(-5deg);
-            transition: var(--transition);
-        }
-
-        .founder-image:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        .founder-image img {
+        
+        .container {
+            max-width: 1200px;
             width: 100%;
-            height: 500px;
-            object-fit: cover;
-            display: block;
+            text-align: center;
         }
-
-        .founder-bio h2 {
-            font-size: 2.5rem;
-            color: var(--dark-color);
-            margin-bottom: 1.5rem;
+        
+        header {
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
             position: relative;
+            display: inline-block;
         }
-
-        .founder-bio h2::after {
+        
+        h1:after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        .founder-bio p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-        }
-
-        .founder-quote {
-            background: linear-gradient(135deg, var(--light-color) 0%, #f1f5f9 100%);
-            padding: 30px;
-            border-radius: var(--radius);
-            margin: 40px 0;
-            border-left: 4px solid var(--accent-color);
-            position: relative;
-        }
-
-        .founder-quote::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 4rem;
-            color: var(--accent-color);
-            opacity: 0.3;
-            font-family: Georgia, serif;
-        }
-
-        .founder-quote p {
-            font-style: italic;
-            font-size: 1.3rem;
-            color: var(--dark-color);
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        /* Mission & Values Section */
-        .mission-values {
-            background: var(--light-color);
-            padding: 100px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--dark-color);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--accent-color);
+            background: #3498db;
             border-radius: 2px;
         }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .values-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 30px;
         }
-
+        
         .value-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            background: white;
+            border-radius: 12px;
+            padding: 35px 25px;
+            width: 250px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        .value-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--primary-color);
-        }
-
+        
         .value-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
         }
-
+        
         .value-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 1.8rem;
-            transition: var(--transition);
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: white;
         }
-
-        .value-card:hover .value-icon {
-            transform: scale(1.1) rotate(5deg);
+        
+        .compassion .value-icon {
+            background: #e74c3c;
         }
-
-        .value-card h3 {
+        
+        .innovation .value-icon {
+            background: #3498db;
+        }
+        
+        .community .value-icon {
+            background: #2ecc71;
+        }
+        
+        .sustainability .value-icon {
+            background: #f39c12;
+        }
+        
+        .value-title {
             font-size: 1.5rem;
+            color: #2c3e50;
             margin-bottom: 15px;
-            color: var(--dark-color);
-        }
-
-        .value-card p {
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Gallery Section */
-        .gallery-section {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .gallery-item {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            position: relative;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            color: white;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        /* Gallery Modal */
-        .gallery-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .gallery-modal.active {
-            display: flex;
-            opacity: 1;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-image {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        .modal-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        .modal-nav:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .modal-prev {
-            left: 20px;
-        }
-
-        .modal-next {
-            right: 20px;
-        }
-
-        .image-counter {
-            position: absolute;
-            bottom: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            opacity: 0.9;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 32px;
-            border-radius: 50px;
             font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
         }
-
-        .btn.primary {
-            background: var(--white);
-            color: var(--primary-color);
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .btn.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 80px 0 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .footer-logo p {
-            color: rgba(255, 255, 255, 0.7);
+        
+        .value-description {
+            color: #7f8c8d;
             line-height: 1.6;
+            font-size: 1rem;
         }
-
-        .footer-links h4, .footer-contact h4 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: var(--transition);
-            display: block;
-        }
-
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-
-        .email-link {
-            display: block;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .email-link:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .founder-content {
-                grid-template-columns: 1fr;
-                gap: 50px;
+        
+        @media (max-width: 1100px) {
+            .values-container {
+                gap: 20px;
             }
             
-            .founder-image {
-                transform: none;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
+            .value-card {
+                width: 220px;
             }
         }
-
-        @media (max-width: 768px) {
-            .founder-hero {
-                padding: 120px 0 80px;
+        
+        @media (max-width: 900px) {
+            .values-container {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .founder-hero h1 {
-                font-size: 2.8rem;
+            .value-card {
+                width: 100%;
+                max-width: 400px;
+                flex-direction: row;
+                text-align: left;
+                padding: 25px;
             }
             
-            .founder-hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .modal-close {
-                top: 10px;
-                right: 10px;
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
-            }
-
-            .modal-nav {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-
-            .modal-prev {
-                left: 10px;
-            }
-
-            .modal-next {
-                right: 10px;
+            .value-icon {
+                margin-bottom: 0;
+                margin-right: 20px;
+                flex-shrink: 0;
             }
         }
-
-        @media (max-width: 576px) {
-            .founder-hero h1 {
+        
+        @media (max-width: 600px) {
+            h1 {
                 font-size: 2.2rem;
             }
             
-            .founder-bio h2 {
-                font-size: 2rem;
+            .value-card {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .cta-section h2 {
-                font-size: 2rem;
+            .value-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
             }
-        }
-
-        /* Animation for elements */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.6s;
         }
     </style>
 </head>
 <body>
-    <!-- Language Toggle -->
-    <div class="language-toggle">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="pt">PT</button>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="/index.html">
-                    <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo">
-                </a>
-            </div>
-            <div class="nav-menu">
-                <a href="/index.html" class="nav-link">
-                    <span class="en-text">Home</span>
-                    <span class="pt-text" style="display: none;">Início</span>
-                </a>
-                <a href="/projects.html" class="nav-link">
-                    <span class="en-text">Projects</span>
-                    <span class="pt-text" style="display: none;">Projetos</span>
-                </a>
-                <a href="/founder.html" class="nav-link active">
-                    <span class="en-text">Founder</span>
-                    <span class="pt-text" style="display: none;">Fundador</span>
-                </a>
-                <a href="/learnings.html" class="nav-link">
-                    <span class="en-text">Learnings</span>
-                    <span class="pt-text" style="display: none;">Aprendizados</span>
-                </a>
-                <a href="/partners.html" class="nav-link">
-                    <span class="en-text">Partners</span>
-                    <span class="pt-text" style="display: none;">Parceiros</span>
-                </a>
-                <a href="/contact.html" class="nav-link">
-                    <span class="en-text">Join Us</span>
-                    <span class="pt-text" style="display: none;">Junte-se a Nós</span>
-                </a>
-            </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Founder Hero -->
-    <section class="founder-hero">
-        <div class="container">
-            <h1 class="en-text fade-in-up">Meet Our Founder</h1>
-            <h1 class="pt-text fade-in-up" style="display: none;">Conheça o Nosso Fundador</h1>
-            <p class="en-text fade-in-up delay-1">The vision behind Leve's mission to build resilient communities</p>
-            <p class="pt-text fade-in-up delay-1" style="display: none;">A visão por trás da missão da Leve de construir comunidades resilientes</p>
-        </div>
-    </section>
-
-    <!-- Founder Story -->
-    <section class="founder-story">
-        <div class="container">
-            <div class="founder-content">
-                <div class="founder-image fade-in-up">
-                    <img src="https://i.ibb.co/1fqjsbLT/00057-File.jpg" alt="Aditya Banerjee, Founder of Leve">
-                </div>
-                <div class="founder-bio fade-in-up delay-1">
-                    <h2>Aditya Banerjee</h2>
-                    <p class="en-text">Hi! I'm Aditya, the founder of Leve. Our mission is simple: to help young people, like you and me, build resilience and learn how to deal with life's ups and downs.</p>
-                    <p class="pt-text" style="display: none;">Olá! Eu sou o Aditya, o fundador da Leve. A nossa missão é simples mas muito importante: ajudar jovens como eu e tu a ganhar mais resiliência e aprender a lidar com os altos e baixos da vida.</p>
-                    
-                    <p class="en-text">It all started in a small town in Portugal, where I realized that many of us need a safe space to talk, share, and grow together. At Leve, we believe you don't have to carry the weight of the world on your own, it's so much easier when you've got a community by your side.</p>
-                    <p class="pt-text" style="display: none;">Tudo começou numa pequena cidade em Portugal, onde percebi que muitos de nós precisamos de um espaço seguro para falar, partilhar e crescer juntos. Na Leve, acreditamos que não precisamos carregar o mundo sozinhos, é muito mais fácil quando temos uma comunidade ao nosso lado.</p>
-                    
-                    <div class="founder-quote">
-                        <p class="en-text">"Being strong doesn't mean having no problems, it means having the courage to face them, step by step."</p>
-                        <p class="pt-text" style="display: none;">"Ser forte não é não ter problemas, é ter coragem de os enfrentar, passo a passo."</p>
-                    </div>
-                    
-                    <p class="en-text">We want to create moments to connect, activities that make us feel good, and, above all, show that it's totally okay to ask for help. Through our projects like BioRainha, Art Caldas, and Me Leve, we're building bridges between generations and creating sustainable practices that benefit our entire community.</p>
-                    <p class="pt-text" style="display: none;">Queremos criar momentos de partilha, atividades que nos façam sentir bem e, acima de tudo, mostrar que está tudo bem pedir ajuda. Através dos nossos projetos como BioRainha, Art Caldas e Me Leve, estamos a construir pontes entre gerações e a criar práticas sustentáveis que beneficiam toda a nossa comunidade.</p>
+    <div class="container">
+        <header>
+            <h1>Our Mission & Values</h1>
+            <p class="subtitle">Guiding principles that shape our work and define our approach to creating positive change</p>
+        </header>
+        
+        <div class="values-container">
+            <div class="value-card compassion">
+                <div class="value-icon">❤️</div>
+                <div class="value-content">
+                    <h3 class="value-title">Compassion</h3>
+                    <p class="value-description">We approach every challenge with empathy and understanding</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Mission & Values -->
-    <section class="mission-values">
-        <div class="container">
-            <h2 class="section-title en-text fade-in-up">Our Mission & Values</h2>
-            <h2 class="section-title pt-text fade-in-up" style="display: none;">Nossa Missão & Valores</h2>
-            <div class="values-grid">
-                <div class="value-card fade-in-up delay-1">
-                    <div class="value-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3 class="en-text">Compassion</h3>
-                    <h3 class="pt-text" style="display: none;">Compaixão</h3>
-                    <p class="en-text">We approach every challenge with empathy and understanding</p>
-                    <p class="pt-text" style="display: none;">Abordamos cada desafio com empatia e compreensão</p>
-                </div>
-                <div class="value-card fade-in-up delay-2">
-                    <div class="value-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="en-text">Community</h3>
-                    <h3 class="pt-text" style="display: none;">Comunidade</h3>
-                    <p class="en-text">We believe in the power of collective action and support</p>
-                    <p class="pt-text" style="display: none;">Acreditamos no poder da ação e apoio coletivos</p>
-                </div>
-                <div class="value-card fade-in-up delay-3">
-                    <div class="value-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3 class="en-text">Sustainability</h3>
-                    <h3 class="pt-text" style="display: none;">Sustentabilidade</h3>
-                    <p class="en-text">We create solutions that are environmentally and socially sustainable</p>
-                    <p class="pt-text" style="display: none;">Criamos soluções ambiental e socialmente sustentáveis</p>
-                </div>
-                <div class="value-card fade-in-up delay-1">
-                    <div class="value-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="en-text">Innovation</h3>
-                    <h3 class="pt-text" style="display: none;">Inovação</h3>
-                    <p class="en-text">We embrace creative approaches to solve community challenges</p>
-                    <p class="pt-text" style="display: none;">Adotamos abordagens criativas para resolver desafios comunitários</p>
+            
+            <div class="value-card innovation">
+                <div class="value-icon">💡</div>
+                <div class="value-content">
+                    <h3 class="value-title">Innovation</h3>
+                    <p class="value-description">We embrace creative approaches to solve community challenges</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Image Gallery -->
-    <section class="gallery-section">
-        <div class="container">
-            <h2 class="section-title en-text fade-in-up">Leve in Action</h2>
-            <h2 class="section-title pt-text fade-in-up" style="display: none;">Leve em Ação</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item fade-in-up delay-1">
-                    <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Leve community workshop">
-                    <div class="gallery-overlay">
-                        <p class="en-text">Community Workshop</p>
-                        <p class="pt-text" style="display: none;">Workshop Comunitário</p>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in-up delay-2">
-                    <img src="https://i.ibb.co/nqj8HBGF/00062-File.jpg" alt="Youth engagement activity">
-                    <div class="gallery-overlay">
-                        <p class="en-text">Youth Engagement</p>
-                        <p class="pt-text" style="display: none;">Envolvimento Juvenil</p>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in-up delay-3">
-                    <img src="https://i.ibb.co/BKLks1Y5/00029-File.jpg" alt="Intergenerational connection">
-                    <div class="gallery-overlay">
-                        <p class="en-text">Intergenerational Connection</p>
-                        <p class="pt-text" style="display: none;">Conexão Intergeracional</p>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in-up delay-1">
-                    <img src="https://i.ibb.co/dJj8BpxT/00063-File.jpg" alt="Sustainable practices in action">
-                    <div class="gallery-overlay">
-                        <p class="en-text">Sustainable Practices</p>
-                        <p class="pt-text" style="display: none;">Práticas Sustentáveis</p>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in-up delay-2">
-                    <img src="https://i.ibb.co/fd1CmMZb/00046-File.jpg" alt="Leve community event">
-                    <div class="gallery-overlay">
-                        <p class="en-text">Community Event</p>
-                        <p class="pt-text" style="display: none;">Evento Comunitário</p>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in-up delay-3">
-                    <img src="https://i.ibb.co/XZ4LRYHy/00058-File.jpg" alt="Leve team celebration">
-                    <div class="gallery-overlay">
-                        <p class="en-text">Team Celebration</p>
-                        <p class="pt-text" style="display: none;">Celebração da Equipa</p>
-                    </div>
+            
+            <div class="value-card community">
+                <div class="value-icon">🤝</div>
+                <div class="value-content">
+                    <h3 class="value-title">Community</h3>
+                    <p class="value-description">We believe in the power of collective action and support</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Gallery Modal -->
-    <div class="gallery-modal" id="galleryModal">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">
-                <i class="fas fa-times"></i>
-            </button>
-            <button class="modal-nav modal-prev" id="modalPrev">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="modal-nav modal-next" id="modalNext">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <img class="modal-image" id="modalImage" src="" alt="">
-            <div class="image-counter" id="imageCounter"></div>
+            
+            <div class="value-card sustainability">
+                <div class="value-icon">🌱</div>
+                <div class="value-content">
+                    <h3 class="value-title">Sustainability</h3>
+                    <p class="value-description">We create solutions that are environmentally and socially sustainable</p>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="en-text fade-in-up">Inspired by our story?</h2>
-            <h2 class="pt-text fade-in-up" style="display: none;">Inspirado pela nossa história?</h2>
-            <p class="en-text fade-in-up delay-1">Join our movement and help create positive change in your community</p>
-            <p class="pt-text fade-in-up delay-1" style="display: none;">Junte-se ao nosso movimento e ajude a criar mudanças positivas na sua comunidade</p>
-            <a href="/contact.html" class="btn primary en-text fade-in-up delay-2">Get Involved</a>
-            <a href="/contact.html" class="btn primary pt-text fade-in-up delay-2" style="display: none;">Envolva-se</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Leve</h3>
-                    <p class="en-text">Building Generations, Building Resilience</p>
-                    <p class="pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência</p>
-                </div>
-                <div class="footer-links">
-                    <h4 class="en-text">Quick Links</h4>
-                    <h4 class="pt-text" style="display: none;">Links Rápidos</h4>
-                    <ul>
-                        <li>
-                            <a href="/index.html">
-                                <span class="en-text">Home</span>
-                                <span class="pt-text" style="display: none;">Início</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/projects.html">
-                                <span class="en-text">Projects</span>
-                                <span class="pt-text" style="display: none;">Projetos</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/founder.html">
-                                <span class="en-text">Founder</span>
-                                <span class="pt-text" style="display: none;">Fundador</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/learnings.html">
-                                <span class="en-text">Learnings</span>
-                                <span class="pt-text" style="display: none;">Aprendizados</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/partners.html">
-                                <span class="en-text">Partners</span>
-                                <span class="pt-text" style="display: none;">Parceiros</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/contact.html">
-                                <span class="en-text">Join Us</span>
-                                <span class="pt-text" style="display: none;">Junte-se a Nós</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4 class="en-text">Get In Touch</h4>
-                    <h4 class="pt-text" style="display: none;">Entre em Contato</h4>
-                    <a href="mailto:de.leve@zohomail.eu" class="email-link">de.leve@zohomail.eu</a>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="en-text">&copy; 2023, Aditya Banerjee, All rights reserved</p>
-                <p class="pt-text" style="display: none;">&copy; 2023, Aditya Banerjee, Todos os direitos reservados</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Gallery Modal functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            const modal = document.getElementById('galleryModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalClose = document.getElementById('modalClose');
-            const modalPrev = document.getElementById('modalPrev');
-            const modalNext = document.getElementById('modalNext');
-            const imageCounter = document.getElementById('imageCounter');
-            let currentImageIndex = 0;
-            const totalImages = galleryItems.length;
-
-            // Open modal when gallery item is clicked
-            galleryItems.forEach((item, index) => {
-                item.addEventListener('click', () => {
-                    currentImageIndex = index;
-                    openModal();
-                });
-            });
-
-            function openModal() {
-                const currentImage = galleryItems[currentImageIndex].querySelector('img');
-                modalImage.src = currentImage.src;
-                modalImage.alt = currentImage.alt;
-                updateCounter();
-                
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeModal() {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            function nextImage() {
-                currentImageIndex = (currentImageIndex + 1) % totalImages;
-                const currentImage = galleryItems[currentImageIndex].querySelector('img');
-                modalImage.src = currentImage.src;
-                modalImage.alt = currentImage.alt;
-                updateCounter();
-            }
-
-            function prevImage() {
-                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
-                const currentImage = galleryItems[currentImageIndex].querySelector('img');
-                modalImage.src = currentImage.src;
-                modalImage.alt = currentImage.alt;
-                updateCounter();
-            }
-
-            function updateCounter() {
-                imageCounter.textContent = `${currentImageIndex + 1} / ${totalImages}`;
-            }
-
-            // Event listeners
-            modalClose.addEventListener('click', closeModal);
-            modalNext.addEventListener('click', nextImage);
-            modalPrev.addEventListener('click', prevImage);
-
-            // Close modal when clicking outside the image
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (!modal.classList.contains('active')) return;
-                
-                switch(e.key) {
-                    case 'Escape':
-                        closeModal();
-                        break;
-                    case 'ArrowRight':
-                        nextImage();
-                        break;
-                    case 'ArrowLeft':
-                        prevImage();
-                        break;
-                }
-            });
-        });
-    </script>
-    <script src="script.js"></script>
 </body>
 </html>
