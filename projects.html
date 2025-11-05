@@ -949,33 +949,135 @@
             color: var(--text-light);
         }
 
-        /* Footer */
+        /* MODERN FOOTER REDESIGN */
         .footer {
-            background: var(--dark-bg);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            padding: 80px 0 20px;
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0 Q500,80 1000,0 L1000,100 L0,100 Z" fill="white" opacity="0.02"/></svg>');
+            background-size: cover;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .footer-logo-img {
-            max-width: 150px;
-            margin-bottom: 15px;
+            height: 50px;
+            filter: brightness(0) invert(1);
+            transition: var(--transition);
         }
 
-        .footer-logo p {
-            color: rgba(255, 255, 255, 0.7);
+        .footer-logo:hover .footer-logo-img {
+            transform: scale(1.05);
+        }
+
+        .footer-logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #34d399, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-tagline {
+            color: #94a3b8;
             line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 300px;
         }
 
-        .footer-links h4, .footer-contact h4 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+        .footer-newsletter {
+            margin-top: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: #10b981;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .newsletter-input::placeholder {
+            color: #64748b;
+        }
+
+        .newsletter-btn {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .footer-links h3, .footer-contact h3, .footer-social h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+        }
+
+        .footer-links h3::after, .footer-contact h3::after, .footer-social h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, #10b981, #34d399);
+            border-radius: 2px;
         }
 
         .footer-links ul {
@@ -984,60 +1086,135 @@
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: #94a3b8;
             text-decoration: none;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .footer-links a:hover {
             color: white;
-            padding-left: 5px;
+            transform: translateX(5px);
         }
 
-        .email-link {
-            display: block;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-            text-decoration: none;
-            transition: var(--transition);
+        .footer-links a i {
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
 
-        .email-link:hover {
-            color: white;
-        }
-
-        .social-links {
+        .footer-contact-info {
             display: flex;
+            flex-direction: column;
             gap: 15px;
         }
 
-        .social-links a {
+        .contact-item {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
+            align-items: flex-start;
+            gap: 12px;
+            color: #94a3b8;
+        }
+
+        .contact-item i {
+            color: #10b981;
+            margin-top: 2px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #94a3b8;
             text-decoration: none;
             transition: var(--transition);
         }
 
-        .social-links a:hover {
-            background: var(--primary-green);
-            transform: translateY(-3px);
+        .contact-item a:hover {
+            color: white;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: white;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .social-link i {
+            position: relative;
+            z-index: 1;
+            font-size: 1.2rem;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #64748b;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-legal a {
+            color: #64748b;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-legal a:hover {
+            color: #94a3b8;
         }
 
         /* Animation for elements */
@@ -1088,6 +1265,7 @@
 
             .footer-content {
                 grid-template-columns: 1fr 1fr;
+                gap: 40px;
             }
         }
 
@@ -1157,6 +1335,13 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
             }
 
             .gallery-modal-close {
@@ -1226,6 +1411,14 @@
             .timeline-date {
                 padding: 6px 12px;
                 font-size: 0.9rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-social-links {
+                justify-content: center;
             }
         }
     </style>
@@ -1713,69 +1906,118 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- MODERN FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="/index.html" class="footer-logo-link">
+                <div class="footer-brand">
+                    <div class="footer-logo">
                         <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo" class="footer-logo-img">
-                    </a>
-                    <p>
-                        <span class="en-text">Building Generations, Building Resilience</span>
-                        <span class="pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência</span>
-                    </p>
+                        <div class="footer-logo-text">Leve</div>
+                    </div>
+                    <p class="footer-tagline en-text">Building Generations, Building Resilience through sustainable community initiatives and intergenerational connections.</p>
+                    <p class="footer-tagline pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência através de iniciativas comunitárias sustentáveis e conexões intergeracionais.</p>
+                    
+                    <div class="footer-newsletter">
+                        <h4 class="en-text">Stay Updated</h4>
+                        <h4 class="pt-text" style="display: none;">Mantenha-se Atualizado</h4>
+                        <div class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Your email address">
+                            <button class="newsletter-btn en-text">Subscribe</button>
+                            <button class="newsletter-btn pt-text" style="display: none;">Subscrever</button>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="footer-links">
-                    <h4>
-                        <span class="en-text">Quick Links</span>
-                        <span class="pt-text" style="display: none;">Links Rápidos</span>
-                    </h4>
+                    <h3 class="en-text">Quick Links</h3>
+                    <h3 class="pt-text" style="display: none;">Links Rápidos</h3>
                     <ul>
                         <li><a href="/index.html">
+                            <i class="fas fa-chevron-right"></i>
                             <span class="en-text">Home</span>
                             <span class="pt-text" style="display: none;">Início</span>
                         </a></li>
                         <li><a href="/projects.html">
+                            <i class="fas fa-chevron-right"></i>
                             <span class="en-text">Projects</span>
                             <span class="pt-text" style="display: none;">Projetos</span>
                         </a></li>
                         <li><a href="/founder.html">
+                            <i class="fas fa-chevron-right"></i>
                             <span class="en-text">Founder</span>
                             <span class="pt-text" style="display: none;">Fundador</span>
                         </a></li>
                         <li><a href="/learnings.html">
+                            <i class="fas fa-chevron-right"></i>
                             <span class="en-text">Learnings</span>
                             <span class="pt-text" style="display: none;">Aprendizados</span>
                         </a></li>
                         <li><a href="/partners.html">
+                            <i class="fas fa-chevron-right"></i>
                             <span class="en-text">Partners</span>
                             <span class="pt-text" style="display: none;">Parceiros</span>
                         </a></li>
                         <li><a href="/contact.html">
+                            <i class="fas fa-chevron-right"></i>
                             <span class="en-text">Join Us</span>
                             <span class="pt-text" style="display: none;">Junte-se</span>
                         </a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-contact">
-                    <h4>
-                        <span class="en-text">Get In Touch</span>
-                        <span class="pt-text" style="display: none;">Contacte-nos</span>
-                    </h4>
-                    <a href="mailto:de.leve@zohomail.eu" class="email-link">de.leve@zohomail.eu</a>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    <h3 class="en-text">Contact Us</h3>
+                    <h3 class="pt-text" style="display: none;">Contacte-nos</h3>
+                    <div class="footer-contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:de.leve@zohomail.eu">de.leve@zohomail.eu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="en-text">Caldas da Rainha, Portugal</span>
+                            <span class="pt-text" style="display: none;">Caldas da Rainha, Portugal</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span class="en-text">Mon - Fri: 9:00 - 17:00</span>
+                            <span class="pt-text" style="display: none;">Seg - Sex: 9:00 - 17:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <h3 class="en-text">Follow Us</h3>
+                    <h3 class="pt-text" style="display: none;">Siga-nos</h3>
+                    <div class="footer-social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>
-                    <span class="en-text">&copy; 2023, Aditya Banerjee, All rights reserved</span>
-                    <span class="pt-text" style="display: none;">&copy; 2023, Aditya Banerjee, Todos os direitos reservados</span>
-                </p>
+                <div class="footer-bottom-content">
+                    <p class="en-text">&copy; 2023 Leve. All rights reserved.</p>
+                    <p class="pt-text" style="display: none;">&copy; 2023 Leve. Todos os direitos reservados.</p>
+                    <div class="footer-legal">
+                        <a href="#" class="en-text">Privacy Policy</a>
+                        <a href="#" class="pt-text" style="display: none;">Política de Privacidade</a>
+                        <a href="#" class="en-text">Terms of Service</a>
+                        <a href="#" class="pt-text" style="display: none;">Termos de Serviço</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
