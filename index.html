@@ -846,7 +846,7 @@
             font-weight: 500;
         }
 
-        /* Footer */
+        /* Footer Styles */
         .footer {
             background: var(--dark-bg);
             color: white;
@@ -855,24 +855,96 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 40px;
         }
 
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
         .footer-logo-img {
             max-width: 150px;
-            margin-bottom: 15px;
+            margin-right: 15px;
         }
 
-        .footer-logo p {
+        .footer-logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .footer-tagline {
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 400px;
         }
 
-        .footer-links h4, .footer-contact h4 {
+        .footer-newsletter h4 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 350px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-btn {
+            padding: 12px 20px;
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background: var(--secondary-green);
+            transform: translateY(-2px);
+        }
+
+        .footer-links h3, .footer-contact h3, .footer-social h3 {
             margin-bottom: 20px;
             font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3::after, .footer-contact h3::after, .footer-social h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-green);
         }
 
         .footer-links ul {
@@ -881,13 +953,16 @@
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .footer-links a:hover {
@@ -895,24 +970,46 @@
             padding-left: 5px;
         }
 
-        .email-link {
-            display: block;
+        .footer-links i {
+            font-size: 0.8rem;
+            color: var(--primary-green);
+        }
+
+        .footer-contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            color: var(--primary-green);
+            width: 20px;
+        }
+
+        .contact-item a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: var(--transition);
         }
 
-        .email-link:hover {
+        .contact-item a:hover {
             color: white;
         }
 
-        .social-links {
+        .footer-social-links {
             display: flex;
             gap: 15px;
+            margin-top: 10px;
         }
 
-        .social-links a {
+        .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -925,7 +1022,7 @@
             transition: var(--transition);
         }
 
-        .social-links a:hover {
+        .social-link:hover {
             background: var(--primary-green);
             transform: translateY(-3px);
         }
@@ -935,6 +1032,27 @@
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-legal a:hover {
+            color: white;
         }
 
         /* Animation for elements */
@@ -1100,6 +1218,15 @@
 
             .stats-container {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
             }
         }
 
@@ -1424,121 +1551,116 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <!-- MODERN FOOTER -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="footer-logo">
-                    <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo" class="footer-logo-img">
-                    <div class="footer-logo-text">Leve</div>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo" class="footer-logo-img">
+                        <div class="footer-logo-text">Leve</div>
+                    </div>
+                    <p class="footer-tagline en-text">Building Generations, Building Resilience through sustainable community initiatives and intergenerational connections.</p>
+                    <p class="footer-tagline pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência através de iniciativas comunitárias sustentáveis e conexões intergeracionais.</p>
+                    
+                    <div class="footer-newsletter">
+                        <h4 class="en-text">Stay Updated</h4>
+                        <h4 class="pt-text" style="display: none;">Mantenha-se Atualizado</h4>
+                        <div class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Your email address">
+                            <button class="newsletter-btn en-text">Subscribe</button>
+                            <button class="newsletter-btn pt-text" style="display: none;">Subscrever</button>
+                        </div>
+                    </div>
                 </div>
-                <p class="footer-tagline en-text">Building Generations, Building Resilience through sustainable community initiatives and intergenerational connections.</p>
-                <p class="footer-tagline pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência através de iniciativas comunitárias sustentáveis e conexões intergeracionais.</p>
                 
-                <div class="footer-newsletter">
-                    <h4 class="en-text">Stay Updated</h4>
-                    <h4 class="pt-text" style="display: none;">Mantenha-se Atualizado</h4>
-                    <div class="newsletter-form">
-                        <input type="email" class="newsletter-input" placeholder="Your email address">
-                        <button class="newsletter-btn en-text">Subscribe</button>
-                        <button class="newsletter-btn pt-text" style="display: none;">Subscrever</button>
+                <div class="footer-links">
+                    <h3 class="en-text">Quick Links</h3>
+                    <h3 class="pt-text" style="display: none;">Links Rápidos</h3>
+                    <ul>
+                        <li><a href="/index.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Home</span>
+                            <span class="pt-text" style="display: none;">Início</span>
+                        </a></li>
+                        <li><a href="/projects.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Projects</span>
+                            <span class="pt-text" style="display: none;">Projetos</span>
+                        </a></li>
+                        <li><a href="/founder.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Founder</span>
+                            <span class="pt-text" style="display: none;">Fundador</span>
+                        </a></li>
+                        <li><a href="/learnings.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Learnings</span>
+                            <span class="pt-text" style="display: none;">Aprendizados</span>
+                        </a></li>
+                        <li><a href="/partners.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Partners</span>
+                            <span class="pt-text" style="display: none;">Parceiros</span>
+                        </a></li>
+                        <li><a href="/contact.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Join Us</span>
+                            <span class="pt-text" style="display: none;">Junte-se</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="en-text">Contact Us</h3>
+                    <h3 class="pt-text" style="display: none;">Contacte-nos</h3>
+                    <div class="footer-contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:de.leve@zohomail.eu">de.leve@zohomail.eu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="en-text">Caldas da Rainha, Portugal</span>
+                            <span class="pt-text" style="display: none;">Caldas da Rainha, Portugal</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span class="en-text">Mon - Fri: 9:00 - 17:00</span>
+                            <span class="pt-text" style="display: none;">Seg - Sex: 9:00 - 17:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <h3 class="en-text">Follow Us</h3>
+                    <h3 class="pt-text" style="display: none;">Siga-nos</h3>
+                    <div class="footer-social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <div class="footer-links">
-                <h3 class="en-text">Quick Links</h3>
-                <h3 class="pt-text" style="display: none;">Links Rápidos</h3>
-                <ul>
-                    <li><a href="/index.html">
-                        <i class="fas fa-chevron-right"></i>
-                        <span class="en-text">Home</span>
-                        <span class="pt-text" style="display: none;">Início</span>
-                    </a></li>
-                    <li><a href="/projects.html">
-                        <i class="fas fa-chevron-right"></i>
-                        <span class="en-text">Projects</span>
-                        <span class="pt-text" style="display: none;">Projetos</span>
-                    </a></li>
-                    <li><a href="/founder.html">
-                        <i class="fas fa-chevron-right"></i>
-                        <span class="en-text">Founder</span>
-                        <span class="pt-text" style="display: none;">Fundador</span>
-                    </a></li>
-                    <li><a href="/learnings.html">
-                        <i class="fas fa-chevron-right"></i>
-                        <span class="en-text">Learnings</span>
-                        <span class="pt-text" style="display: none;">Aprendizados</span>
-                    </a></li>
-                    <li><a href="/partners.html">
-                        <i class="fas fa-chevron-right"></i>
-                        <span class="en-text">Partners</span>
-                        <span class="pt-text" style="display: none;">Parceiros</span>
-                    </a></li>
-                    <li><a href="/contact.html">
-                        <i class="fas fa-chevron-right"></i>
-                        <span class="en-text">Join Us</span>
-                        <span class="pt-text" style="display: none;">Junte-se</span>
-                    </a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-contact">
-                <h3 class="en-text">Contact Us</h3>
-                <h3 class="pt-text" style="display: none;">Contacte-nos</h3>
-                <div class="footer-contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:de.leve@zohomail.eu">de.leve@zohomail.eu</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span class="en-text">Caldas da Rainha, Portugal</span>
-                        <span class="pt-text" style="display: none;">Caldas da Rainha, Portugal</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <span class="en-text">Mon - Fri: 9:00 - 17:00</span>
-                        <span class="pt-text" style="display: none;">Seg - Sex: 9:00 - 17:00</span>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="en-text">&copy; 2023 Leve. All rights reserved.</p>
+                    <p class="pt-text" style="display: none;">&copy; 2023 Leve. Todos os direitos reservados.</p>
+                    <div class="footer-legal">
+                        <a href="#" class="en-text">Privacy Policy</a>
+                        <a href="#" class="pt-text" style="display: none;">Política de Privacidade</a>
+                        <a href="#" class="en-text">Terms of Service</a>
+                        <a href="#" class="pt-text" style="display: none;">Termos de Serviço</a>
                     </div>
                 </div>
             </div>
-            
-            <div class="footer-social">
-                <h3 class="en-text">Follow Us</h3>
-                <h3 class="pt-text" style="display: none;">Siga-nos</h3>
-                <div class="footer-social-links">
-                    <a href="#" class="social-link">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <div class="footer-bottom-content">
-                <p class="en-text">&copy; 2023 Leve. All rights reserved.</p>
-                <p class="pt-text" style="display: none;">&copy; 2023 Leve. Todos os direitos reservados.</p>
-                <div class="footer-legal">
-                    <a href="#" class="en-text">Privacy Policy</a>
-                    <a href="#" class="pt-text" style="display: none;">Política de Privacidade</a>
-                    <a href="#" class="en-text">Terms of Service</a>
-                    <a href="#" class="pt-text" style="display: none;">Termos de Serviço</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
         </div>
     </footer>
     
