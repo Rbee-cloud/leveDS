@@ -1288,66 +1288,80 @@
             .nav-menu {
                 position: fixed;
                 top: 70px;
-                right: -100%;
+                left: -100%;
+                width: 100%;
                 background: white;
-                width: 80%;
-                height: calc(100vh - 70px);
                 flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 50px;
+                text-align: center;
+                padding: 30px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
                 transition: var(--transition);
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             }
-
+            
             .nav-menu.active {
-                right: 0;
+                left: 0;
             }
-
+            
             .hamburger {
                 display: flex;
             }
-
-            .hamburger.active .bar:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
+            
             .hamburger.active .bar:nth-child(2) {
                 opacity: 0;
             }
-
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
             .hamburger.active .bar:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
+                transform: translateY(-8px) rotate(-45deg);
             }
-
+            
+            .founder-hero {
+                padding: 120px 0 80px;
+            }
+            
             .founder-hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
-
+            
             .founder-hero p {
                 font-size: 1.1rem;
             }
-
-            .section-title {
-                font-size: 2.2rem;
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
-
-            .founder-bio h2 {
-                font-size: 2rem;
-            }
-
+            
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+            }
+            
+            .modal-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
             }
 
-            .footer-bottom-content {
+            .modal-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .modal-prev {
+                left: 10px;
+            }
+
+            .modal-next {
+                right: 10px;
+            }
+
+            .newsletter-form {
                 flex-direction: column;
-                gap: 15px;
-            }
-
-            .footer-legal {
-                justify-content: center;
             }
 
             .cookie-consent-banner {
@@ -1359,55 +1373,6 @@
                 justify-content: center;
             }
 
-            .modal-prev, .modal-next {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-
-            .modal-close {
-                top: -40px;
-                right: 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .founder-hero {
-                padding: 120px 0 80px;
-            }
-
-            .founder-hero h1 {
-                font-size: 2rem;
-            }
-
-            .founder-hero p {
-                font-size: 1rem;
-            }
-
-            .section {
-                padding: 70px 0;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .founder-bio h2 {
-                font-size: 1.7rem;
-            }
-
-            .founder-quote p {
-                font-size: 1.1rem;
-            }
-
-            .cta-section h2 {
-                font-size: 2rem;
-            }
-
-            .cookie-modal-content {
-                margin: 10px;
-            }
-
             .cookie-modal-footer {
                 flex-direction: column;
             }
@@ -1417,136 +1382,209 @@
                 justify-content: center;
             }
         }
+
+        @media (max-width: 576px) {
+            .founder-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .founder-bio h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .footer-social-links {
+                justify-content: center;
+            }
+
+            .cookie-modal-content {
+                margin: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Language Toggle -->
     <div class="language-toggle">
-        <button class="lang-btn active" id="lang-en">EN</button>
-        <button class="lang-btn" id="lang-pt">PT</button>
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pt">PT</button>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="https://i.imgur.com/3lS3eQp.png" alt="Leve Logo">
-            </a>
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo">
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="/index.html" class="nav-link">
+                    <span class="en-text">Home</span>
+                    <span class="pt-text" style="display: none;">Início</span>
+                </a>
+                <a href="/projects.html" class="nav-link">
+                    <span class="en-text">Projects</span>
+                    <span class="pt-text" style="display: none;">Projetos</span>
+                </a>
+                <a href="/founder.html" class="nav-link active">
+                    <span class="en-text">Founder</span>
+                    <span class="pt-text" style="display: none;">Fundador</span>
+                </a>
+                <a href="/learnings.html" class="nav-link">
+                    <span class="en-text">Learnings</span>
+                    <span class="pt-text" style="display: none;">Aprendizados</span>
+                </a>
+                <a href="/partners.html" class="nav-link">
+                    <span class="en-text">Partners</span>
+                    <span class="pt-text" style="display: none;">Parceiros</span>
+                </a>
+                <a href="/contact.html" class="nav-link">
+                    <span class="en-text">Join Us</span>
+                    <span class="pt-text" style="display: none;">Junte-se a Nós</span>
+                </a>
+            </div>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="founder-story.html" class="nav-link active">Founder Story</a>
-                <a href="products.html" class="nav-link">Products</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-            </div>
         </div>
     </nav>
 
-    <!-- Founder Hero Section -->
+    <!-- Founder Hero -->
     <section class="founder-hero">
         <div class="container">
-            <h1 class="fade-in-up" data-lang-en="The Vision Behind Leve" data-lang-pt="A Visão Por Trás da Leve">The Vision Behind Leve</h1>
-            <p class="fade-in-up delay-1" data-lang-en="Meet the passionate founder whose journey led to creating a brand that empowers wellness and sustainability" data-lang-pt="Conheça a fundadora apaixonada cuja jornada levou à criação de uma marca que capacita o bem-estar e a sustentabilidade">Meet the passionate founder whose journey led to creating a brand that empowers wellness and sustainability</p>
+            <h1 class="en-text fade-in-up">Meet Our Founder</h1>
+            <h1 class="pt-text fade-in-up" style="display: none;">Conheça o Nosso Fundador</h1>
+            <p class="en-text fade-in-up delay-1">The vision behind Leve's mission to build resilient communities</p>
+            <p class="pt-text fade-in-up delay-1" style="display: none;">A visão por trás da missão da Leve de construir comunidades resilientes</p>
         </div>
     </section>
 
-    <!-- Founder Story Section -->
-    <section class="founder-story section">
+    <!-- Founder Story -->
+    <section class="founder-story">
         <div class="container">
             <div class="founder-content">
                 <div class="founder-image fade-in-up">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Founder of Leve">
+                    <img src="https://i.ibb.co/1fqjsbLT/00057-File.jpg" alt="Aditya Banerjee, Founder of Leve">
                 </div>
                 <div class="founder-bio fade-in-up delay-1">
-                    <h2 data-lang-en="Isabella Santos" data-lang-pt="Isabella Santos">Isabella Santos</h2>
-                    <p data-lang-en="With a background in environmental science and a passion for holistic wellness, Isabella founded Leve in 2018 after witnessing the disconnect between modern lifestyles and sustainable practices." data-lang-pt="Com formação em ciências ambientais e paixão pelo bem-estar holístico, Isabella fundou a Leve em 2018 após testemunhar a desconexão entre os estilos de vida modernos e as práticas sustentáveis.">With a background in environmental science and a passion for holistic wellness, Isabella founded Leve in 2018 after witnessing the disconnect between modern lifestyles and sustainable practices.</p>
-                    <p data-lang-en="Her journey began during a transformative trip to the Amazon rainforest, where she learned about traditional plant-based remedies from indigenous communities. This experience sparked her mission to bridge ancient wisdom with modern wellness needs." data-lang-pt="Sua jornada começou durante uma viagem transformadora à floresta amazônica, onde ela aprendeu sobre remédios tradicionais à base de plantas com comunidades indígenas. Essa experiência despertou sua missão de unir a sabedoria ancestral com as necessidades modernas de bem-estar.">Her journey began during a transformative trip to the Amazon rainforest, where she learned about traditional plant-based remedies from indigenous communities. This experience sparked her mission to bridge ancient wisdom with modern wellness needs.</p>
+                    <h2>Aditya Banerjee</h2>
+                    <p class="en-text">Hi! I'm Aditya, the founder of Leve. Our mission is simple: to help young people, like you and me, build resilience and learn how to deal with life's ups and downs.</p>
+                    <p class="pt-text" style="display: none;">Olá! Eu sou o Aditya, o fundador da Leve. A nossa missão é simples mas muito importante: ajudar jovens como eu e tu a ganhar mais resiliência e aprender a lidar com os altos e baixos da vida.</p>
+                    
+                    <p class="en-text">It all started in a small town in Portugal, where I realized that many of us need a safe space to talk, share, and grow together. At Leve, we believe you don't have to carry the weight of the world on your own, it's so much easier when you've got a community by your side.</p>
+                    <p class="pt-text" style="display: none;">Tudo começou numa pequena cidade em Portugal, onde percebi que muitos de nós precisamos de um espaço seguro para falar, partilhar e crescer juntos. Na Leve, acreditamos que não precisamos carregar o mundo sozinhos, é muito mais fácil quando temos uma comunidade ao nosso lado.</p>
+                    
                     <div class="founder-quote">
-                        <p data-lang-en="'Wellness shouldn't be complicated or come at the expense of our planet. At Leve, we believe in creating products that are good for you and gentle on the Earth.'" data-lang-pt="'O bem-estar não deve ser complicado ou vir às custas do nosso planeta. Na Leve, acreditamos em criar produtos que são bons para você e gentis com a Terra.'">'Wellness shouldn't be complicated or come at the expense of our planet. At Leve, we believe in creating products that are good for you and gentle on the Earth.'</p>
+                        <p class="en-text">"Being strong doesn't mean having no problems, it means having the courage to face them, step by step."</p>
+                        <p class="pt-text" style="display: none;">"Ser forte não é não ter problemas, é ter coragem de os enfrentar, passo a passo."</p>
                     </div>
-                    <p data-lang-en="Under Isabella's leadership, Leve has grown from a small kitchen experiment to a recognized brand in the wellness industry, all while maintaining its commitment to sustainability and ethical practices." data-lang-pt="Sob a liderança de Isabella, a Leve cresceu de um pequeno experimento de cozinha para uma marca reconhecida na indústria de bem-estar, mantendo seu compromisso com a sustentabilidade e práticas éticas.">Under Isabella's leadership, Leve has grown from a small kitchen experiment to a recognized brand in the wellness industry, all while maintaining its commitment to sustainability and ethical practices.</p>
-                    <a href="contact.html" class="btn primary" data-lang-en="Connect With Us" data-lang-pt="Conecte-se Conosco">Connect With Us</a>
+                    
+                    <p class="en-text">We want to create moments to connect, activities that make us feel good, and, above all, show that it's totally okay to ask for help. Through our projects like BioRainha, Art Caldas, and Me Leve, we're building bridges between generations and creating sustainable practices that benefit our entire community.</p>
+                    <p class="pt-text" style="display: none;">Queremos criar momentos de partilha, atividades que nos façam sentir bem e, acima de tudo, mostrar que é totalmente normal pedir ajuda. Através dos nossos projetos como BioRainha, Art Caldas e Me Leve, estamos a construir pontes entre gerações e a criar práticas sustentáveis que beneficiam toda a nossa comunidade.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Mission & Values Section -->
-    <section class="mission-values section">
+    <section class="mission-values">
         <div class="container">
-            <h2 class="fade-in-up" data-lang-en="Our Mission & Values" data-lang-pt="Nossa Missão e Valores">Our Mission & Values</h2>
-            <p class="mission-subtitle fade-in-up delay-1" data-lang-en="The principles that guide everything we do at Leve" data-lang-pt="Os princípios que guiam tudo o que fazemos na Leve">The principles that guide everything we do at Leve</p>
+            <h2 class="en-text">Our Mission & Values</h2>
+            <h2 class="pt-text" style="display: none;">A Nossa Missão & Valores</h2>
+            
+            <p class="mission-subtitle en-text">Building resilient communities through compassion, innovation, and sustainable practices</p>
+            <p class="mission-subtitle pt-text" style="display: none;">Construindo comunidades resilientes através da compaixão, inovação e práticas sustentáveis</p>
             
             <div class="values-container">
-                <div class="value-card compassion fade-in-up delay-1">
+                <div class="value-card compassion fade-in-up">
                     <div class="value-icon">
                         <i class="fas fa-heart"></i>
                     </div>
-                    <div class="value-content">
-                        <h3 class="value-title" data-lang-en="Compassion" data-lang-pt="Compaixão">Compassion</h3>
-                        <p class="value-description" data-lang-en="We approach wellness with empathy, creating products that genuinely care for people and communities." data-lang-pt="Abordamos o bem-estar com empatia, criando produtos que genuinamente cuidam das pessoas e comunidades.">We approach wellness with empathy, creating products that genuinely care for people and communities.</p>
-                    </div>
+                    <h3 class="value-title en-text">Compassion</h3>
+                    <h3 class="value-title pt-text" style="display: none;">Compaixão</h3>
+                    <p class="value-description en-text">Creating safe spaces where everyone feels heard, valued, and supported.</p>
+                    <p class="value-description pt-text" style="display: none;">Criando espaços seguros onde todos se sentem ouvidos, valorizados e apoiados.</p>
                 </div>
                 
-                <div class="value-card innovation fade-in-up delay-2">
+                <div class="value-card innovation fade-in-up delay-1">
                     <div class="value-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
-                    <div class="value-content">
-                        <h3 class="value-title" data-lang-en="Innovation" data-lang-pt="Inovação">Innovation</h3>
-                        <p class="value-description" data-lang-en="We blend traditional wisdom with modern science to create effective, sustainable wellness solutions." data-lang-pt="Combinamos sabedoria tradicional com ciência moderna para criar soluções de bem-estar eficazes e sustentáveis.">We blend traditional wisdom with modern science to create effective, sustainable wellness solutions.</p>
-                    </div>
+                    <h3 class="value-title en-text">Innovation</h3>
+                    <h3 class="value-title pt-text" style="display: none;">Inovação</h3>
+                    <p class="value-description en-text">Developing creative solutions to address community challenges.</p>
+                    <p class="value-description pt-text" style="display: none;">Desenvolvendo soluções criativas para enfrentar os desafios da comunidade.</p>
                 </div>
                 
-                <div class="value-card community fade-in-up delay-3">
+                <div class="value-card community fade-in-up delay-2">
                     <div class="value-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <div class="value-content">
-                        <h3 class="value-title" data-lang-en="Community" data-lang-pt="Comunidade">Community</h3>
-                        <p class="value-description" data-lang-en="We believe in the power of collective wellbeing and actively support the communities we source from." data-lang-pt="Acreditamos no poder do bem-estar coletivo e apoiamos ativamente as comunidades de onde obtemos nossos ingredientes.">We believe in the power of collective wellbeing and actively support the communities we source from.</p>
-                    </div>
+                    <h3 class="value-title en-text">Community</h3>
+                    <h3 class="value-title pt-text" style="display: none;">Comunidade</h3>
+                    <p class="value-description en-text">Fostering connections and collaboration across generations.</p>
+                    <p class="value-description pt-text" style="display: none;">Promovendo conexões e colaboração entre gerações.</p>
                 </div>
                 
-                <div class="value-card sustainability fade-in-up delay-1">
+                <div class="value-card sustainability fade-in-up delay-3">
                     <div class="value-icon">
                         <i class="fas fa-leaf"></i>
                     </div>
-                    <div class="value-content">
-                        <h3 class="value-title" data-lang-en="Sustainability" data-lang-pt="Sustentabilidade">Sustainability</h3>
-                        <p class="value-description" data-lang-en="We're committed to environmental stewardship, using eco-friendly packaging and sustainable sourcing practices." data-lang-pt="Estamos comprometidos com a gestão ambiental, usando embalagens ecológicas e práticas de abastecimento sustentáveis.">We're committed to environmental stewardship, using eco-friendly packaging and sustainable sourcing practices.</p>
-                    </div>
+                    <h3 class="value-title en-text">Sustainability</h3>
+                    <h3 class="value-title pt-text" style="display: none;">Sustentabilidade</h3>
+                    <p class="value-description en-text">Building practices that benefit both people and the planet.</p>
+                    <p class="value-description pt-text" style="display: none;">Construindo práticas que beneficiam tanto as pessoas como o planeta.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery-section section">
+    <section class="gallery-section">
         <div class="container">
-            <h2 class="section-title fade-in-up" data-lang-en="Our Journey" data-lang-pt="Nossa Jornada">Our Journey</h2>
+            <h2 class="section-title en-text">Moments That Matter</h2>
+            <h2 class="section-title pt-text" style="display: none;">Momentos Que Importam</h2>
+            
             <div class="gallery-grid">
                 <div class="gallery-item fade-in-up">
-                    <img src="https://images.unsplash.com/photo-1556760544-74068565f05c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Leve Product Development">
+                    <img src="https://i.ibb.co/7xwW41CF/00066-File.jpg" alt="Founder working with community">
                     <div class="gallery-overlay">
-                        <h3 data-lang-en="Product Development" data-lang-pt="Desenvolvimento de Produtos">Product Development</h3>
+                        <h3 class="en-text">Community Workshop</h3>
+                        <h3 class="pt-text" style="display: none;">Workshop Comunitário</h3>
+                        <p class="en-text">Engaging with local youth</p>
+                        <p class="pt-text" style="display: none;">Interagindo com jovens locais</p>
                     </div>
                 </div>
+                
                 <div class="gallery-item fade-in-up delay-1">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sustainable Sourcing">
+                    <img src="https://i.ibb.co/GQPz9b02/00061-File.jpg" alt="Founder at sustainability project">
                     <div class="gallery-overlay">
-                        <h3 data-lang-en="Sustainable Sourcing" data-lang-pt="Abastecimento Sustentável">Sustainable Sourcing</h3>
+                        <h3 class="en-text">Sustainability Project</h3>
+                        <h3 class="pt-text" style="display: none;">Projeto de Sustentabilidade</h3>
+                        <p class="en-text">Building eco-friendly initiatives</p>
+                        <p class="pt-text" style="display: none;">Construindo iniciativas ecológicas</p>
                     </div>
                 </div>
+                
                 <div class="gallery-item fade-in-up delay-2">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Community Engagement">
+                    <img src="https://i.ibb.co/1fqjsbLT/00057-File.jpg" alt="Founder speaking at event">
                     <div class="gallery-overlay">
-                        <h3 data-lang-en="Community Engagement" data-lang-pt="Engajamento Comunitário">Community Engagement</h3>
+                        <h3 class="en-text">Community Event</h3>
+                        <h3 class="pt-text" style="display: none;">Evento Comunitário</h3>
+                        <p class="en-text">Sharing the Leve vision</p>
+                        <p class="pt-text" style="display: none;">Partilhando a visão da Leve</p>
                     </div>
                 </div>
             </div>
@@ -1554,22 +1592,31 @@
     </section>
 
     <!-- Gallery Modal -->
-    <div class="gallery-modal">
+    <div class="gallery-modal" id="galleryModal">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <button class="modal-nav modal-prev" id="modalPrev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="modal-nav modal-next" id="modalNext">
+            <i class="fas fa-chevron-right"></i>
+        </button>
         <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <button class="modal-nav modal-prev"><i class="fas fa-chevron-left"></i></button>
-            <img class="modal-image" src="" alt="">
-            <button class="modal-nav modal-next"><i class="fas fa-chevron-right"></i></button>
-            <div class="image-counter"></div>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="image-counter" id="imageCounter"></div>
         </div>
     </div>
 
     <!-- CTA Section -->
-    <section class="cta-section section">
+    <section class="cta-section">
         <div class="container">
-            <h2 class="fade-in-up" data-lang-en="Join Our Wellness Community" data-lang-pt="Junte-se à Nossa Comunidade de Bem-Estar">Join Our Wellness Community</h2>
-            <p class="fade-in-up delay-1" data-lang-en="Be part of a movement that celebrates sustainable wellness and conscious living." data-lang-pt="Faça parte de um movimento que celebra o bem-estar sustentável e a vida consciente.">Be part of a movement that celebrates sustainable wellness and conscious living.</p>
-            <a href="contact.html" class="btn secondary fade-in-up delay-2" data-lang-en="Get In Touch" data-lang-pt="Entre em Contato">Get In Touch</a>
+            <h2 class="en-text fade-in-up">Join Our Community</h2>
+            <h2 class="pt-text fade-in-up" style="display: none;">Junte-se à Nossa Comunidade</h2>
+            <p class="en-text fade-in-up delay-1">Be part of the movement to build resilient communities and create positive change.</p>
+            <p class="pt-text fade-in-up delay-1" style="display: none;">Faça parte do movimento para construir comunidades resilientes e criar mudanças positivas.</p>
+            <a href="/contact.html" class="btn secondary fade-in-up delay-2">
+                <span class="en-text">Get Involved</span>
+                <span class="pt-text" style="display: none;">Envolva-se</span>
+            </a>
         </div>
     </section>
 
@@ -1578,67 +1625,107 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="index.html" class="footer-logo">
-                        <img src="https://i.imgur.com/3lS3eQp.png" alt="Leve Logo" class="footer-logo-img">
+                    <a href="/index.html" class="footer-logo">
+                        <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo" class="footer-logo-img">
                     </a>
-                    <p class="footer-tagline" data-lang-en="Creating sustainable wellness products that nourish your body and respect our planet." data-lang-pt="Criando produtos de bem-estar sustentáveis que nutrem seu corpo e respeitam nosso planeta.">Creating sustainable wellness products that nourish your body and respect our planet.</p>
+                    <p class="footer-tagline en-text">Building resilient communities through compassion, innovation, and sustainable practices.</p>
+                    <p class="footer-tagline pt-text" style="display: none;">Construindo comunidades resilientes através da compaixão, inovação e práticas sustentáveis.</p>
+                    
                     <div class="footer-newsletter">
-                        <h3 data-lang-en="Stay Updated" data-lang-pt="Mantenha-se Atualizado">Stay Updated</h3>
-                        <form class="newsletter-form">
-                            <input type="email" class="newsletter-input" placeholder="Your email address" data-lang-en-placeholder="Your email address" data-lang-pt-placeholder="Seu endereço de email">
-                            <button type="submit" class="newsletter-btn" data-lang-en="Subscribe" data-lang-pt="Inscrever-se">Subscribe</button>
-                        </form>
+                        <h4 class="en-text">Stay Updated</h4>
+                        <h4 class="pt-text" style="display: none;">Mantenha-se Atualizado</h4>
+                        <div class="newsletter-form">
+                            <input type="email" class="newsletter-input en-text" placeholder="Your email address">
+                            <input type="email" class="newsletter-input pt-text" placeholder="O seu endereço de email" style="display: none;">
+                            <button class="newsletter-btn en-text">Subscribe</button>
+                            <button class="newsletter-btn pt-text" style="display: none;">Subscrever</button>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="footer-links">
-                    <h3 data-lang-en="Quick Links" data-lang-pt="Links Rápidos">Quick Links</h3>
+                    <h3 class="en-text">Quick Links</h3>
+                    <h3 class="pt-text" style="display: none;">Links Rápidos</h3>
                     <ul>
-                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> <span data-lang-en="Home" data-lang-pt="Início">Home</span></a></li>
-                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> <span data-lang-en="About Us" data-lang-pt="Sobre Nós">About Us</span></a></li>
-                        <li><a href="founder-story.html"><i class="fas fa-chevron-right"></i> <span data-lang-en="Founder Story" data-lang-pt="História da Fundadora">Founder Story</span></a></li>
-                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> <span data-lang-en="Products" data-lang-pt="Produtos">Products</span></a></li>
-                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> <span data-lang-en="Contact" data-lang-pt="Contato">Contact</span></a></li>
+                        <li><a href="/index.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Home</span>
+                            <span class="pt-text" style="display: none;">Início</span>
+                        </a></li>
+                        <li><a href="/projects.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Projects</span>
+                            <span class="pt-text" style="display: none;">Projetos</span>
+                        </a></li>
+                        <li><a href="/founder.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Founder</span>
+                            <span class="pt-text" style="display: none;">Fundador</span>
+                        </a></li>
+                        <li><a href="/learnings.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Learnings</span>
+                            <span class="pt-text" style="display: none;">Aprendizados</span>
+                        </a></li>
+                        <li><a href="/partners.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Partners</span>
+                            <span class="pt-text" style="display: none;">Parceiros</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
-                    <h3 data-lang-en="Contact Us" data-lang-pt="Entre em Contato">Contact Us</h3>
+                    <h3 class="en-text">Contact Us</h3>
+                    <h3 class="pt-text" style="display: none;">Contacte-nos</h3>
                     <div class="footer-contact-info">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span data-lang-en="123 Wellness St, Lisbon, Portugal" data-lang-pt="Rua do Bem-Estar 123, Lisboa, Portugal">123 Wellness St, Lisbon, Portugal</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+351912345678">+351 912 345 678</a>
+                            <span class="en-text">Caldas da Rainha, Portugal</span>
+                            <span class="pt-text" style="display: none;">Caldas da Rainha, Portugal</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <a href="mailto:hello@leve.com">hello@leve.com</a>
                         </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+351912345678">+351 912 345 678</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="footer-social">
-                    <h3 data-lang-en="Follow Our Journey" data-lang-pt="Siga Nossa Jornada">Follow Our Journey</h3>
-                    <p data-lang-en="Connect with us on social media for wellness tips and updates." data-lang-pt="Conecte-se conosco nas redes sociais para dicas de bem-estar e atualizações.">Connect with us on social media for wellness tips and updates.</p>
+                    <h3 class="en-text">Follow Our Journey</h3>
+                    <h3 class="pt-text" style="display: none;">Siga a Nossa Jornada</h3>
                     <div class="footer-social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
-                    <p>&copy; 2023 Leve. <span data-lang-en="All rights reserved." data-lang-pt="Todos os direitos reservados.">All rights reserved.</span></p>
+                    <p class="en-text">&copy; 2023 Leve. All rights reserved.</p>
+                    <p class="pt-text" style="display: none;">&copy; 2023 Leve. Todos os direitos reservados.</p>
                     <div class="footer-legal">
-                        <a href="privacy.html" data-lang-en="Privacy Policy" data-lang-pt="Política de Privacidade">Privacy Policy</a>
-                        <a href="terms.html" data-lang-en="Terms of Service" data-lang-pt="Termos de Serviço">Terms of Service</a>
-                        <a href="#" id="cookie-preferences" data-lang-en="Cookie Preferences" data-lang-pt="Preferências de Cookies">Cookie Preferences</a>
+                        <a href="#" class="en-text">Privacy Policy</a>
+                        <a href="#" class="pt-text" style="display: none;">Política de Privacidade</a>
+                        <a href="#" class="en-text">Terms of Service</a>
+                        <a href="#" class="pt-text" style="display: none;">Termos de Serviço</a>
+                        <a href="#" id="cookie-preferences" class="en-text">Cookie Preferences</a>
+                        <a href="#" id="cookie-preferences-pt" class="pt-text" style="display: none;">Preferências de Cookies</a>
                     </div>
                 </div>
             </div>
@@ -1649,15 +1736,20 @@
     <div class="cookie-consent-banner" id="cookieConsentBanner">
         <div class="cookie-header">
             <div>
-                <h3 class="cookie-title" data-lang-en="Your Privacy Matters" data-lang-pt="Sua Privacidade é Importante">Your Privacy Matters</h3>
-                <p class="cookie-description" data-lang-en="We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies." data-lang-pt="Usamos cookies para melhorar sua experiência de navegação, exibir conteúdo personalizado e analisar nosso tráfego. Clicando em 'Aceitar Todos', você concorda com o uso de cookies.">We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies.</p>
+                <h3 class="cookie-title en-text">Your Privacy Matters</h3>
+                <h3 class="cookie-title pt-text" style="display: none;">Sua Privacidade é Importante</h3>
+                <p class="cookie-description en-text">We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies.</p>
+                <p class="cookie-description pt-text" style="display: none;">Usamos cookies para melhorar sua experiência de navegação, exibir conteúdo personalizado e analisar nosso tráfego. Clicando em 'Aceitar Todos', você concorda com o uso de cookies.</p>
             </div>
             <button class="cookie-close" id="cookieClose">&times;</button>
         </div>
         <div class="cookie-controls">
-            <button class="cookie-btn accept-all" id="cookieAcceptAll" data-lang-en="Accept All" data-lang-pt="Aceitar Todos">Accept All</button>
-            <button class="cookie-btn settings" id="cookieSettings" data-lang-en="Customize Settings" data-lang-pt="Personalizar Configurações">Customize Settings</button>
-            <button class="cookie-btn reject-all" id="cookieRejectAll" data-lang-en="Reject All" data-lang-pt="Rejeitar Todos">Reject All</button>
+            <button class="cookie-btn accept-all en-text" id="cookieAcceptAll">Accept All</button>
+            <button class="cookie-btn accept-all pt-text" id="cookieAcceptAllPt" style="display: none;">Aceitar Todos</button>
+            <button class="cookie-btn settings en-text" id="cookieSettings">Customize Settings</button>
+            <button class="cookie-btn settings pt-text" id="cookieSettingsPt" style="display: none;">Personalizar Configurações</button>
+            <button class="cookie-btn reject-all en-text" id="cookieRejectAll">Reject All</button>
+            <button class="cookie-btn reject-all pt-text" id="cookieRejectAllPt" style="display: none;">Rejeitar Todos</button>
         </div>
     </div>
 
@@ -1665,339 +1757,395 @@
     <div class="cookie-modal" id="cookieModal">
         <div class="cookie-modal-content">
             <div class="cookie-modal-header">
-                <h3 class="cookie-modal-title" data-lang-en="Cookie Preferences" data-lang-pt="Preferências de Cookies">Cookie Preferences</h3>
+                <h3 class="cookie-modal-title en-text">Cookie Preferences</h3>
+                <h3 class="cookie-modal-title pt-text" style="display: none;">Preferências de Cookies</h3>
                 <button class="cookie-modal-close" id="cookieModalClose">&times;</button>
             </div>
             <div class="cookie-modal-body">
-                <p data-lang-en="You can set your preferences for how we use cookies on this website. You can change these settings at any time by clicking the 'Cookie Preferences' link in the footer." data-lang-pt="Você pode definir suas preferências para como usamos cookies neste site. Você pode alterar essas configurações a qualquer momento clicando no link 'Preferências de Cookies' no rodapé.">You can set your preferences for how we use cookies on this website. You can change these settings at any time by clicking the 'Cookie Preferences' link in the footer.</p>
+                <p class="en-text">You can set your preferences for how we use cookies on this website. You can change these settings at any time by clicking the 'Cookie Preferences' link in the footer.</p>
+                <p class="pt-text" style="display: none;">Você pode definir suas preferências para como usamos cookies neste site. Você pode alterar essas configurações a qualquer momento clicando no link 'Preferências de Cookies' no rodapé.</p>
                 
                 <div class="cookie-category">
                     <div class="cookie-category-header">
-                        <h4 class="cookie-category-title" data-lang-en="Essential Cookies" data-lang-pt="Cookies Essenciais">Essential Cookies</h4>
+                        <h4 class="cookie-category-title en-text">Essential Cookies</h4>
+                        <h4 class="cookie-category-title pt-text" style="display: none;">Cookies Essenciais</h4>
                         <label class="cookie-toggle">
                             <input type="checkbox" id="essentialCookies" checked disabled>
                             <span class="cookie-toggle-slider"></span>
                         </label>
                     </div>
-                    <p class="cookie-category-description" data-lang-en="These cookies are necessary for the website to function and cannot be switched off. They are usually only set in response to actions made by you such as setting your privacy preferences, logging in or filling in forms." data-lang-pt="Estes cookies são necessários para o funcionamento do site e não podem ser desativados. Eles geralmente são definidos apenas em resposta a ações realizadas por você, como definir suas preferências de privacidade, fazer login ou preencher formulários.">These cookies are necessary for the website to function and cannot be switched off. They are usually only set in response to actions made by you such as setting your privacy preferences, logging in or filling in forms.</p>
+                    <p class="cookie-category-description en-text">These cookies are necessary for the website to function and cannot be switched off. They are usually only set in response to actions made by you such as setting your privacy preferences, logging in or filling in forms.</p>
+                    <p class="cookie-category-description pt-text" style="display: none;">Estes cookies são necessários para o funcionamento do site e não podem ser desativados. Eles geralmente são definidos apenas em resposta a ações realizadas por você, como definir suas preferências de privacidade, fazer login ou preencher formulários.</p>
                 </div>
                 
                 <div class="cookie-category">
                     <div class="cookie-category-header">
-                        <h4 class="cookie-category-title" data-lang-en="Analytics Cookies" data-lang-pt="Cookies Analíticos">Analytics Cookies</h4>
+                        <h4 class="cookie-category-title en-text">Analytics Cookies</h4>
+                        <h4 class="cookie-category-title pt-text" style="display: none;">Cookies Analíticos</h4>
                         <label class="cookie-toggle">
                             <input type="checkbox" id="analyticsCookies">
                             <span class="cookie-toggle-slider"></span>
                         </label>
                     </div>
-                    <p class="cookie-category-description" data-lang-en="These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site." data-lang-pt="Estes cookies nos permitem contar visitas e fontes de tráfego para que possamos medir e melhorar o desempenho do nosso site. Eles nos ajudam a saber quais páginas são as mais e menos populares e ver como os visitantes navegam pelo site.">These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site.</p>
+                    <p class="cookie-category-description en-text">These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site.</p>
+                    <p class="cookie-category-description pt-text" style="display: none;">Estes cookies nos permitem contar visitas e fontes de tráfego para que possamos medir e melhorar o desempenho do nosso site. Eles nos ajudam a saber quais páginas são as mais e menos populares e ver como os visitantes navegam pelo site.</p>
                 </div>
                 
                 <div class="cookie-category">
                     <div class="cookie-category-header">
-                        <h4 class="cookie-category-title" data-lang-en="Marketing Cookies" data-lang-pt="Cookies de Marketing">Marketing Cookies</h4>
+                        <h4 class="cookie-category-title en-text">Marketing Cookies</h4>
+                        <h4 class="cookie-category-title pt-text" style="display: none;">Cookies de Marketing</h4>
                         <label class="cookie-toggle">
                             <input type="checkbox" id="marketingCookies">
                             <span class="cookie-toggle-slider"></span>
                         </label>
                     </div>
-                    <p class="cookie-category-description" data-lang-en="These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites." data-lang-pt="Estes cookies podem ser definidos em nosso site por nossos parceiros de publicidade. Eles podem ser usados por essas empresas para criar um perfil de seus interesses e mostrar anúncios relevantes em outros sites.">These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites.</p>
+                    <p class="cookie-category-description en-text">These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites.</p>
+                    <p class="cookie-category-description pt-text" style="display: none;">Estes cookies podem ser definidos em nosso site por nossos parceiros de publicidade. Eles podem ser usados por essas empresas para criar um perfil de seus interesses e mostrar anúncios relevantes em outros sites.</p>
                 </div>
             </div>
             <div class="cookie-modal-footer">
-                <button class="cookie-btn reject-all" id="cookieModalRejectAll" data-lang-en="Reject All" data-lang-pt="Rejeitar Todos">Reject All</button>
-                <button class="cookie-btn accept-all" id="cookieModalSave" data-lang-en="Save Preferences" data-lang-pt="Salvar Preferências">Save Preferences</button>
+                <button class="cookie-btn reject-all en-text" id="cookieModalRejectAll">Reject All</button>
+                <button class="cookie-btn reject-all pt-text" id="cookieModalRejectAllPt" style="display: none;">Rejeitar Todos</button>
+                <button class="cookie-btn accept-all en-text" id="cookieModalSave">Save Preferences</button>
+                <button class="cookie-btn accept-all pt-text" id="cookieModalSavePt" style="display: none;">Salvar Preferências</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Language Toggle Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const langEnBtn = document.getElementById('lang-en');
-            const langPtBtn = document.getElementById('lang-pt');
-            
-            // Set initial language
-            let currentLang = 'en';
-            
-            // Function to update language
-            function updateLanguage(lang) {
-                currentLang = lang;
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+        
+        // Language Toggle
+        const langButtons = document.querySelectorAll('.lang-btn');
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                langButtons.forEach(btn => btn.classList.remove('active'));
                 
-                // Update active button
-                if (lang === 'en') {
-                    langEnBtn.classList.add('active');
-                    langPtBtn.classList.remove('active');
-                } else {
-                    langEnBtn.classList.remove('active');
-                    langPtBtn.classList.add('active');
-                }
+                // Add active class to clicked button
+                button.classList.add('active');
                 
-                // Update all elements with language data attributes
-                document.querySelectorAll('[data-lang-en]').forEach(element => {
-                    if (lang === 'en') {
-                        element.textContent = element.getAttribute('data-lang-en');
-                    } else {
-                        element.textContent = element.getAttribute('data-lang-pt');
-                    }
+                // Get selected language
+                const lang = button.getAttribute('data-lang');
+                
+                // Show/hide language-specific content
+                document.querySelectorAll('.en-text').forEach(el => {
+                    el.style.display = lang === 'en' ? 'block' : 'none';
                 });
                 
-                // Update placeholder attributes
-                document.querySelectorAll('[data-lang-en-placeholder]').forEach(element => {
-                    if (lang === 'en') {
-                        element.placeholder = element.getAttribute('data-lang-en-placeholder');
-                    } else {
-                        element.placeholder = element.getAttribute('data-lang-pt-placeholder');
-                    }
+                document.querySelectorAll('.pt-text').forEach(el => {
+                    el.style.display = lang === 'pt' ? 'block' : 'none';
                 });
+            });
+        });
+        
+        // Gallery Modal Functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('galleryModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalClose = document.getElementById('modalClose');
+        const modalPrev = document.getElementById('modalPrev');
+        const modalNext = document.getElementById('modalNext');
+        const imageCounter = document.getElementById('imageCounter');
+        
+        let currentImageIndex = 0;
+        
+        // Open modal when clicking on gallery item
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateModalImage();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+        
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        });
+        
+        // Navigate to previous image
+        modalPrev.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+            updateModalImage();
+        });
+        
+        // Navigate to next image
+        modalNext.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+            updateModalImage();
+        });
+        
+        // Update modal image and counter
+        function updateModalImage() {
+            const imageSrc = galleryItems[currentImageIndex].querySelector('img').src;
+            modalImage.src = imageSrc;
+            imageCounter.textContent = `${currentImageIndex + 1} / ${galleryItems.length}`;
+        }
+        
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
             }
-            
-            // Event listeners for language buttons
-            langEnBtn.addEventListener('click', () => updateLanguage('en'));
-            langPtBtn.addEventListener('click', () => updateLanguage('pt'));
-            
-            // Mobile Navigation Toggle
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
-            
-            // Close mobile menu when clicking on a link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                });
-            });
-            
-            // Gallery Modal Functionality
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            const galleryModal = document.querySelector('.gallery-modal');
-            const modalImage = document.querySelector('.modal-image');
-            const modalClose = document.querySelector('.modal-close');
-            const modalPrev = document.querySelector('.modal-prev');
-            const modalNext = document.querySelector('.modal-next');
-            const imageCounter = document.querySelector('.image-counter');
-            
-            let currentImageIndex = 0;
-            
-            // Open modal when gallery item is clicked
-            galleryItems.forEach((item, index) => {
-                item.addEventListener('click', () => {
-                    currentImageIndex = index;
+        });
+        
+        // Keyboard navigation for modal
+        document.addEventListener('keydown', (e) => {
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                } else if (e.key === 'ArrowLeft') {
+                    currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
                     updateModalImage();
-                    galleryModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
+                } else if (e.key === 'ArrowRight') {
+                    currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+                    updateModalImage();
+                }
+            }
+        });
+        
+        // Newsletter form submission
+        const newsletterForms = document.querySelectorAll('.newsletter-form');
+        
+        newsletterForms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const input = form.querySelector('.newsletter-input');
+                const button = form.querySelector('.newsletter-btn');
+                
+                // Simple validation
+                if (input.value && input.value.includes('@')) {
+                    // Success state
+                    input.value = '';
+                    button.textContent = 'Subscribed!';
+                    button.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
+                    
+                    setTimeout(() => {
+                        button.textContent = button.classList.contains('pt-text') ? 'Subscrever' : 'Subscribe';
+                    }, 2000);
+                } else {
+                    // Error state
+                    input.style.borderColor = '#ef4444';
+                    setTimeout(() => {
+                        input.style.borderColor = '#334155';
+                    }, 2000);
+                }
             });
-            
-            // Close modal
-            modalClose.addEventListener('click', () => {
-                galleryModal.classList.remove('active');
-                document.body.style.overflow = '';
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
             });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Cookie Consent Functionality
+        const cookieBanner = document.getElementById('cookieConsentBanner');
+        const cookieModal = document.getElementById('cookieModal');
+        const cookieClose = document.getElementById('cookieClose');
+        const cookieAcceptAll = document.getElementById('cookieAcceptAll');
+        const cookieAcceptAllPt = document.getElementById('cookieAcceptAllPt');
+        const cookieRejectAll = document.getElementById('cookieRejectAll');
+        const cookieRejectAllPt = document.getElementById('cookieRejectAllPt');
+        const cookieSettings = document.getElementById('cookieSettings');
+        const cookieSettingsPt = document.getElementById('cookieSettingsPt');
+        const cookieModalClose = document.getElementById('cookieModalClose');
+        const cookieModalRejectAll = document.getElementById('cookieModalRejectAll');
+        const cookieModalRejectAllPt = document.getElementById('cookieModalRejectAllPt');
+        const cookieModalSave = document.getElementById('cookieModalSave');
+        const cookieModalSavePt = document.getElementById('cookieModalSavePt');
+        const cookiePreferences = document.getElementById('cookie-preferences');
+        const cookiePreferencesPt = document.getElementById('cookie-preferences-pt');
+        
+        const essentialCookies = document.getElementById('essentialCookies');
+        const analyticsCookies = document.getElementById('analyticsCookies');
+        const marketingCookies = document.getElementById('marketingCookies');
+        
+        // Check if user has already made a choice
+        function checkCookieConsent() {
+            const consent = getCookie('cookieConsent');
             
-            // Navigate images
-            modalPrev.addEventListener('click', () => {
-                currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
-                updateModalImage();
-            });
+            if (!consent) {
+                // Show banner after a short delay
+                setTimeout(() => {
+                    cookieBanner.classList.add('active');
+                }, 1000);
+            } else {
+                // Apply saved preferences
+                applyCookiePreferences(JSON.parse(consent));
+            }
+        }
+        
+        // Get cookie value by name
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+        
+        // Set cookie
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = `expires=${date.toUTCString()}`;
+            document.cookie = `${name}=${value}; ${expires}; path=/; SameSite=Lax`;
+        }
+        
+        // Apply cookie preferences
+        function applyCookiePreferences(preferences) {
+            // Essential cookies are always enabled
+            preferences.essential = true;
             
-            modalNext.addEventListener('click', () => {
-                currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
-                updateModalImage();
-            });
-            
-            // Update modal image and counter
-            function updateModalImage() {
-                const imageSrc = galleryItems[currentImageIndex].querySelector('img').src;
-                modalImage.src = imageSrc;
-                imageCounter.textContent = `${currentImageIndex + 1} / ${galleryItems.length}`;
+            // Set analytics cookies if enabled
+            if (preferences.analytics) {
+                // Here you would initialize your analytics scripts
+                console.log('Analytics cookies enabled');
             }
             
-            // Close modal when clicking outside the image
-            galleryModal.addEventListener('click', (e) => {
-                if (e.target === galleryModal) {
-                    galleryModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
+            // Set marketing cookies if enabled
+            if (preferences.marketing) {
+                // Here you would initialize your marketing scripts
+                console.log('Marketing cookies enabled');
+            }
             
-            // Keyboard navigation for modal
-            document.addEventListener('keydown', (e) => {
-                if (galleryModal.classList.contains('active')) {
-                    if (e.key === 'Escape') {
-                        galleryModal.classList.remove('active');
-                        document.body.style.overflow = '';
-                    } else if (e.key === 'ArrowLeft') {
-                        currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
-                        updateModalImage();
-                    } else if (e.key === 'ArrowRight') {
-                        currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
-                        updateModalImage();
-                    }
-                }
-            });
-            
-            // Scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+            // Update toggle states in modal
+            analyticsCookies.checked = preferences.analytics;
+            marketingCookies.checked = preferences.marketing;
+        }
+        
+        // Save cookie preferences
+        function saveCookiePreferences() {
+            const preferences = {
+                essential: true, // Always enabled
+                analytics: analyticsCookies.checked,
+                marketing: marketingCookies.checked,
+                timestamp: new Date().getTime()
             };
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in-up');
-                    }
-                });
-            }, observerOptions);
+            // Save to cookie (valid for 1 year)
+            setCookie('cookieConsent', JSON.stringify(preferences), 365);
             
-            document.querySelectorAll('.fade-in-up').forEach(el => {
-                observer.observe(el);
-            });
+            // Apply preferences
+            applyCookiePreferences(preferences);
             
-            // Cookie Consent Functionality
-            const cookieBanner = document.getElementById('cookieConsentBanner');
-            const cookieModal = document.getElementById('cookieModal');
-            const cookieClose = document.getElementById('cookieClose');
-            const cookieAcceptAll = document.getElementById('cookieAcceptAll');
-            const cookieRejectAll = document.getElementById('cookieRejectAll');
-            const cookieSettings = document.getElementById('cookieSettings');
-            const cookieModalClose = document.getElementById('cookieModalClose');
-            const cookieModalRejectAll = document.getElementById('cookieModalRejectAll');
-            const cookieModalSave = document.getElementById('cookieModalSave');
-            const cookiePreferences = document.getElementById('cookie-preferences');
-            
-            const essentialCookies = document.getElementById('essentialCookies');
-            const analyticsCookies = document.getElementById('analyticsCookies');
-            const marketingCookies = document.getElementById('marketingCookies');
-            
-            // Check if user has already made a choice
-            function checkCookieConsent() {
-                const consent = getCookie('cookieConsent');
-                
-                if (!consent) {
-                    // Show banner after a short delay
-                    setTimeout(() => {
-                        cookieBanner.classList.add('active');
-                    }, 1000);
-                } else {
-                    // Apply saved preferences
-                    applyCookiePreferences(JSON.parse(consent));
-                }
-            }
-            
-            // Get cookie value by name
-            function getCookie(name) {
-                const value = `; ${document.cookie}`;
-                const parts = value.split(`; ${name}=`);
-                if (parts.length === 2) return parts.pop().split(';').shift();
-            }
-            
-            // Set cookie
-            function setCookie(name, value, days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                const expires = `expires=${date.toUTCString()}`;
-                document.cookie = `${name}=${value}; ${expires}; path=/; SameSite=Lax`;
-            }
-            
-            // Apply cookie preferences
-            function applyCookiePreferences(preferences) {
-                // Essential cookies are always enabled
-                preferences.essential = true;
-                
-                // Set analytics cookies if enabled
-                if (preferences.analytics) {
-                    // Here you would initialize your analytics scripts
-                    console.log('Analytics cookies enabled');
-                }
-                
-                // Set marketing cookies if enabled
-                if (preferences.marketing) {
-                    // Here you would initialize your marketing scripts
-                    console.log('Marketing cookies enabled');
-                }
-                
-                // Update toggle states in modal
-                analyticsCookies.checked = preferences.analytics;
-                marketingCookies.checked = preferences.marketing;
-            }
-            
-            // Save cookie preferences
-            function saveCookiePreferences() {
-                const preferences = {
-                    essential: true, // Always enabled
-                    analytics: analyticsCookies.checked,
-                    marketing: marketingCookies.checked,
-                    timestamp: new Date().getTime()
-                };
-                
-                // Save to cookie (valid for 1 year)
-                setCookie('cookieConsent', JSON.stringify(preferences), 365);
-                
-                // Apply preferences
-                applyCookiePreferences(preferences);
-                
-                // Hide banner and modal
-                cookieBanner.classList.remove('active');
-                cookieModal.classList.remove('active');
-            }
-            
-            // Event listeners for cookie banner
-            cookieClose.addEventListener('click', () => {
-                cookieBanner.classList.remove('active');
-            });
-            
-            cookieAcceptAll.addEventListener('click', () => {
-                analyticsCookies.checked = true;
-                marketingCookies.checked = true;
-                saveCookiePreferences();
-            });
-            
-            cookieRejectAll.addEventListener('click', () => {
-                analyticsCookies.checked = false;
-                marketingCookies.checked = false;
-                saveCookiePreferences();
-            });
-            
-            cookieSettings.addEventListener('click', () => {
-                cookieModal.classList.add('active');
-            });
-            
-            cookieModalClose.addEventListener('click', () => {
-                cookieModal.classList.remove('active');
-            });
-            
-            cookieModalRejectAll.addEventListener('click', () => {
-                analyticsCookies.checked = false;
-                marketingCookies.checked = false;
-                saveCookiePreferences();
-            });
-            
-            cookieModalSave.addEventListener('click', () => {
-                saveCookiePreferences();
-            });
-            
-            cookiePreferences.addEventListener('click', (e) => {
-                e.preventDefault();
-                cookieModal.classList.add('active');
-            });
-            
-            // Close modal when clicking outside
-            cookieModal.addEventListener('click', (e) => {
-                if (e.target === cookieModal) {
-                    cookieModal.classList.remove('active');
-                }
-            });
-            
-            // Initialize cookie consent check
-            checkCookieConsent();
+            // Hide banner and modal
+            cookieBanner.classList.remove('active');
+            cookieModal.classList.remove('active');
+        }
+        
+        // Event listeners for cookie banner
+        cookieClose.addEventListener('click', () => {
+            cookieBanner.classList.remove('active');
         });
+        
+        cookieAcceptAll.addEventListener('click', () => {
+            analyticsCookies.checked = true;
+            marketingCookies.checked = true;
+            saveCookiePreferences();
+        });
+        
+        cookieAcceptAllPt.addEventListener('click', () => {
+            analyticsCookies.checked = true;
+            marketingCookies.checked = true;
+            saveCookiePreferences();
+        });
+        
+        cookieRejectAll.addEventListener('click', () => {
+            analyticsCookies.checked = false;
+            marketingCookies.checked = false;
+            saveCookiePreferences();
+        });
+        
+        cookieRejectAllPt.addEventListener('click', () => {
+            analyticsCookies.checked = false;
+            marketingCookies.checked = false;
+            saveCookiePreferences();
+        });
+        
+        cookieSettings.addEventListener('click', () => {
+            cookieModal.classList.add('active');
+        });
+        
+        cookieSettingsPt.addEventListener('click', () => {
+            cookieModal.classList.add('active');
+        });
+        
+        cookieModalClose.addEventListener('click', () => {
+            cookieModal.classList.remove('active');
+        });
+        
+        cookieModalRejectAll.addEventListener('click', () => {
+            analyticsCookies.checked = false;
+            marketingCookies.checked = false;
+            saveCookiePreferences();
+        });
+        
+        cookieModalRejectAllPt.addEventListener('click', () => {
+            analyticsCookies.checked = false;
+            marketingCookies.checked = false;
+            saveCookiePreferences();
+        });
+        
+        cookieModalSave.addEventListener('click', () => {
+            saveCookiePreferences();
+        });
+        
+        cookieModalSavePt.addEventListener('click', () => {
+            saveCookiePreferences();
+        });
+        
+        cookiePreferences.addEventListener('click', (e) => {
+            e.preventDefault();
+            cookieModal.classList.add('active');
+        });
+        
+        cookiePreferencesPt.addEventListener('click', (e) => {
+            e.preventDefault();
+            cookieModal.classList.add('active');
+        });
+        
+        // Close modal when clicking outside
+        cookieModal.addEventListener('click', (e) => {
+            if (e.target === cookieModal) {
+                cookieModal.classList.remove('active');
+            }
+        });
+        
+        // Initialize cookie consent check
+        checkCookieConsent();
     </script>
 </body>
 </html>
