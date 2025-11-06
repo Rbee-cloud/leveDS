@@ -4,42 +4,283 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learnings & Insights - Leve</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .learnings-hero {
-            background: linear-gradient(135deg, var(--light-blue), var(--accent-purple));
-            color: white;
-            padding: 120px 0 80px;
+        /* Modern CSS Variables */
+        :root {
+            --primary-green: #10b981;
+            --secondary-green: #34d399;
+            --accent-orange: #f59e0b;
+            --light-orange: #fbbf24;
+            --light-bg: #f8fafc;
+            --dark-bg: #1e293b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.15);
+            --radius: 20px;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
             text-align: center;
+            margin-bottom: 60px;
+            color: var(--text-dark);
+            position: relative;
         }
-        
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-green), var(--accent-orange));
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn.primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn.secondary:hover {
+            background: rgba(16, 185, 129, 0.05);
+            transform: translateY(-5px);
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-green);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-green);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-dark);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Learnings Hero Section */
+        .learnings-hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 140px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .learnings-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .learnings-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .learnings-hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        /* Composting Guide Section */
         .composting-guide {
-            padding: 80px 0;
+            padding: 100px 0;
+            background: var(--white);
         }
-        
+
         .guide-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
-        
+
         .steps-container {
             max-width: 900px;
             margin: 0 auto;
         }
-        
+
         .step {
             display: flex;
             margin-bottom: 40px;
             background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
             overflow: hidden;
+            transition: var(--transition);
+            transform: translateY(0);
+            animation: floatStep 8s ease-in-out infinite;
         }
-        
+
+        @keyframes floatStep {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            animation: none;
+            box-shadow: var(--shadow-hover);
+        }
+
         .step-number {
-            background: var(--primary-blue);
+            background: var(--primary-green);
             color: white;
             width: 80px;
             display: flex;
@@ -48,84 +289,148 @@
             font-size: 2rem;
             font-weight: 700;
         }
-        
+
         .step-content {
             flex: 1;
             padding: 30px;
         }
-        
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .step-content ul {
+            color: var(--text-light);
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .step-content li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
         .materials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin: 30px 0;
         }
-        
+
         .materials-card {
             background: white;
             padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform: translateY(0);
+            animation: floatCard 7s ease-in-out infinite;
         }
-        
+
+        @keyframes floatCard {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        .materials-card:hover {
+            transform: translateY(-8px);
+            animation: none;
+            box-shadow: var(--shadow-hover);
+        }
+
         .materials-card.green {
             border-top: 4px solid #4CAF50;
         }
-        
+
         .materials-card.brown {
             border-top: 4px solid #8B4513;
         }
-        
+
         .materials-card.avoid {
             border-top: 4px solid #f44336;
         }
-        
+
+        .materials-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
         .material-list {
             list-style: none;
             padding: 0;
         }
-        
+
         .material-list li {
             padding: 8px 0;
             border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
         }
-        
+
         .material-list li:last-child {
             border-bottom: none;
         }
-        
+
         .material-list li i.fa-check {
             color: #4CAF50;
             margin-right: 10px;
+            font-size: 1.1rem;
         }
-        
+
         .material-list li i.fa-times {
             color: #f44336;
             margin-right: 10px;
+            font-size: 1.1rem;
         }
-        
+
+        /* Tips Section */
         .tips-section {
             background: var(--light-bg);
-            padding: 80px 0;
+            padding: 100px 0;
         }
-        
+
         .tips-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        
+
         .tip-card {
             background: white;
             padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform: translateY(0);
+            animation: floatTip 9s ease-in-out infinite;
         }
-        
+
+        @keyframes floatTip {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+        }
+
+        .tip-card:hover {
+            transform: translateY(-12px);
+            animation: none;
+            box-shadow: var(--shadow-hover);
+        }
+
         .tip-icon {
             width: 60px;
             height: 60px;
-            background: var(--secondary-orange);
+            background: var(--accent-orange);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -134,8 +439,397 @@
             margin-bottom: 20px;
             font-size: 1.5rem;
         }
-        
+
+        .tip-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .tip-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+
+        /* MODERN FOOTER - From index.html */
+        .footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0 Q500,80 1000,0 L1000,100 L0,100 Z" fill="white" opacity="0.02"/></svg>');
+            background-size: cover;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo-img {
+            height: 50px;
+            filter: brightness(0) invert(1);
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover .footer-logo-img {
+            transform: scale(1.05);
+        }
+
+        .footer-tagline {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 300px;
+        }
+
+        .footer-newsletter {
+            margin-top: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: #10b981;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .newsletter-input::placeholder {
+            color: #64748b;
+        }
+
+        .newsletter-btn {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .footer-links h3, .footer-contact h3, .footer-social h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+        }
+
+        .footer-links h3::after, .footer-contact h3::after, .footer-social h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, #10b981, #34d399);
+            border-radius: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .footer-contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: #94a3b8;
+        }
+
+        .contact-item i {
+            color: #10b981;
+            margin-top: 2px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: white;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .social-link i {
+            position: relative;
+            z-index: 1;
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #64748b;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-legal a {
+            color: #64748b;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-legal a:hover {
+            color: #94a3b8;
+        }
+
+        /* Animation for elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .learnings-hero h1 {
+                font-size: 3rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .learnings-hero {
+                padding: 120px 0 80px;
+            }
+            
+            .learnings-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .learnings-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
             .step {
                 flex-direction: column;
             }
@@ -143,6 +837,38 @@
             .step-number {
                 width: 100%;
                 height: 60px;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .learnings-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-social-links {
+                justify-content: center;
             }
         }
     </style>
@@ -163,18 +889,30 @@
                 </a>
             </div>
             <div class="nav-menu">
-                <a href="/index.html" class="nav-link en-text">Home</a>
-                <a href="/index.html" class="nav-link pt-text" style="display: none;">Início</a>
-                <a href="/projects.html" class="nav-link en-text">Projects</a>
-                <a href="/projects.html" class="nav-link pt-text" style="display: none;">Projetos</a>
-                <a href="/founder.html" class="nav-link en-text">Founder</a>
-                <a href="/founder.html" class="nav-link pt-text" style="display: none;">Fundador</a>
-                <a href="/learnings.html" class="nav-link active en-text">Learnings</a>
-                <a href="/learnings.html" class="nav-link active pt-text" style="display: none;">Aprendizados</a>
-                <a href="/partners.html" class="nav-link en-text">Partners</a>
-                <a href="/partners.html" class="nav-link pt-text" style="display: none;">Parceiros</a>
-                <a href="/contact.html" class="nav-link en-text">Join Us</a>
-                <a href="/contact.html" class="nav-link pt-text" style="display: none;">Junte-se a Nós</a>
+                <a href="/index.html" class="nav-link">
+                    <span class="en-text">Home</span>
+                    <span class="pt-text" style="display: none;">Início</span>
+                </a>
+                <a href="/projects.html" class="nav-link">
+                    <span class="en-text">Projects</span>
+                    <span class="pt-text" style="display: none;">Projetos</span>
+                </a>
+                <a href="/founder.html" class="nav-link">
+                    <span class="en-text">Founder</span>
+                    <span class="pt-text" style="display: none;">Fundador</span>
+                </a>
+                <a href="/learnings.html" class="nav-link active">
+                    <span class="en-text">Learnings</span>
+                    <span class="pt-text" style="display: none;">Aprendizados</span>
+                </a>
+                <a href="/partners.html" class="nav-link">
+                    <span class="en-text">Partners</span>
+                    <span class="pt-text" style="display: none;">Parceiros</span>
+                </a>
+                <a href="/contact.html" class="nav-link">
+                    <span class="en-text">Join Us</span>
+                    <span class="pt-text" style="display: none;">Junte-se a Nós</span>
+                </a>
             </div>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -187,10 +925,10 @@
     <!-- Learnings Hero -->
     <section class="learnings-hero">
         <div class="container">
-            <h1 class="en-text">Learnings & Insights</h1>
-            <h1 class="pt-text" style="display: none;">Aprendizados & Ideias</h1>
-            <p class="en-text">Sharing knowledge for sustainable community practices</p>
-            <p class="pt-text" style="display: none;">Partilhando conhecimento para práticas comunitárias sustentáveis</p>
+            <h1 class="en-text fade-in-up">Learnings & Insights</h1>
+            <h1 class="pt-text fade-in-up" style="display: none;">Aprendizados & Ideias</h1>
+            <p class="en-text fade-in-up delay-1">Sharing knowledge for sustainable community practices</p>
+            <p class="pt-text fade-in-up delay-1" style="display: none;">Partilhando conhecimento para práticas comunitárias sustentáveis</p>
         </div>
     </section>
 
@@ -198,15 +936,15 @@
     <section class="composting-guide">
         <div class="container">
             <div class="guide-header">
-                <h2 class="section-title en-text">How to Compost Food Waste at Home</h2>
-                <h2 class="section-title pt-text" style="display: none;">Como Fazer Compostagem de Resíduos Alimentares em Casa</h2>
-                <p class="en-text">A step-by-step guide to reducing food waste and creating nutrient-rich compost</p>
-                <p class="pt-text" style="display: none;">Um guia passo a passo para reduzir o desperdício alimentar e criar composto rico em nutrientes</p>
+                <h2 class="section-title en-text fade-in-up">How to Compost Food Waste at Home</h2>
+                <h2 class="section-title pt-text fade-in-up" style="display: none;">Como Fazer Compostagem de Resíduos Alimentares em Casa</h2>
+                <p class="en-text fade-in-up delay-1">A step-by-step guide to reducing food waste and creating nutrient-rich compost</p>
+                <p class="pt-text fade-in-up delay-1" style="display: none;">Um guia passo a passo para reduzir o desperdício alimentar e criar composto rico em nutrientes</p>
             </div>
             
             <div class="steps-container">
                 <!-- Step 1 -->
-                <div class="step">
+                <div class="step fade-in-up">
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3 class="en-text">Choose the type of composter</h3>
@@ -227,7 +965,7 @@
                 </div>
                 
                 <!-- Step 2 -->
-                <div class="step">
+                <div class="step fade-in-up delay-1">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3 class="en-text">Choose the location</h3>
@@ -238,7 +976,7 @@
                 </div>
                 
                 <!-- Step 3 -->
-                <div class="step">
+                <div class="step fade-in-up delay-2">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3 class="en-text">Prepare the right materials</h3>
@@ -273,7 +1011,7 @@
                 </div>
                 
                 <!-- Step 4 -->
-                <div class="step">
+                <div class="step fade-in-up delay-3">
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <h3 class="en-text">Avoid certain materials</h3>
@@ -293,7 +1031,7 @@
                 </div>
                 
                 <!-- Step 5 -->
-                <div class="step">
+                <div class="step fade-in-up">
                     <div class="step-number">5</div>
                     <div class="step-content">
                         <h3 class="en-text">Prepare food scraps</h3>
@@ -304,7 +1042,7 @@
                 </div>
 
                 <!-- Step 6 -->
-                <div class="step">
+                <div class="step fade-in-up delay-1">
                     <div class="step-number">6</div>
                     <div class="step-content">
                         <h3 class="en-text">Maintain moisture</h3>
@@ -315,7 +1053,7 @@
                 </div>
 
                 <!-- Step 7 -->
-                <div class="step">
+                <div class="step fade-in-up delay-2">
                     <div class="step-number">7</div>
                     <div class="step-content">
                         <h3 class="en-text">Turn the compost</h3>
@@ -326,7 +1064,7 @@
                 </div>
 
                 <!-- Step 8 -->
-                <div class="step">
+                <div class="step fade-in-up delay-3">
                     <div class="step-number">8</div>
                     <div class="step-content">
                         <h3 class="en-text">Monitor temperature</h3>
@@ -337,7 +1075,7 @@
                 </div>
 
                 <!-- Step 9 -->
-                <div class="step">
+                <div class="step fade-in-up">
                     <div class="step-number">9</div>
                     <div class="step-content">
                         <h3 class="en-text">Wait for completion</h3>
@@ -348,7 +1086,7 @@
                 </div>
                 
                 <!-- Step 10 -->
-                <div class="step">
+                <div class="step fade-in-up delay-1">
                     <div class="step-number">10</div>
                     <div class="step-content">
                         <h3 class="en-text">Use the compost</h3>
@@ -364,10 +1102,10 @@
     <!-- Tips Section -->
     <section class="tips-section">
         <div class="container">
-            <h2 class="section-title en-text">Extra Tips for Successful Composting</h2>
-            <h2 class="section-title pt-text" style="display: none;">Dicas Extras para Compostagem Bem-sucedida</h2>
+            <h2 class="section-title en-text fade-in-up">Extra Tips for Successful Composting</h2>
+            <h2 class="section-title pt-text fade-in-up" style="display: none;">Dicas Extras para Compostagem Bem-sucedida</h2>
             <div class="tips-grid">
-                <div class="tip-card">
+                <div class="tip-card fade-in-up">
                     <div class="tip-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
@@ -377,7 +1115,7 @@
                     <p class="pt-text" style="display: none;">Começa com um sistema de compostagem pequeno e aumenta à medida que te habituas ao processo.</p>
                 </div>
                 
-                <div class="tip-card">
+                <div class="tip-card fade-in-up delay-1">
                     <div class="tip-icon">
                         <i class="fas fa-lemon"></i>
                     </div>
@@ -387,7 +1125,7 @@
                     <p class="pt-text" style="display: none;">Evita adicionar demasiados citrinos ou cebolas, pois podem atrasar a decomposição.</p>
                 </div>
                 
-                <div class="tip-card">
+                <div class="tip-card fade-in-up delay-2">
                     <div class="tip-icon">
                         <i class="fas fa-temperature-low"></i>
                     </div>
@@ -403,12 +1141,14 @@
     <!-- Call to Action -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="en-text">Ready to start composting?</h2>
-            <h2 class="pt-text" style="display: none;">Pronto para começar a compostar?</h2>
-            <p class="en-text">Join our BioRainha initiative and become part of the sustainability movement</p>
-            <p class="pt-text" style="display: none;">Junte-se à nossa iniciativa BioRainha e torne-se parte do movimento de sustentabilidade</p>
-            <a href="/contact.html" class="btn primary en-text">Get Involved</a>
-            <a href="/contact.html" class="btn primary pt-text" style="display: none;">Envolva-se</a>
+            <h2 class="en-text fade-in-up">Ready to start composting?</h2>
+            <h2 class="pt-text fade-in-up" style="display: none;">Pronto para começar a compostar?</h2>
+            <p class="en-text fade-in-up delay-1">Join our BioRainha initiative and become part of the sustainability movement</p>
+            <p class="pt-text fade-in-up delay-1" style="display: none;">Junte-se à nossa iniciativa BioRainha e torne-se parte do movimento de sustentabilidade</p>
+            <a href="/contact.html" class="btn secondary fade-in-up delay-2">
+                <span class="en-text">Get Involved</span>
+                <span class="pt-text" style="display: none;">Envolva-se</span>
+            </a>
         </div>
     </section>
 
@@ -416,59 +1156,200 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Leve</h3>
-                    <p class="en-text">Building Generations, Building Resilience</p>
-                    <p class="pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência</p>
+                <div class="footer-brand">
+                    <a href="/index.html" class="footer-logo">
+                        <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo" class="footer-logo-img">
+                    </a>
+                    <p class="footer-tagline en-text">Building resilient communities through compassion, innovation, and sustainable practices.</p>
+                    <p class="footer-tagline pt-text" style="display: none;">Construindo comunidades resilientes através da compaixão, inovação e práticas sustentáveis.</p>
+                    
+                    <div class="footer-newsletter">
+                        <h4 class="en-text">Stay Updated</h4>
+                        <h4 class="pt-text" style="display: none;">Mantenha-se Atualizado</h4>
+                        <div class="newsletter-form">
+                            <input type="email" class="newsletter-input en-text" placeholder="Your email address">
+                            <input type="email" class="newsletter-input pt-text" placeholder="O seu endereço de email" style="display: none;">
+                            <button class="newsletter-btn en-text">Subscribe</button>
+                            <button class="newsletter-btn pt-text" style="display: none;">Subscrever</button>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="footer-links">
-                    <h4 class="en-text">Quick Links</h4>
-                    <h4 class="pt-text" style="display: none;">Links Rápidos</h4>
+                    <h3 class="en-text">Quick Links</h3>
+                    <h3 class="pt-text" style="display: none;">Links Rápidos</h3>
                     <ul>
-                        <li>
-                            <a href="/index.html" class="en-text">Home</a>
-                            <a href="/index.html" class="pt-text" style="display: none;">Início</a>
-                        </li>
-                        <li>
-                            <a href="/projects.html" class="en-text">Projects</a>
-                            <a href="/projects.html" class="pt-text" style="display: none;">Projetos</a>
-                        </li>
-                        <li>
-                            <a href="/founder.html" class="en-text">Founder</a>
-                            <a href="/founder.html" class="pt-text" style="display: none;">Fundador</a>
-                        </li>
-                        <li>
-                            <a href="/learnings.html" class="en-text">Learnings</a>
-                            <a href="/learnings.html" class="pt-text" style="display: none;">Aprendizados</a>
-                        </li>
-                        <li>
-                            <a href="/partners.html" class="en-text">Partners</a>
-                            <a href="/partners.html" class="pt-text" style="display: none;">Parceiros</a>
-                        </li>
-                        <li>
-                            <a href="/contact.html" class="en-text">Join Us</a>
-                            <a href="/contact.html" class="pt-text" style="display: none;">Junte-se a Nós</a>
-                        </li>
+                        <li><a href="/index.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Home</span>
+                            <span class="pt-text" style="display: none;">Início</span>
+                        </a></li>
+                        <li><a href="/projects.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Projects</span>
+                            <span class="pt-text" style="display: none;">Projetos</span>
+                        </a></li>
+                        <li><a href="/founder.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Founder</span>
+                            <span class="pt-text" style="display: none;">Fundador</span>
+                        </a></li>
+                        <li><a href="/learnings.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Learnings</span>
+                            <span class="pt-text" style="display: none;">Aprendizados</span>
+                        </a></li>
+                        <li><a href="/partners.html">
+                            <i class="fas fa-chevron-right"></i>
+                            <span class="en-text">Partners</span>
+                            <span class="pt-text" style="display: none;">Parceiros</span>
+                        </a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-contact">
-                    <h4 class="en-text">Get In Touch</h4>
-                    <h4 class="pt-text" style="display: none;">Entre em Contato</h4>
-                    <a href="mailto:de.leve@zohomail.eu" class="email-link">de.leve@zohomail.eu</a>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    <h3 class="en-text">Contact Us</h3>
+                    <h3 class="pt-text" style="display: none;">Contacte-nos</h3>
+                    <div class="footer-contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="en-text">Caldas da Rainha, Portugal</span>
+                            <span class="pt-text" style="display: none;">Caldas da Rainha, Portugal</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:de.leve@zohomail.eu">de.leve@zohomail.eu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+351912345678">+351 912 345 678</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <h3 class="en-text">Follow Our Journey</h3>
+                    <h3 class="pt-text" style="display: none;">Siga a Nossa Jornada</h3>
+                    <div class="footer-social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p class="en-text">&copy; 2023, Aditya Banerjee, All rights reserved</p>
-                <p class="pt-text" style="display: none;">&copy; 2023, Aditya Banerjee, Todos os direitos reservados</p>
+                <div class="footer-bottom-content">
+                    <p class="en-text">&copy; 2023 Leve. All rights reserved.</p>
+                    <p class="pt-text" style="display: none;">&copy; 2023 Leve. Todos os direitos reservados.</p>
+                    <div class="footer-legal">
+                        <a href="#" class="en-text">Privacy Policy</a>
+                        <a href="#" class="pt-text" style="display: none;">Política de Privacidade</a>
+                        <a href="#" class="en-text">Terms of Service</a>
+                        <a href="#" class="pt-text" style="display: none;">Termos de Serviço</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+        
+        // Language Toggle
+        const langButtons = document.querySelectorAll('.lang-btn');
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Get selected language
+                const lang = button.getAttribute('data-lang');
+                
+                // Show/hide language-specific content
+                document.querySelectorAll('.en-text').forEach(el => {
+                    el.style.display = lang === 'en' ? 'block' : 'none';
+                });
+                
+                document.querySelectorAll('.pt-text').forEach(el => {
+                    el.style.display = lang === 'pt' ? 'block' : 'none';
+                });
+            });
+        });
+        
+        // Newsletter form submission
+        const newsletterForms = document.querySelectorAll('.newsletter-form');
+        
+        newsletterForms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const input = form.querySelector('.newsletter-input');
+                const button = form.querySelector('.newsletter-btn');
+                
+                // Simple validation
+                if (input.value && input.value.includes('@')) {
+                    // Success state
+                    input.value = '';
+                    button.textContent = 'Subscribed!';
+                    button.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
+                    
+                    setTimeout(() => {
+                        button.textContent = button.classList.contains('pt-text') ? 'Subscrever' : 'Subscribe';
+                    }, 2000);
+                } else {
+                    // Error state
+                    input.style.borderColor = '#ef4444';
+                    setTimeout(() => {
+                        input.style.borderColor = '#334155';
+                    }, 2000);
+                }
+            });
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
