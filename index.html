@@ -1106,221 +1106,351 @@
             color: #94a3b8;
         }
 
-        /* Animation for elements */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* LGPD Cookie Banner Styles */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            z-index: 1001;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease forwards;
+        .cookie-banner.active {
+            transform: translateY(0);
         }
 
-        .delay-1 {
-            animation-delay: 0.2s;
+        .cookie-banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .delay-2 {
-            animation-delay: 0.4s;
+        .cookie-banner-text {
+            flex: 1;
         }
 
-        .delay-3 {
-            animation-delay: 0.6s;
+        .cookie-banner-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .cookie-banner-text p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .cookie-banner-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .cookie-btn.primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+        }
+
+        .cookie-btn.secondary {
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-light);
+        }
+
+        .cookie-btn.secondary:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .cookie-settings-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1002;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cookie-settings-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .cookie-modal-content {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-hover);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .cookie-settings-modal.active .cookie-modal-content {
+            transform: translateY(0);
+        }
+
+        .cookie-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .cookie-modal-header h2 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .cookie-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .cookie-modal-close:hover {
+            color: var(--text-dark);
+        }
+
+        .cookie-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .cookie-category {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 15px;
+            border-radius: 12px;
+            background: var(--light-bg);
+            transition: var(--transition);
+        }
+
+        .cookie-category:hover {
+            background: #f1f5f9;
+        }
+
+        .category-info {
+            flex: 1;
+            margin-right: 15px;
+        }
+
+        .category-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .category-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .category-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .category-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: var(--transition);
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .toggle-slider.disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .toggle-slider.disabled:before {
+            background-color: #e2e8f0;
+        }
+
+        .cookie-modal-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .cookie-modal-footer .cookie-btn {
+            flex: 1;
+            min-width: 120px;
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.2rem;
             }
             
-            .hero-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .hero-subtitle {
-                max-width: 100%;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .section-title {
+                font-size: 2.5rem;
             }
             
             .footer-content {
                 grid-template-columns: 1fr 1fr;
                 gap: 40px;
             }
-
-            .hero-title {
-                font-size: 3rem;
-            }
-
-            .section-title, .carousel-title {
-                font-size: 2.5rem;
-            }
         }
 
         @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                text-align: center;
-                padding: 30px 0;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                transition: var(--transition);
+            .navbar {
+                padding: 12px 0;
             }
             
-            .nav-menu.active {
-                left: 0;
+            .nav-menu {
+                display: none;
             }
             
             .hamburger {
                 display: flex;
             }
             
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
             
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .hero-subtitle {
                 font-size: 1.1rem;
             }
             
-            .section-title, .carousel-title {
-                font-size: 2rem;
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
             }
             
             .projects-grid {
                 grid-template-columns: 1fr;
             }
             
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
             .carousel {
                 height: 400px;
             }
             
-            .slide-content {
-                padding: 20px;
+            .carousel-title {
+                font-size: 2.2rem;
             }
             
-            .slide-content h3 {
-                font-size: 1.5rem;
+            .hero-quote {
+                font-size: 1.6rem;
             }
             
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+            .footer-content {
+                grid-template-columns: 1fr;
             }
-
-            .modal-close {
-                top: 10px;
-                right: 10px;
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
-            }
-
-            .modal-nav {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-
-            .modal-prev {
-                left: 10px;
-            }
-
-            .modal-next {
-                right: 10px;
-            }
-
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
+            
             .footer-bottom-content {
                 flex-direction: column;
                 gap: 15px;
-                text-align: center;
             }
-
-            .newsletter-form {
+            
+            .cookie-banner-actions {
                 flex-direction: column;
             }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 480px) {
             .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
                 font-size: 2rem;
             }
             
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-            
-            .carousel {
-                height: 300px;
-            }
-            
-            .slide-content h3 {
-                font-size: 1.3rem;
-            }
-            
-            .slide-content p {
-                font-size: 0.9rem;
+            .carousel-title {
+                font-size: 1.8rem;
             }
             
             .hero-quote {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
-
-            .stats-container {
-                grid-template-columns: 1fr;
+            
+            .stat-number {
+                font-size: 2.5rem;
             }
-
-            .footer-social-links {
-                justify-content: center;
+            
+            .cookie-modal-content {
+                padding: 20px;
             }
         }
     </style>
@@ -1328,43 +1458,22 @@
 <body>
     <!-- Language Toggle -->
     <div class="language-toggle">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="pt">PT</button>
+        <button class="lang-btn active" id="lang-en">EN</button>
+        <button class="lang-btn" id="lang-pt">PT</button>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <a href="/index.html">
-                    <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo">
-                </a>
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTUwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0zMCAxMEgyMFYzMEgzMFYyMEg0MFYxMEgzMFpNNjAgMTBINTBWMzBINjBWMjBINzBWMTBINjBaTTkwIDEwSDgwVjMwSDkwVjIwSDEwMFYxMEg5MFpNMTMwIDEwSDEyMFYzMEgxMzBWMjBIMTQwVjEwSDEzMFoiIGZpbGw9IiMxMGI5ODEiLz48L3N2Zz4=" alt="Leve Logo">
             </div>
             <div class="nav-menu">
-                <a href="/index.html" class="nav-link active">
-                    <span class="en-text">Home</span>
-                    <span class="pt-text" style="display: none;">Início</span>
-                </a>
-                <a href="/projects.html" class="nav-link">
-                    <span class="en-text">Projects</span>
-                    <span class="pt-text" style="display: none;">Projetos</span>
-                </a>
-                <a href="/founder.html" class="nav-link">
-                    <span class="en-text">Founder</span>
-                    <span class="pt-text" style="display: none;">Fundador</span>
-                </a>
-                <a href="/learnings.html" class="nav-link">
-                    <span class="en-text">Learnings</span>
-                    <span class="pt-text" style="display: none;">Aprendizados</span>
-                </a>
-                <a href="/partners.html" class="nav-link">
-                    <span class="en-text">Partners</span>
-                    <span class="pt-text" style="display: none;">Parceiros</span>
-                </a>
-                <a href="/contact.html" class="nav-link">
-                    <span class="en-text">Join Us</span>
-                    <span class="pt-text" style="display: none;">Junte-se a Nós</span>
-                </a>
+                <a href="#" class="nav-link active" data-i18n="nav.home">Home</a>
+                <a href="#" class="nav-link" data-i18n="nav.about">About</a>
+                <a href="#" class="nav-link" data-i18n="nav.projects">Projects</a>
+                <a href="#" class="nav-link" data-i18n="nav.services">Services</a>
+                <a href="#" class="nav-link" data-i18n="nav.contact">Contact</a>
             </div>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -1383,531 +1492,704 @@
         </div>
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title en-text fade-in-up">Building Generations, Building Resilience</h1>
-                <h1 class="hero-title pt-text fade-in-up" style="display: none;">Construindo Gerações, Construindo Resiliência</h1>
-                <p class="hero-subtitle en-text fade-in-up delay-1">A youth-led initiative tackling food waste and supporting an aging population through intergenerational connections and sustainable community practices.</p>
-                <p class="hero-subtitle pt-text fade-in-up delay-1" style="display: none;">Uma iniciativa liderada por jovens que combate o desperdício de alimentos e apoia o envelhecimento da população através de conexões intergeracionais e práticas comunitárias sustentáveis.</p>
-                <div class="hero-buttons fade-in-up delay-2">
-                    <a href="/projects.html" class="btn primary en-text">Our Projects</a>
-                    <a href="/projects.html" class="btn primary pt-text" style="display: none;">Nossos Projetos</a>
-                    <a href="/contact.html" class="btn secondary en-text">Join Us</a>
-                    <a href="/contact.html" class="btn secondary pt-text" style="display: none;">Junte-se a Nós</a>
+                <h1 class="hero-title" data-i18n="hero.title">Building Generations, Building Resilience</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Leve is a forward-thinking construction company dedicated to creating sustainable, resilient structures that stand the test of time. We blend innovative techniques with traditional craftsmanship to build for future generations.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn primary" data-i18n="hero.cta1">Our Projects</a>
+                    <a href="#" class="btn secondary" data-i18n="hero.cta2">Get in Touch</a>
                 </div>
             </div>
-            <div class="hero-image fade-in-up delay-3">
-                <img src="https://i.ibb.co/SwvmvmK8/00070-File.jpg" alt="Leve community members working together">
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Modern Architecture">
                 <div class="hero-decoration"></div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
+    <!-- About Section -->
+    <section class="section about">
         <div class="container">
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label en-text">Community Members</div>
-                    <div class="stat-label pt-text" style="display: none;">Membros da Comunidade</div>
+            <h2 class="section-title" data-i18n="about.title">Our Legacy of Excellence</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-i18n="about.p1">Founded with a vision to transform the construction landscape, Leve has been at the forefront of sustainable building practices for over two decades. Our commitment to quality and innovation has made us a trusted name in residential and commercial construction.</p>
+                    <p data-i18n="about.p2">We believe that buildings should not only serve their immediate purpose but also contribute positively to their environment and communities. Our projects are designed with future generations in mind, incorporating resilient features that adapt to changing needs and climates.</p>
+                    <p data-i18n="about.p3">From concept to completion, our team of experienced architects, engineers, and builders work collaboratively to deliver exceptional results that exceed expectations while respecting budgets and timelines.</p>
+                    <a href="#" class="btn primary" data-i18n="about.cta">Learn More</a>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label en-text">Core Projects</div>
-                    <div class="stat-label pt-text" style="display: none;">Projetos Principais</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label en-text">Partner Schools</div>
-                    <div class="stat-label pt-text" style="display: none;">Escolas Parceiras</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label en-text">Meals Saved</div>
-                    <div class="stat-label pt-text" style="display: none;">Refeições Salvas</div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Construction Site">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about section">
+    <!-- Stats Section -->
+    <section class="section stats-section">
         <div class="container">
-            <h2 class="section-title en-text">About Leve</h2>
-            <h2 class="section-title pt-text" style="display: none;">Sobre a Leve</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="en-text">Leve is a youth-led initiative that tackles food waste and supports an aging population by fostering intergenerational connections and sustainable community practices. Our mission is to create resilient communities where different generations work together towards environmental sustainability and social cohesion.</p>
-                    <p class="pt-text" style="display: none;">Leve é uma iniciativa liderada por jovens que combate o desperdício de alimentos e apoia o envelhecimento da população, promovendo conexões intergeracionais e práticas comunitárias sustentáveis. A nossa missão é criar comunidades resilientes onde diferentes gerações trabalham juntas para a sustentabilidade ambiental e coesão social.</p>
-                    
-                    <p class="en-text">Through our three core projects - BioRainha, Art Caldas, and Me Leve - we're building bridges between generations while addressing critical community needs around sustainability.</p>
-                    <p class="pt-text" style="display: none;">Através dos nossos três projetos principais - BioRainha, Art Caldas e Me Leve - estamos a construir pontes entre gerações, abordando necessidades comunitárias críticas em torno da sustentabilidade.</p>
+            <h2 class="section-title" data-i18n="stats.title">Our Impact in Numbers</h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label" data-i18n="stats.projects">Projects Completed</div>
                 </div>
-                <div class="about-image">
-                    <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Leve community activities">
+                <div class="stat-card">
+                    <div class="stat-number">25</div>
+                    <div class="stat-label" data-i18n="stats.years">Years of Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label" data-i18n="stats.team">Expert Team Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label" data-i18n="stats.satisfaction">Client Satisfaction</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Preview -->
-    <section class="projects-preview section">
+    <section class="section projects-preview">
         <div class="container">
-            <h2 class="section-title en-text">Our Projects</h2>
-            <h2 class="section-title pt-text" style="display: none;">Nossos Projetos</h2>
+            <h2 class="section-title" data-i18n="projects.title">Featured Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://i.ibb.co/nqj8HBGF/00062-File.jpg" alt="BioRainha composting project">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Modern Residential Building">
                     </div>
                     <div class="project-content">
-                        <h3>BioRainha</h3>
-                        <p class="en-text">A youth-led campaign that promotes composting, reducing food waste, and building community-wide sustainability.</p>
-                        <p class="pt-text" style="display: none;">Uma campanha liderada por jovens que promove a compostagem, reduz o desperdício de alimentos e constrói a sustentabilidade em toda a comunidade.</p>
-                        <a href="/projects.html#biorainha" class="btn small primary en-text">Learn More</a>
-                        <a href="/projects.html#biorainha" class="btn small primary pt-text" style="display: none;">Saiba Mais</a>
+                        <h3 data-i18n="projects.project1.title">Green Valley Residences</h3>
+                        <p data-i18n="projects.project1.desc">Sustainable residential complex featuring energy-efficient design and green spaces.</p>
+                        <a href="#" class="btn small secondary" data-i18n="projects.cta">View Project</a>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://i.ibb.co/bMhhzF0p/00019-File.jpg" alt="Art Caldas intergenerational program">
+                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Commercial Complex">
                     </div>
                     <div class="project-content">
-                        <h3>Art Caldas</h3>
-                        <p class="en-text">An intergenerational program that connects youth and seniors through volunteering, mentorship, and the sharing of artistic skills.</p>
-                        <p class="pt-text" style="display: none;">Um programa intergeracional que conecta jovens e idosos por meio de voluntariado, mentoria e compartilhamento de habilidades artísticas.</p>
-                        <a href="/projects.html#artcaldas" class="btn small primary en-text">Learn More</a>
-                        <a href="/projects.html#artcaldas" class="btn small primary pt-text" style="display: none;">Saiba Mais</a>
+                        <h3 data-i18n="projects.project2.title">Innovation Business Park</h3>
+                        <p data-i18n="projects.project2.desc">State-of-the-art commercial space designed for collaboration and productivity.</p>
+                        <a href="#" class="btn small secondary" data-i18n="projects.cta">View Project</a>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://i.ibb.co/RkqPsSwP/00040-File.jpg" alt="Me Leve community transport">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Community Center">
                     </div>
                     <div class="project-content">
-                        <h3>Me Leve</h3>
-                        <p class="en-text">A community transport program designed to support seniors with mobility challenges.</p>
-                        <p class="pt-text" style="display: none;">Um programa de transporte comunitário concebido para apoiar seniores com desafios de mobilidade.</p>
-                        <a href="/projects.html#meleve" class="btn small primary en-text">Learn More</a>
-                        <a href="/projects.html#meleve" class="btn small primary pt-text" style="display: none;">Saiba Mais</a>
+                        <h3 data-i18n="projects.project3.title">Harmony Community Center</h3>
+                        <p data-i18n="projects.project3.desc">A vibrant hub for community activities with accessible design for all ages.</p>
+                        <a href="#" class="btn small secondary" data-i18n="projects.cta">View Project</a>
                     </div>
                 </div>
             </div>
             <div class="text-center">
-                <a href="/projects.html" class="btn primary en-text">View All Projects</a>
-                <a href="/projects.html" class="btn primary pt-text" style="display: none;">Ver Todos os Projetos</a>
+                <a href="#" class="btn primary" data-i18n="projects.viewAll">View All Projects</a>
             </div>
         </div>
     </section>
 
-    <!-- Image Carousel Section -->
-    <section class="carousel-section section">
+    <!-- Floating Carousel Section -->
+    <section class="carousel-section">
         <div class="carousel-container">
-            <h2 class="carousel-title en-text">Our Impact in Action</h2>
-            <h2 class="carousel-title pt-text" style="display: none;">Nosso Impacto em Ação</h2>
+            <h2 class="carousel-title" data-i18n="carousel.title">Our Construction Journey</h2>
             <div class="carousel">
-                <button class="carousel-btn prev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-btn next">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                
                 <div class="carousel-track">
-                    <!-- Slide 1 -->
-                    <div class="carousel-slide" data-index="0">
-                        <img src="https://i.ibb.co/dJj8BpxT/00063-File.jpg" alt="BioRainha composting initiative">
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Modern Architecture">
                         <div class="slide-content">
-                            <h3>BioRainha Composting</h3>
-                            <p class="en-text">Youth leader working with the community for sustainable food waste management and composting practices.</p>
-                            <p class="pt-text" style="display: none;">Líderes jovens educando a comunidade sobre gestão sustentável de resíduos alimentares e práticas de compostagem.</p>
+                            <h3 data-i18n="carousel.slide1.title">Innovative Design</h3>
+                            <p data-i18n="carousel.slide1.desc">Blending aesthetics with functionality for timeless structures.</p>
                         </div>
                     </div>
-                    
-                    <!-- Slide 2 -->
-                    <div class="carousel-slide" data-index="1">
-                        <img src="https://i.ibb.co/XZ4LRYHy/00058-File.jpg" alt="BioRainha composting initiative">
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Construction Process">
                         <div class="slide-content">
-                            <h3>Community Engagement</h3>
-                            <p class="en-text">Youth leader working with the community for sustainable food waste management and composting practices.</p>
-                            <p class="pt-text" style="display: none;">Líder jovem a trabalhar com a comunidade para a gestão sustentável de resíduos alimentares e práticas de compostagem.</p>
+                            <h3 data-i18n="carousel.slide2.title">Precision Engineering</h3>
+                            <p data-i18n="carousel.slide2.desc">Meticulous attention to detail in every phase of construction.</p>
                         </div>
                     </div>
-                    
-                    <!-- Slide 3 -->
-                    <div class="carousel-slide" data-index="2">
-                        <img src="https://i.ibb.co/fd1CmMZb/00046-File.jpg" alt="Me Leve community transport service">
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Sustainable Materials">
                         <div class="slide-content">
-                            <h3>Me Leve Transport</h3>
-                            <p class="en-text">Providing mobility solutions for seniors to access essential services and maintain community connections.</p>
-                            <p class="pt-text" style="display: none;">Fornecendo soluções de mobilidade para idosos acessarem serviços essenciais e manterem conexões comunitárias.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 4 -->
-                    <div class="carousel-slide" data-index="3">
-                        <img src="https://i.ibb.co/WNDmZtB5/00043-File.jpg" alt="Community gathering">
-                        <div class="slide-content">
-                            <h3>Community Engagement</h3>
-                            <p class="en-text">Bringing together people of all ages to build stronger, more resilient communities.</p>
-                            <p class="pt-text" style="display: none;">Reunindo pessoas de todas as idades para construir comunidades mais fortes e resilientes.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 5 -->
-                    <div class="carousel-slide" data-index="4">
-                        <img src="https://i.ibb.co/nqj8HBGF/00062-File.jpg" alt="Educational workshop">
-                        <div class="slide-content">
-                            <h3>Educational Workshops</h3>
-                            <p class="en-text">Empowering community members with knowledge and skills for sustainable living.</p>
-                            <p class="pt-text" style="display: none;">Capacitando membros da comunidade com conhecimento e habilidades para uma vida sustentável.</p>
+                            <h3 data-i18n="carousel.slide3.title">Sustainable Materials</h3>
+                            <p data-i18n="carousel.slide3.desc">Using eco-friendly resources for a greener future.</p>
                         </div>
                     </div>
                 </div>
+                <button class="carousel-btn prev">❮</button>
+                <button class="carousel-btn next">❯</button>
             </div>
-            
             <div class="carousel-indicators">
-                <span class="indicator active" data-slide="0"></span>
-                <span class="indicator" data-slide="1"></span>
-                <span class="indicator" data-slide="2"></span>
-                <span class="indicator" data-slide="3"></span>
-                <span class="indicator" data-slide="4"></span>
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Modal -->
-    <div class="gallery-modal" id="galleryModal">
+    <div class="gallery-modal">
         <div class="modal-content">
-            <button class="modal-close" id="modalClose">
-                <i class="fas fa-times"></i>
-            </button>
-            <button class="modal-nav modal-prev" id="modalPrev">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="modal-nav modal-next" id="modalNext">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <img class="modal-image" id="modalImage" src="" alt="">
-            <div class="image-counter" id="imageCounter"></div>
+            <button class="modal-close">×</button>
+            <button class="modal-nav modal-prev">❮</button>
+            <img class="modal-image" src="" alt="Gallery Image">
+            <button class="modal-nav modal-next">❯</button>
+            <div class="image-counter"></div>
         </div>
     </div>
 
     <!-- Quote Section -->
     <section class="quote-section">
         <div class="container">
-            <blockquote class="hero-quote en-text">
-                "Do your little bit of good where you are; it's those little bits of good put together that overwhelm the world."
-                <cite>- Desmond Tutu</cite>
-            </blockquote>
-            <blockquote class="hero-quote pt-text" style="display: none;">
-                "Faça o seu pouco de bem onde você está; são esses pequenos pedaços de bem juntos que inundam o mundo."
-                <cite>- Desmond Tutu</cite>
+            <blockquote class="hero-quote">
+                <span data-i18n="quote.text">We don't just build structures; we create legacies that inspire generations and withstand the test of time.</span>
+                <cite data-i18n="quote.author">- Carlos Silva, Founder & CEO</cite>
             </blockquote>
         </div>
     </section>
 
-    <!-- MODERN FOOTER - From projects.html -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="https://i.ibb.co/wZW2jKnM/Screenshot-2025-09-29-at-16-21-15-removebg-preview.png" alt="Leve Logo" class="footer-logo-img">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTUwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0zMCAxMEgyMFYzMEgzMFYyMEg0MFYxMEgzMFpNNjAgMTBINTBWMzBINjBWMjBINzBWMTBINjBaTTkwIDEwSDgwVjMwSDkwVjIwSDEwMFYxMEg5MFpNMTMwIDEwSDEyMFYzMEgxMzBWMjBIMTQwVjEwSDEzMFoiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=" alt="Leve Logo" class="footer-logo-img">
                     </div>
-                    <p class="footer-tagline en-text">Building Generations, Building Resilience through sustainable community initiatives and intergenerational connections.</p>
-                    <p class="footer-tagline pt-text" style="display: none;">Construindo Gerações, Construindo Resiliência através de iniciativas comunitárias sustentáveis e conexões intergeracionais.</p>
-                    
+                    <p class="footer-tagline" data-i18n="footer.tagline">Building sustainable futures through innovative construction and timeless design.</p>
                     <div class="footer-newsletter">
-                        <h4 class="en-text">Stay Updated</h4>
-                        <h4 class="pt-text" style="display: none;">Mantenha-se Atualizado</h4>
+                        <h3 data-i18n="footer.newsletter">Stay Updated</h3>
                         <div class="newsletter-form">
-                            <input type="email" class="newsletter-input" placeholder="Your email address">
-                            <button class="newsletter-btn en-text">Subscribe</button>
-                            <button class="newsletter-btn pt-text" style="display: none;">Subscrever</button>
+                            <input type="email" class="newsletter-input" placeholder="Your email address" data-i18n-placeholder="footer.newsletterPlaceholder">
+                            <button class="newsletter-btn" data-i18n="footer.subscribe">Subscribe</button>
                         </div>
                     </div>
                 </div>
-                
                 <div class="footer-links">
-                    <h3 class="en-text">Quick Links</h3>
-                    <h3 class="pt-text" style="display: none;">Links Rápidos</h3>
+                    <h3 data-i18n="footer.links">Quick Links</h3>
                     <ul>
-                        <li><a href="/index.html">
-                            <i class="fas fa-chevron-right"></i>
-                            <span class="en-text">Home</span>
-                            <span class="pt-text" style="display: none;">Início</span>
-                        </a></li>
-                        <li><a href="/projects.html">
-                            <i class="fas fa-chevron-right"></i>
-                            <span class="en-text">Projects</span>
-                            <span class="pt-text" style="display: none;">Projetos</span>
-                        </a></li>
-                        <li><a href="/founder.html">
-                            <i class="fas fa-chevron-right"></i>
-                            <span class="en-text">Founder</span>
-                            <span class="pt-text" style="display: none;">Fundador</span>
-                        </a></li>
-                        <li><a href="/learnings.html">
-                            <i class="fas fa-chevron-right"></i>
-                            <span class="en-text">Learnings</span>
-                            <span class="pt-text" style="display: none;">Aprendizados</span>
-                        </a></li>
-                        <li><a href="/partners.html">
-                            <i class="fas fa-chevron-right"></i>
-                            <span class="en-text">Partners</span>
-                            <span class="pt-text" style="display: none;">Parceiros</span>
-                        </a></li>
-                        <li><a href="/contact.html">
-                            <i class="fas fa-chevron-right"></i>
-                            <span class="en-text">Join Us</span>
-                            <span class="pt-text" style="display: none;">Junte-se</span>
-                        </a></li>
+                        <li><a href="#" data-i18n="nav.home">Home</a></li>
+                        <li><a href="#" data-i18n="nav.about">About</a></li>
+                        <li><a href="#" data-i18n="nav.projects">Projects</a></li>
+                        <li><a href="#" data-i18n="nav.services">Services</a></li>
+                        <li><a href="#" data-i18n="nav.contact">Contact</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-contact">
-                    <h3 class="en-text">Contact Us</h3>
-                    <h3 class="pt-text" style="display: none;">Contacte-nos</h3>
+                    <h3 data-i18n="footer.contact">Contact Us</h3>
                     <div class="footer-contact-info">
                         <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:de.leve@zohomail.eu">de.leve@zohomail.eu</a>
-                        </div>
-                        <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span class="en-text">Caldas da Rainha, Portugal</span>
-                            <span class="pt-text" style="display: none;">Caldas da Rainha, Portugal</span>
+                            <span data-i18n="footer.address">123 Construction Ave, Porto, Portugal</span>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <span class="en-text">Mon - Fri: 9:00 - 17:00</span>
-                            <span class="pt-text" style="display: none;">Seg - Sex: 9:00 - 17:00</span>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+351123456789">+351 123 456 789</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@leve.com">info@leve.com</a>
                         </div>
                     </div>
                 </div>
-                
                 <div class="footer-social">
-                    <h3 class="en-text">Follow Us</h3>
-                    <h3 class="pt-text" style="display: none;">Siga-nos</h3>
+                    <h3 data-i18n="footer.follow">Follow Us</h3>
                     <div class="footer-social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
-                    <p class="en-text">&copy; 2023 Leve. All rights reserved.</p>
-                    <p class="pt-text" style="display: none;">&copy; 2023 Leve. Todos os direitos reservados.</p>
+                    <p>&copy; 2023 Leve Construction. <span data-i18n="footer.rights">All rights reserved.</span></p>
                     <div class="footer-legal">
-                        <a href="#" class="en-text">Privacy Policy</a>
-                        <a href="#" class="pt-text" style="display: none;">Política de Privacidade</a>
-                        <a href="#" class="en-text">Terms of Service</a>
-                        <a href="#" class="pt-text" style="display: none;">Termos de Serviço</a>
+                        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+                        <a href="#" data-i18n="footer.terms">Terms of Service</a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    
+
+    <!-- LGPD Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-banner-content">
+            <div class="cookie-banner-text">
+                <h3 data-i18n="cookie.title">Your Privacy Matters</h3>
+                <p data-i18n="cookie.description">We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. You can manage your preferences in Cookie Settings.</p>
+            </div>
+            <div class="cookie-banner-actions">
+                <button class="cookie-btn primary" id="acceptAllCookies" data-i18n="cookie.acceptAll">Accept All</button>
+                <button class="cookie-btn secondary" id="rejectAllCookies" data-i18n="cookie.rejectAll">Reject All</button>
+                <button class="cookie-btn secondary" id="cookieSettings" data-i18n="cookie.settings">Cookie Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div class="cookie-settings-modal" id="cookieSettingsModal">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h2 data-i18n="cookie.settingsTitle">Cookie Preferences</h2>
+                <button class="cookie-modal-close" id="closeCookieModal">×</button>
+            </div>
+            <div class="cookie-categories">
+                <div class="cookie-category">
+                    <div class="category-info">
+                        <h4 data-i18n="cookie.essential.title">Essential Cookies</h4>
+                        <p data-i18n="cookie.essential.description">These cookies are necessary for the website to function and cannot be switched off. They are usually only set in response to actions made by you.</p>
+                    </div>
+                    <label class="category-toggle">
+                        <input type="checkbox" checked disabled>
+                        <span class="toggle-slider disabled"></span>
+                    </label>
+                </div>
+                <div class="cookie-category">
+                    <div class="category-info">
+                        <h4 data-i18n="cookie.analytics.title">Analytics Cookies</h4>
+                        <p data-i18n="cookie.analytics.description">These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site.</p>
+                    </div>
+                    <label class="category-toggle">
+                        <input type="checkbox" id="analyticsCookies">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="cookie-category">
+                    <div class="category-info">
+                        <h4 data-i18n="cookie.marketing.title">Marketing Cookies</h4>
+                        <p data-i18n="cookie.marketing.description">These cookies may be set through our site by our advertising partners to build a profile of your interests.</p>
+                    </div>
+                    <label class="category-toggle">
+                        <input type="checkbox" id="marketingCookies">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="cookie-category">
+                    <div class="category-info">
+                        <h4 data-i18n="cookie.preferences.title">Preference Cookies</h4>
+                        <p data-i18n="cookie.preferences.description">These cookies enable the website to provide enhanced functionality and personalization based on your interactions.</p>
+                    </div>
+                    <label class="category-toggle">
+                        <input type="checkbox" id="preferenceCookies">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="cookie-modal-footer">
+                <button class="cookie-btn secondary" id="saveCookiePreferences" data-i18n="cookie.save">Save Preferences</button>
+                <button class="cookie-btn primary" id="acceptAllInModal" data-i18n="cookie.acceptAll">Accept All</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Simple Carousel functionality
+        // Language Support
+        const translations = {
+            en: {
+                // Navigation
+                "nav.home": "Home",
+                "nav.about": "About",
+                "nav.projects": "Projects",
+                "nav.services": "Services",
+                "nav.contact": "Contact",
+                
+                // Hero Section
+                "hero.title": "Building Generations, Building Resilience",
+                "hero.subtitle": "Leve is a forward-thinking construction company dedicated to creating sustainable, resilient structures that stand the test of time. We blend innovative techniques with traditional craftsmanship to build for future generations.",
+                "hero.cta1": "Our Projects",
+                "hero.cta2": "Get in Touch",
+                
+                // About Section
+                "about.title": "Our Legacy of Excellence",
+                "about.p1": "Founded with a vision to transform the construction landscape, Leve has been at the forefront of sustainable building practices for over two decades. Our commitment to quality and innovation has made us a trusted name in residential and commercial construction.",
+                "about.p2": "We believe that buildings should not only serve their immediate purpose but also contribute positively to their environment and communities. Our projects are designed with future generations in mind, incorporating resilient features that adapt to changing needs and climates.",
+                "about.p3": "From concept to completion, our team of experienced architects, engineers, and builders work collaboratively to deliver exceptional results that exceed expectations while respecting budgets and timelines.",
+                "about.cta": "Learn More",
+                
+                // Stats Section
+                "stats.title": "Our Impact in Numbers",
+                "stats.projects": "Projects Completed",
+                "stats.years": "Years of Experience",
+                "stats.team": "Expert Team Members",
+                "stats.satisfaction": "Client Satisfaction",
+                
+                // Projects Section
+                "projects.title": "Featured Projects",
+                "projects.project1.title": "Green Valley Residences",
+                "projects.project1.desc": "Sustainable residential complex featuring energy-efficient design and green spaces.",
+                "projects.project2.title": "Innovation Business Park",
+                "projects.project2.desc": "State-of-the-art commercial space designed for collaboration and productivity.",
+                "projects.project3.title": "Harmony Community Center",
+                "projects.project3.desc": "A vibrant hub for community activities with accessible design for all ages.",
+                "projects.cta": "View Project",
+                "projects.viewAll": "View All Projects",
+                
+                // Carousel Section
+                "carousel.title": "Our Construction Journey",
+                "carousel.slide1.title": "Innovative Design",
+                "carousel.slide1.desc": "Blending aesthetics with functionality for timeless structures.",
+                "carousel.slide2.title": "Precision Engineering",
+                "carousel.slide2.desc": "Meticulous attention to detail in every phase of construction.",
+                "carousel.slide3.title": "Sustainable Materials",
+                "carousel.slide3.desc": "Using eco-friendly resources for a greener future.",
+                
+                // Quote Section
+                "quote.text": "We don't just build structures; we create legacies that inspire generations and withstand the test of time.",
+                "quote.author": "- Carlos Silva, Founder & CEO",
+                
+                // Footer
+                "footer.tagline": "Building sustainable futures through innovative construction and timeless design.",
+                "footer.newsletter": "Stay Updated",
+                "footer.newsletterPlaceholder": "Your email address",
+                "footer.subscribe": "Subscribe",
+                "footer.links": "Quick Links",
+                "footer.contact": "Contact Us",
+                "footer.address": "123 Construction Ave, Porto, Portugal",
+                "footer.follow": "Follow Us",
+                "footer.rights": "All rights reserved.",
+                "footer.privacy": "Privacy Policy",
+                "footer.terms": "Terms of Service",
+                
+                // Cookie Banner
+                "cookie.title": "Your Privacy Matters",
+                "cookie.description": "We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies. You can manage your preferences in Cookie Settings.",
+                "cookie.acceptAll": "Accept All",
+                "cookie.rejectAll": "Reject All",
+                "cookie.settings": "Cookie Settings",
+                "cookie.settingsTitle": "Cookie Preferences",
+                "cookie.essential.title": "Essential Cookies",
+                "cookie.essential.description": "These cookies are necessary for the website to function and cannot be switched off. They are usually only set in response to actions made by you.",
+                "cookie.analytics.title": "Analytics Cookies",
+                "cookie.analytics.description": "These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site.",
+                "cookie.marketing.title": "Marketing Cookies",
+                "cookie.marketing.description": "These cookies may be set through our site by our advertising partners to build a profile of your interests.",
+                "cookie.preferences.title": "Preference Cookies",
+                "cookie.preferences.description": "These cookies enable the website to provide enhanced functionality and personalization based on your interactions.",
+                "cookie.save": "Save Preferences"
+            },
+            pt: {
+                // Navigation
+                "nav.home": "Início",
+                "nav.about": "Sobre",
+                "nav.projects": "Projetos",
+                "nav.services": "Serviços",
+                "nav.contact": "Contato",
+                
+                // Hero Section
+                "hero.title": "Construindo Gerações, Construindo Resiliência",
+                "hero.subtitle": "A Leve é uma empresa de construção visionária dedicada a criar estruturas sustentáveis e resilientes que resistem ao teste do tempo. Combinamos técnicas inovadoras com artesanato tradicional para construir para as gerações futuras.",
+                "hero.cta1": "Nossos Projetos",
+                "hero.cta2": "Entre em Contato",
+                
+                // About Section
+                "about.title": "Nosso Legado de Excelência",
+                "about.p1": "Fundada com a visão de transformar o panorama da construção, a Leve está na vanguarda das práticas de construção sustentável há mais de duas décadas. Nosso compromisso com qualidade e inovação nos tornou um nome confiável em construção residencial e comercial.",
+                "about.p2": "Acreditamos que os edifícios não devem apenas servir ao seu propósito imediato, mas também contribuir positivamente para seu ambiente e comunidades. Nossos projetos são concebidos com as gerações futuras em mente, incorporando características resilientes que se adaptam a necessidades e climas em mudança.",
+                "about.p3": "Do conceito à conclusão, nossa equipe de arquitetos, engenheiros e construtores experientes trabalha em colaboração para entregar resultados excepcionais que superam as expectativas, respeitando orçamentos e prazos.",
+                "about.cta": "Saiba Mais",
+                
+                // Stats Section
+                "stats.title": "Nosso Impacto em Números",
+                "stats.projects": "Projetos Concluídos",
+                "stats.years": "Anos de Experiência",
+                "stats.team": "Membros da Equipe",
+                "stats.satisfaction": "Satisfação do Cliente",
+                
+                // Projects Section
+                "projects.title": "Projetos em Destaque",
+                "projects.project1.title": "Residências Green Valley",
+                "projects.project1.desc": "Complexo residencial sustentável com design energeticamente eficiente e espaços verdes.",
+                "projects.project2.title": "Parque Empresarial Inovação",
+                "projects.project2.desc": "Espaço comercial state-of-the-art projetado para colaboração e produtividade.",
+                "projects.project3.title": "Centro Comunitário Harmonia",
+                "projects.project3.desc": "Um centro vibrante para atividades comunitárias com design acessível para todas as idades.",
+                "projects.cta": "Ver Projeto",
+                "projects.viewAll": "Ver Todos os Projetos",
+                
+                // Carousel Section
+                "carousel.title": "Nossa Jornada de Construção",
+                "carousel.slide1.title": "Design Inovador",
+                "carousel.slide1.desc": "Combinando estética com funcionalidade para estruturas atemporais.",
+                "carousel.slide2.title": "Engenharia de Precisão",
+                "carousel.slide2.desc": "Atenção meticulosa aos detalhes em cada fase da construção.",
+                "carousel.slide3.title": "Materiais Sustentáveis",
+                "carousel.slide3.desc": "Usando recursos ecológicos para um futuro mais verde.",
+                
+                // Quote Section
+                "quote.text": "Não construímos apenas estruturas; criamos legados que inspiram gerações e resistem ao teste do tempo.",
+                "quote.author": "- Carlos Silva, Fundador & CEO",
+                
+                // Footer
+                "footer.tagline": "Construindo futuros sustentáveis através de construção inovadora e design atemporal.",
+                "footer.newsletter": "Mantenha-se Atualizado",
+                "footer.newsletterPlaceholder": "Seu endereço de email",
+                "footer.subscribe": "Subscrever",
+                "footer.links": "Links Rápidos",
+                "footer.contact": "Contate-nos",
+                "footer.address": "Av. Construção 123, Porto, Portugal",
+                "footer.follow": "Siga-nos",
+                "footer.rights": "Todos os direitos reservados.",
+                "footer.privacy": "Política de Privacidade",
+                "footer.terms": "Termos de Serviço",
+                
+                // Cookie Banner
+                "cookie.title": "A Sua Privacidade é Importante",
+                "cookie.description": "Usamos cookies para melhorar sua experiência de navegação, veicular conteúdo personalizado e analisar nosso tráfego. Clicando em \"Aceitar Todos\", você consente com o uso de cookies. Pode gerir as suas preferências nas Configurações de Cookies.",
+                "cookie.acceptAll": "Aceitar Todos",
+                "cookie.rejectAll": "Rejeitar Todos",
+                "cookie.settings": "Configurações de Cookies",
+                "cookie.settingsTitle": "Preferências de Cookies",
+                "cookie.essential.title": "Cookies Essenciais",
+                "cookie.essential.description": "Estes cookies são necessários para o funcionamento do website e não podem ser desligados. São normalmente definidos apenas em resposta a ações suas.",
+                "cookie.analytics.title": "Cookies Analíticos",
+                "cookie.analytics.description": "Estes cookies permitem-nos contar visitas e fontes de tráfego para podermos medir e melhorar o desempenho do nosso site.",
+                "cookie.marketing.title": "Cookies de Marketing",
+                "cookie.marketing.description": "Estes cookies podem ser definidos no nosso site pelos nossos parceiros de publicidade para construir um perfil dos seus interesses.",
+                "cookie.preferences.title": "Cookies de Preferências",
+                "cookie.preferences.description": "Estes cookies permitem que o website forneça funcionalidade melhorada e personalização com base nas suas interações.",
+                "cookie.save": "Guardar Preferências"
+            }
+        };
+
+        // Language Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const langEnBtn = document.getElementById('lang-en');
+            const langPtBtn = document.getElementById('lang-pt');
+            
+            function setLanguage(lang) {
+                // Update active button
+                langEnBtn.classList.toggle('active', lang === 'en');
+                langPtBtn.classList.toggle('active', lang === 'pt');
+                
+                // Update all translatable elements
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+                
+                // Update placeholder texts
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                    const key = element.getAttribute('data-i18n-placeholder');
+                    if (translations[lang][key]) {
+                        element.placeholder = translations[lang][key];
+                    }
+                });
+                
+                // Store language preference
+                localStorage.setItem('preferredLanguage', lang);
+            }
+            
+            langEnBtn.addEventListener('click', () => setLanguage('en'));
+            langPtBtn.addEventListener('click', () => setLanguage('pt'));
+            
+            // Initialize with saved language or default to English
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLanguage);
+        });
+
+        // Carousel Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const track = document.querySelector('.carousel-track');
-            const slides = document.querySelectorAll('.carousel-slide');
+            const slides = Array.from(track.children);
             const nextButton = document.querySelector('.carousel-btn.next');
             const prevButton = document.querySelector('.carousel-btn.prev');
             const indicators = document.querySelectorAll('.indicator');
             
             let currentIndex = 0;
-            const totalSlides = slides.length;
-            let autoSlideInterval;
             
             function updateCarousel() {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                
+                // Update indicators
                 indicators.forEach((indicator, index) => {
                     indicator.classList.toggle('active', index === currentIndex);
                 });
             }
             
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % totalSlides;
+            nextButton.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % slides.length;
                 updateCarousel();
-            }
+            });
             
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            prevButton.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
                 updateCarousel();
-            }
+            });
             
-            nextButton.addEventListener('click', nextSlide);
-            prevButton.addEventListener('click', prevSlide);
-            
+            // Indicator clicks
             indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
+                indicator.addEventListener('click', function() {
                     currentIndex = index;
                     updateCarousel();
-                    resetAutoSlide();
                 });
             });
             
-            function startAutoSlide() {
-                autoSlideInterval = setInterval(nextSlide, 5000);
+            // Auto-advance carousel
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            }, 5000);
+        });
+
+        // LGPD Cookie Consent Implementation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieBanner = document.getElementById('cookieBanner');
+            const cookieSettingsModal = document.getElementById('cookieSettingsModal');
+            const acceptAllCookies = document.getElementById('acceptAllCookies');
+            const rejectAllCookies = document.getElementById('rejectAllCookies');
+            const cookieSettings = document.getElementById('cookieSettings');
+            const closeCookieModal = document.getElementById('closeCookieModal');
+            const saveCookiePreferences = document.getElementById('saveCookiePreferences');
+            const acceptAllInModal = document.getElementById('acceptAllInModal');
+            const analyticsCookies = document.getElementById('analyticsCookies');
+            const marketingCookies = document.getElementById('marketingCookies');
+            const preferenceCookies = document.getElementById('preferenceCookies');
+            
+            // Check if user has already made a choice
+            const cookieConsent = getCookieConsent();
+            
+            if (!cookieConsent) {
+                // Show banner if no consent has been given
+                setTimeout(() => {
+                    cookieBanner.classList.add('active');
+                }, 1000);
+            } else {
+                // Apply stored preferences
+                applyCookiePreferences(cookieConsent);
             }
             
-            function resetAutoSlide() {
-                clearInterval(autoSlideInterval);
-                startAutoSlide();
-            }
-            
-            startAutoSlide();
-            
-            const carousel = document.querySelector('.carousel');
-            carousel.addEventListener('mouseenter', () => {
-                clearInterval(autoSlideInterval);
-            });
-            
-            carousel.addEventListener('mouseleave', () => {
-                startAutoSlide();
-            });
-
-            // Gallery Modal functionality
-            const modal = document.getElementById('galleryModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalClose = document.getElementById('modalClose');
-            const modalPrev = document.getElementById('modalPrev');
-            const modalNext = document.getElementById('modalNext');
-            const imageCounter = document.getElementById('imageCounter');
-            let currentImageIndex = 0;
-
-            slides.forEach((slide, index) => {
-                slide.addEventListener('click', () => {
-                    currentImageIndex = index;
-                    openModal();
+            // Event Listeners
+            acceptAllCookies.addEventListener('click', function() {
+                setCookieConsent({
+                    essential: true,
+                    analytics: true,
+                    marketing: true,
+                    preferences: true
                 });
+                cookieBanner.classList.remove('active');
             });
-
-            function openModal() {
-                const currentSlide = slides[currentImageIndex];
-                const imgSrc = currentSlide.querySelector('img').src;
-                const imgAlt = currentSlide.querySelector('img').alt;
+            
+            rejectAllCookies.addEventListener('click', function() {
+                setCookieConsent({
+                    essential: true, // Essential cookies cannot be rejected
+                    analytics: false,
+                    marketing: false,
+                    preferences: false
+                });
+                cookieBanner.classList.remove('active');
+            });
+            
+            cookieSettings.addEventListener('click', function() {
+                cookieSettingsModal.classList.add('active');
+            });
+            
+            closeCookieModal.addEventListener('click', function() {
+                cookieSettingsModal.classList.remove('active');
+            });
+            
+            saveCookiePreferences.addEventListener('click', function() {
+                setCookieConsent({
+                    essential: true, // Essential cookies are always enabled
+                    analytics: analyticsCookies.checked,
+                    marketing: marketingCookies.checked,
+                    preferences: preferenceCookies.checked
+                });
+                cookieBanner.classList.remove('active');
+                cookieSettingsModal.classList.remove('active');
+            });
+            
+            acceptAllInModal.addEventListener('click', function() {
+                analyticsCookies.checked = true;
+                marketingCookies.checked = true;
+                preferenceCookies.checked = true;
                 
-                modalImage.src = imgSrc;
-                modalImage.alt = imgAlt;
-                updateCounter();
-                
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeModal() {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            function nextImage() {
-                currentImageIndex = (currentImageIndex + 1) % totalSlides;
-                const currentSlide = slides[currentImageIndex];
-                modalImage.src = currentSlide.querySelector('img').src;
-                modalImage.alt = currentSlide.querySelector('img').alt;
-                updateCounter();
-            }
-
-            function prevImage() {
-                currentImageIndex = (currentImageIndex - 1 + totalSlides) % totalSlides;
-                const currentSlide = slides[currentImageIndex];
-                modalImage.src = currentSlide.querySelector('img').src;
-                modalImage.alt = currentSlide.querySelector('img').alt;
-                updateCounter();
-            }
-
-            function updateCounter() {
-                imageCounter.textContent = `${currentImageIndex + 1} / ${totalSlides}`;
-            }
-
-            modalClose.addEventListener('click', closeModal);
-            modalNext.addEventListener('click', nextImage);
-            modalPrev.addEventListener('click', prevImage);
-
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
+                setCookieConsent({
+                    essential: true,
+                    analytics: true,
+                    marketing: true,
+                    preferences: true
+                });
+                cookieBanner.classList.remove('active');
+                cookieSettingsModal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            cookieSettingsModal.addEventListener('click', function(e) {
+                if (e.target === cookieSettingsModal) {
+                    cookieSettingsModal.classList.remove('active');
                 }
             });
-
-            document.addEventListener('keydown', (e) => {
-                if (!modal.classList.contains('active')) return;
+            
+            // Cookie Functions
+            function setCookieConsent(preferences) {
+                const consentData = {
+                    ...preferences,
+                    timestamp: new Date().getTime()
+                };
                 
-                switch(e.key) {
-                    case 'Escape':
-                        closeModal();
-                        break;
-                    case 'ArrowLeft':
-                        prevImage();
-                        break;
-                    case 'ArrowRight':
-                        nextImage();
-                        break;
+                // Store consent in a cookie for 1 year
+                const date = new Date();
+                date.setFullYear(date.getFullYear() + 1);
+                document.cookie = `cookieConsent=${JSON.stringify(consentData)}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
+                
+                // Apply the preferences
+                applyCookiePreferences(consentData);
+            }
+            
+            function getCookieConsent() {
+                const cookie = document.cookie
+                    .split('; ')
+                    .find(row => row.startsWith('cookieConsent='));
+                
+                if (cookie) {
+                    return JSON.parse(cookie.split('=')[1]);
                 }
-            });
-
-            // Language Toggle
-            const langButtons = document.querySelectorAll('.lang-btn');
+                
+                return null;
+            }
             
-            langButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    
-                    // Update active button
-                    langButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Show/hide language content
-                    if (lang === 'en') {
-                        document.querySelectorAll('.en-text').forEach(el => {
-                            el.style.display = 'block';
-                        });
-                        document.querySelectorAll('.pt-text').forEach(el => {
-                            el.style.display = 'none';
-                        });
-                    } else {
-                        document.querySelectorAll('.en-text').forEach(el => {
-                            el.style.display = 'none';
-                        });
-                        document.querySelectorAll('.pt-text').forEach(el => {
-                            el.style.display = 'block';
-                        });
-                    }
-                });
-            });
-            
-            // Mobile Menu Toggle
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            hamburger.addEventListener('click', function() {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
-            
-            // Close menu when clicking on a link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', function() {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                });
-            });
+            function applyCookiePreferences(preferences) {
+                // In a real implementation, this would initialize or remove tracking scripts
+                // based on the user's preferences
+                
+                console.log('Applied cookie preferences:', preferences);
+                
+                // Example: Initialize Google Analytics only if analytics cookies are accepted
+                if (preferences.analytics) {
+                    // Initialize analytics scripts
+                    console.log('Analytics cookies enabled');
+                } else {
+                    // Disable analytics scripts
+                    console.log('Analytics cookies disabled');
+                }
+                
+                // Example: Initialize marketing scripts only if marketing cookies are accepted
+                if (preferences.marketing) {
+                    // Initialize marketing scripts
+                    console.log('Marketing cookies enabled');
+                } else {
+                    // Disable marketing scripts
+                    console.log('Marketing cookies disabled');
+                }
+                
+                // Example: Apply preference cookies
+                if (preferences.preferences) {
+                    // Apply user preferences
+                    console.log('Preference cookies enabled');
+                } else {
+                    // Use default settings
+                    console.log('Preference cookies disabled');
+                }
+            }
         });
     </script>
 </body>
