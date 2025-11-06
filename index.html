@@ -805,13 +805,16 @@
             background: var(--light-bg);
         }
 
-        .stats-container {
+      .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr); /* Force 4 columns */
             gap: 40px;
             text-align: center;
-        }
-
+            justify-items: center; /* Center items within grid cells */
+            max-width: 1000px; /* Control overall width */
+            margin: 0 auto; /* Center the container */
+    }
+    
         .stat-card {
             background: var(--white);
             padding: 40px 20px;
@@ -820,6 +823,9 @@
             transition: var(--transition);
             transform: translateY(0);
             animation: floatStat 7s ease-in-out infinite;
+            width: 100%; /* Take full width of grid cell */
+            max-width: 200px; /* But don't exceed this */
+    }
         }
 
         @keyframes floatStat {
